@@ -1,7 +1,7 @@
 function Calculator(leftOperand, operator, rightOperand) {
-    this.leftOperand = leftOperand;
+    this.leftOperand = Number(leftOperand);
     this.operator = operator;
-    this.rightOperand = rightOperand;
+    this.rightOperand = Number(rightOperand);
 
     this.calculateResult = function () {
         let result = 0;

@@ -1,14 +1,13 @@
-let calculator = require('../models/Calculator');
+let Calculator = require('../models/Calculator');
 
 module.exports = {
     indexGet: (req, res) => {
         res.render('home/index');
     },
     indexPost: (req, res) => {
-        let calculatorBody = req.body;
-        let calculatorParams = calculatorBody['calculator'];
+        let calculatorParams = req.body['calculator'];
 
-        let calculator = new calculator();
+        let calculator = new Calculator();
         calculator.leftOperand = Number(calculatorParams.leftOperand);
         calculator.operator = calculatorParams.operator;
         calculator.rightOperand = Number(calculatorParams.rightOperand);
