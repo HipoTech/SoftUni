@@ -21,6 +21,6 @@ module.exports = {
   addPhonebookPost: (req, res) => {
     // TODO: add a phonebook object to the array
     phonebook.addNumber(req);
-    res.redirect('/');
+
   }
 }

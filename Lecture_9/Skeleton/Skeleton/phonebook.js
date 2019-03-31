@@ -31,7 +31,10 @@ function addNumber(req) {
 		.connect('mongodb://localhost:27017/Phonebook', { useNewUrlParser: true })
 		.then(() => {
 			console.log('Database online!, adding contact!')
-			ContactNew.create(contact);
+			ContactNew.create(contact)
+				.then(() => {
+					return res.redirect('/');
+				})
 		})
 }
 
