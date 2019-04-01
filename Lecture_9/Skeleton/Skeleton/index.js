@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const routing = require('./routing');
 const port = 3000;
 const app = express();
+const env = process.env.NODE_ENV || 'development';
+const config = require('./config/config')[env];
+require('./config/database')(config);
 
 app.engine(".hbs", handlebars({
   extname: '.hbs'
@@ -17,4 +20,4 @@ app.use(bodyParser.urlencoded({
 }));
 routing(app);
 
-app.listen(port, console.log("Listening on port " + port + "..."));
+app.listen(config.port, () => console.log(`Listening on port ${config.port}...`));
