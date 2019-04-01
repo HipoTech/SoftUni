@@ -10,8 +10,10 @@ function vaporWinterSale(inputString) {
         } else {
             let expGame = gameAndPrice[0].split(':');
             let price = listOfGames[expGame[0]];
-            delete listOfGames[expGame[0]];
-            listOfExpGames[expGame[0] + ' - ' + expGame[1]] = (Number(price) * 0.75).toFixed(2);
+            if (price != undefined) {
+                delete listOfGames[expGame[0]];
+                listOfExpGames[expGame[0] + ' - ' + expGame[1]] = (Number(price) * 0.75).toFixed(2);
+            }
         }
     });
     let ansArray = [];
@@ -31,3 +33,4 @@ function vaporWinterSale(inputString) {
     });
 }
 vaporWinterSale(['Center Strike-14.99, FortLite-25, BattleShield 5-64.74, BattleShield 5:CoD edition, Dog of War-45, Dead Red Redemption-100, Dead Red Redemption:no DLC'])
+//BattleShield 5-64.74
