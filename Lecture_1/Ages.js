@@ -4,11 +4,11 @@ function Ages(age) {
         console.log('baby');
     } else if (ageOf >= 3 && ageOf <= 13) {
         console.log('child');
-    }else if (ageOf >= 14 && ageOf <= 19) {
+    } else if (ageOf >= 14 && ageOf <= 19) {
         console.log('teenager');
-    }else if (ageOf >= 20 && ageOf <= 65) {
+    } else if (ageOf >= 20 && ageOf <= 65) {
         console.log('adult');
-    }else if (ageOf >= 66) {
+    } else if (ageOf >= 66) {
         console.log('elder');
     }
 }

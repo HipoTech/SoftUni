@@ -26,6 +26,6 @@ function dictionary(inputArea) {
         console.log(tempArea.sort((a, b) => a > b).join(" "));
     }
 }
-dictionary(["tackle: the equipment required for a task or sport | code: write code for a computer program | bit: a small piece, part, or quantity of something | tackle: make determined efforts to deal with a problem | bit: a short time or distance",
-    "bit | code | tackle",
-    "End"])
+dictionary(['programmer: an animal, which turns coffee into code | developer: a magician',
+    'programmer | developer',
+    'List'])
