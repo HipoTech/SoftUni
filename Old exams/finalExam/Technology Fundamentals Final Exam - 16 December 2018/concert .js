@@ -1,74 +1,57 @@
 function concert(inputArea) {
-    let input = inputArea;
-    let command = '';
-    let i = 0;
-    let concertList = {};
-    let list = [];
     let totalTime = 0;
-    let index = input.indexOf('start of concert')
-    while (command !== 'start of concert') {
-        let line = input[i].split('; ');
-        command = line[0];
+    let band = {};
+
+    for (const line of inputArea) {
+        let [command, bandName, bandInfo] = line.split('; ');
+        if (command === 'start of concert') {
+            break;
+        }
+        if (!band.hasOwnProperty(bandName)) {
+            band[bandName] = {
+                Time: 0,
+                Members: new Set()
+            }
+        }
         if (command === 'Play') {
-            if (!concertList.hasOwnProperty(line[1])) {
-                concertList[line[1]] = {
-                    'Time': 0,
-                    'Band': ''
-                }
-                concertList[line[1]]['Time'] = Number(line[2]);
-            } else {
-                concertList[line[1]]['Time'] += Number(line[2]);
-            }
+            let time = Number(bandInfo);
+            totalTime += time;
+            band[bandName].Time += time;
         } else if (command === 'Add') {
-            if (!concertList.hasOwnProperty(line[1])) {
-                concertList[line[1]] = {
-                    'Time': 0,
-                    'Band': ''
-                }
-                concertList[line[1]]['Band'] = line[2];
-            } else {
-                concertList[line[1]]['Band'] += ', ' + line[2];
-            }
-        } else if (command === 'start of concert') {
-
-            for (const band in concertList) {
-                totalTime += Number(concertList[band]['Time']);
-                list.push([band, concertList[band]]);
-            }
-            console.log(`Total time: ${totalTime}`);
-
-            list
-                .sort((a, b) => {
-                    if (b[1]['Time'] - a[1]['Time'] === 0) {
-                        return a[0].localeCompare(b[0]);
-                    } else {
-                        return b[1]['Time'] - a[1]['Time'];
-                    }
-
-                })
-                .map((x) => {
-                    console.log(`${x[0]} -> ${x[1]['Time']}`)
-                }
-                );
-            console.log(`${input[index + 1]}`);
-            list.forEach(finalGroup => {
-                if (finalGroup[0] === input[index + 1]) {
-                    let unique = [...new Set(finalGroup[1]['Band']
-                        .split(', ')
-                    )];
-                    if (unique.join('') !== '') {
-                        console.log('=> ' + unique.join(`\n=> `));
-                    }
-                }
+            let names = bandInfo.split(', ')
+            names.forEach(name => {
+                band[bandName].Members.add(name)
             });
         }
-        i++;
     }
+    console.log(`Total time: ${totalTime}`);
+
+    Object
+        .entries(band)
+        .sort((a, b) => {
+            if (a[1].Time - b[1].Time === 0) {
+                return a[0] > b[0];
+            } else {
+                return b[1].Time - a[1].Time;
+            }
+        })
+        .forEach(band => {
+            console.log(`${band[0]} -> ${band[1].Time}`);
+        });
+
+    let lastBand = inputArea.pop();
+    console.log(lastBand);
+    band[lastBand].Members.forEach(member => {
+        console.log(`=> ${member}`);
+    });
 }
-concert([
-    'Add; The Rolling Stones; m',
-    'Play; The Rolling Stones; 0.2',
+concert(['Play; The Beatles; 2584',
+    'Add; The Beatles; John Lennon, Paul McCartney, George Harrison, Ringo Starr',
+    'Add; Eagles; Glenn Frey, Don Henley, Bernie Leadon, Randy Meisner',
+    'Play; Eagles; 1869',
+    'Add; The Rolling Stones; Brian Jones, Mick Jagger, Keith Richards',
+    'Add; The Rolling Stones; Brian Jones, Mick Jagger, Keith Richards, Bill Wyman, Charlie Watts, Ian Stewart',
+    'Play; The Rolling Stones; 4239',
     'start of concert',
-    'The Rolling Stones'
-]
+    'The Rolling Stones']
 )
