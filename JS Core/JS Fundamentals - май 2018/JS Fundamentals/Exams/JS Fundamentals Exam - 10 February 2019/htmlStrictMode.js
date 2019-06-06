@@ -1,0 +1,4 @@
+function htmlStrictMode(params) {
+
+}
+htmlStrictMode()
