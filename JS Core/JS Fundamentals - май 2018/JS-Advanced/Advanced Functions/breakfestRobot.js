@@ -1,118 +1,41 @@
-function breakfastRobot(inputArray) {
+function breakfestRobot() {
+    const storage = { protein: 0, carbohydrate: 0, fat: 0, flavour: 0 }
+    const recipes = {
+        apple: { carbohydrate: 1, flavour: 2 },
+        lemonade: { carbohydrate: 10, flavour: 20 },
+        burger: { carbohydrate: 5, fat: 7, flavour: 3 },
+        eggs: { protein: 5, fat: 1, flavour: 1 },
+        turkey: { protein: 10, carbohydrate: 10, fat: 10, flavour: 10 }
+    }
 
-    function restock(storage, element, qty) {
-        qty = Number(qty);
+    return (input) => {
+        let [command, ...elementAndQty] = input.split(' ')
+        let finalMessage = ''
 
-        switch (element) {
-            case 'protein':
-                storage.protein += qty;
-                break;
-            case 'carbohydrate':
-                storage.carbohydrate += qty;
-                break;
-            case 'fat':
-                storage.fat += qty;
-                break;
-            case 'flavour':
-                storage.flavour += qty;
-                break;
+        if (command === 'restock') {
+            let [microelement, quantity] = [elementAndQty[0], Number(elementAndQty[1])]
+            storage[microelement] += quantity
+            finalMessage = 'Success'
+        } else if (command === 'prepare') {
+            let [recipe, quantity] = [elementAndQty[0], Number(elementAndQty[1])]
+            let missingIngredient = Object.entries(recipes[recipe]).find(
+                ([name, requiredQuantity]) =>
+                    storage[name] < requiredQuantity * quantity
+            )
 
-            default:
-                break;
-        }
-    };
-    function prepare(storage, meal, qty) {
-        let ordered = recipes[meal];
-        let counter = 0;
-        for (const element in ordered) {
-            let elementOnStock = storage[element];
-            let neededElement = ordered[element];
-
-            if (elementOnStock - neededElement < 0) {
-                console.log(`Error: not enough ${element} in stock`);
-                return;
+            if (missingIngredient) {
+                finalMessage = `Error: not enough ${missingIngredient[0]} in stock`
             } else {
-                counter++;
+                for (let ingredient in recipes[recipe]) {
+                    storage[ingredient] -= recipes[recipe][ingredient] * quantity
+                }
+
+                finalMessage = 'Success'
             }
-        }
-        if (counter === ordered.counter) {
-            for (const element in ordered) {
-                storage[element] -= ordered[element];
-            }
-            console.log(`Success`);
+        } else if (command === 'report') {
+            finalMessage = `protein=${storage.protein} carbohydrate=${storage.carbohydrate} fat=${storage.fat} flavour=${storage.flavour}`
         }
 
-    }
-
-    let listOfOrders = inputArray;
-    let recipes = {
-        apple: {
-            carbohydrate: 1,
-            flavour: 2,
-            counter: 2
-        },
-        lemonade: {
-            carbohydrate: 10,
-            flavour: 10,
-            counter: 2
-        },
-        burger: {
-            carbohydrate: 5,
-            fat: 7,
-            flavour: 3,
-            counter: 3
-        },
-        eggs: {
-            protein: 5,
-            fat: 1,
-            flavour: 1,
-            counter: 3
-        },
-        turkey: {
-            protein: 10,
-            carbohydrate: 10,
-            fat: 10,
-            flavour: 10,
-            counter: 4
-        },
-    }
-    let storage = {
-        'protein': 0,
-        'carbohydrate': 0,
-        'fat': 0,
-        'flavour': 0,
-    }
-
-    for (const order of listOfOrders) {
-        let [command, meal, qty] = order.split(' ');
-
-        switch (command) {
-            case 'restock':
-                restock(storage, meal, qty);
-                console.log(`Success`);
-                break;
-            case 'prepare':
-                prepare(storage, meal, qty);
-                break;
-            case 'report':
-                console.log(Object.entries(storage).map(x => x.join('=')).join(' '));
-                break;
-
-            default:
-                break;
-        }
-
+        return finalMessage
     }
 }
-breakfastRobot([
-    'prepare turkey 1',
-    'restock protein 10',
-    'prepare turkey 1',
-    'restock carbohydrate 10',
-    'prepare turkey 1',
-    'restock fat 10',
-    'prepare turkey 1',
-    'restock flavour 10',
-    'prepare turkey 1',
-    'report'
-])
