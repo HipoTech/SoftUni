@@ -30,9 +30,6 @@ function attachEventsListeners() {
             default:
                 break;
         }
-
-
-
     }
 
     let btns = [...document.querySelectorAll('input')]
@@ -40,7 +37,4 @@ function attachEventsListeners() {
         .forEach(btn => {
             btn.addEventListener('click', convert);
         })
-
-    console.log(btns);
-
 }
