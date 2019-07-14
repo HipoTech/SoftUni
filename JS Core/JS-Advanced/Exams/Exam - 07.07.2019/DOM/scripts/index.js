@@ -42,7 +42,6 @@ function mySolution() {
         const btnArchive = document.createElement('button');
         btnArchive.classList = 'archive';
         btnArchive.textContent = 'Archive';
-
         const btnOpen = document.createElement('button');
         btnOpen.classList = 'open';
         btnOpen.textContent = 'Open';
@@ -124,13 +123,13 @@ function mySolution() {
                     createReplyFild.appendChild(liElement);
                     inputReply.value = '';
                 }
-                //     function reply() {
+                function reply() {
 
-
-                // }
+                    
             }
-
         }
+        
     }
+
 }
 // To check out your solution, just submit mySolution() function in judge system.
