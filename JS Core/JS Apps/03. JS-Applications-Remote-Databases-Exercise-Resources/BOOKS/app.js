@@ -23,6 +23,7 @@
         get: function () {
             return fetch(this.url, {
                 method: 'GET',
+                credentials: 'include',
                 headers: {
                     'Authorization': `Basic aGlwbzoxMjM0`,
                 }
@@ -31,6 +32,7 @@
         delete: function (bookId) {
             return fetch(this.url + `/${bookId}`, {
                 method: 'DELETE',
+                credentials: 'include',
                 headers: {
                     'Authorization': `Basic aGlwbzoxMjM0`,
                     "Content-type": "application/json",
@@ -40,6 +42,7 @@
         edit: function (bookId, book) {
             return fetch(this.url + `/${bookId}`, {
                 method: 'PUT',
+                credentials: 'include',
                 headers: {
                     'Authorization': `Basic aGlwbzoxMjM0`,
                     "Content-type": "application/json",
@@ -50,6 +53,7 @@
         post: function (book) {
             return fetch(this.url, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Authorization': `Basic aGlwbzoxMjM0`,
                     "Content-type": "application/json",
