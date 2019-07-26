@@ -54,7 +54,7 @@ const checkServerResponse = (serverResponse) => {
   }
   return serverResponse.json();
 }
-.catch (error => console.log(`Error Detected: ${error}`));
+//.catch (error => console.log(`Error Detected: ${error}`));
 
 const clearContent = (elementToClear) => elementToClear.innerHTML = '';
 const clearValue = (elementToClear) => elementToClear.value = '';
