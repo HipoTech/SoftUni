@@ -4,9 +4,9 @@ const userController = function () {
         ctx.loggedIn = storage.getData('token') !== null;
 
         ctx.loadPartials({
-            header: './views/common/header.hbs',
-            footer: './views/common/footer.hbs',
-        })
+                header: './views/common/header.hbs',
+                footer: './views/common/footer.hbs',
+            })
             .then(function () {
                 this.partial('./views/register/registerPage.hbs');
             })
@@ -15,9 +15,9 @@ const userController = function () {
     const getLoginTemplate = function (ctx) {
         ctx.loggedIn = storage.getData('token') !== null;
         ctx.loadPartials({
-            header: './views/common/header.hbs',
-            footer: './views/common/footer.hbs',
-        })
+                header: './views/common/header.hbs',
+                footer: './views/common/footer.hbs',
+            })
             .then(function () {
                 this.partial('./views/login/loginPage.hbs');
             })
@@ -29,15 +29,19 @@ const userController = function () {
             username: ctx.params.username,
             password: ctx.params.password,
         };
+        const passMach = ctx.params.rePassword === ctx.params.password;
 
-        requester.post('', 'user', 'Basic', body)
-            .then((response) => handler.checkServerResponse(response))
-            .then(loginResponse => {
-                storage.saveData('token', loginResponse._kmd.authtoken);
-                storage.saveData('username', loginResponse.username);
-            })
-            .then(() => ctx.redirect('#/home'))
-            .catch(error => console.log(`Error detected: ${error}`));
+        if (passMach) {
+            requester.post('', 'user', 'Basic', body)
+                .then((response) => handler.checkServerResponse(response))
+                .then(loginResponse => {
+                    storage.saveData('token', loginResponse._kmd.authtoken);
+                    storage.saveData('username', loginResponse.username);
+                })
+                .then(() => ctx.redirect('#/home'))
+                .catch(error => console.log(`Error detected: ${error}`));
+        }
+
     };
 
     const loginUser = function (ctx) {
@@ -82,9 +86,9 @@ const userController = function () {
                 ctx.userEvents = ctx.event.filter(x => x.organizer === ctx.username);
                 ctx.countUserEvents = this.userEvents.length;
                 ctx.loadPartials({
-                    header: '../../views/common/header.hbs',
-                    footer: '../../views/common/footer.hbs',
-                })
+                        header: '../../views/common/header.hbs',
+                        footer: '../../views/common/footer.hbs',
+                    })
                     .then(function () {
                         this.partial('../../views/user/userPage.hbs');
                     })

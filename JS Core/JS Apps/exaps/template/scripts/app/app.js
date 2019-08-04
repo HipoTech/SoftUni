@@ -1,4 +1,4 @@
-const app = Sammy('#container', function () {
+const app = Sammy('body', function () {
     this.use('Handlebars', 'hbs');
 
     //home
@@ -16,11 +16,11 @@ const app = Sammy('#container', function () {
     this.post('#/register', userController.createUser);
 
     //get All
-    this.get('#/cinema', eventController.getAll);
+    this.get('#/dashboard', eventController.getAll);
 
     //add 
-    this.get('#/addMovie', eventController.getAddFormTemplate);
-    this.post('#/movie/create', eventController.createData);
+    this.get('#/createOffer', eventController.getAddFormTemplate);
+    this.post('#/createOffer', eventController.createData);
 
     //show my
     this.get('#/myMovies', eventController.getMy);
@@ -29,7 +29,8 @@ const app = Sammy('#container', function () {
     this.get('#/more-details/:id', eventController.getCurrent);
 
     // delete
-    this.get('#/delete/:id', eventController.deleteElement);
+    this.get('#/delete/:id', eventController.getDeleteTemplate);
+    this.post('#/delete/:id', eventController.deleteElement);
 
     //edit event
     this.get('#/edit/:id', eventController.getEditTemplate);
