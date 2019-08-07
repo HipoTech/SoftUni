@@ -2,103 +2,95 @@ class Computer {
     constructor(ramMemory, cpuGHz, hddMemory) {
         this.ramMemory = ramMemory;
         this.cpuGHz = cpuGHz;
+
+        this.totalRamMemory = ramMemory;
+        this.totalCpuGHz = cpuGHz;
+
         this.hddMemory = hddMemory;
         this.taskManager = [];
         this.installedPrograms = [];
-        this.openedPrograms = []
     }
+
     installAProgram(name, requiredSpace) {
-        if (this.hddMemory - requiredSpace <= 0) {
-            throw new Error('There is not enough space on the hard drive');
-        } else {
-            this.hddMemory -= requiredSpace;
-            const newProgram = {
-                name: name,
-                requiredSpace: requiredSpace
-            }
-            this.installedPrograms.push(newProgram);
-            return newProgram;
+        let program = {
+            name,
+            requiredSpace
         }
+
+        if (this.hddMemory < requiredSpace) {
+            throw new Error("There is not enough space on the hard drive")
+        }
+
+        this.hddMemory -= requiredSpace;
+
+        this.installedPrograms.push(program);
+
+        return program;
     }
 
     uninstallAProgram(name) {
-        for (let i = 0; i < this.installedPrograms.length; i++) {
-            if (this.installedPrograms[i].name === name) {
-                this.hddMemory += +this.installedPrograms[i].requiredSpace;
-                this.installedPrograms.splice(i, 1);
-                return this.installedPrograms;
-            } else {
-                throw new Error('Control panel is not responding');
-            }
-
+        let existiongProgram = this.installedPrograms.filter(x => x.name == name)[0];
+        if (!existiongProgram) {
+            throw new Error("Control panel is not responding");
         }
+
+        this.hddMemory += existiongProgram.requiredSpace;
+
+        let ind = this.installedPrograms.indexOf(existiongProgram);
+
+        this.installedPrograms.splice(ind, 1);
+
+        return this.installedPrograms;
     }
 
     openAProgram(name) {
-        let foundProgram = false;
-        for (let i = 0; i < this.installedPrograms.length; i++) {
-            if (this.installedPrograms[i].name === name) {
-                if (this.openedPrograms.includes(name)) {
-                    throw new Error(`The ${name} is already open`);
-                } else {
-                    let programRequiredSpace = this.installedPrograms[i].requiredSpace;
-                    let totalRamMemory = this.ramMemory;
-                    let ramMemoryNeeded = (programRequiredSpace / totalRamMemory) * 1.5;
 
-                    let totalCpuMemory = this.cpuGHz;
-                    let cpuMemoryNeeded = ((programRequiredSpace / totalCpuMemory) / 500) * 1.5;
-                    if (this.ramMemory - this.ramMemory * (ramMemoryNeeded / 100) <= 0 &&
-                        this.cpuGHz - this.cpuGHz * (cpuMemoryNeeded / 100) <= 0
-                    ) {
-                        throw new Error(`${name} caused out of memory exception`);
-                    }
-                    if (this.ramMemory - this.ramMemory * (ramMemoryNeeded / 100) <= 0) {
-                        throw new Error(`${name} caused out of memory exception`)
-                    } else if (this.cpuGHz - this.cpuGHz * (cpuMemoryNeeded / 100) <= 0) {
-                        throw new Error(`${name} caused out of cpu exception`)
-                    } else {
-                        foundProgram = true;
-                        this.openedPrograms.push(name);
-
-                        this.ramMemory -= this.ramMemory * (ramMemoryNeeded / 100);
-
-
-                        this.cpuGHz -= this.cpuGHz * (cpuMemoryNeeded / 100)
-
-                        const openedProgram = {
-                            name: name,
-                            ramUsage: ramMemoryNeeded,
-                            cpuUsage: cpuMemoryNeeded
-                        }
-
-                        this.taskManager.push(openedProgram);
-                        return openedProgram;
-
-                    }
-
-                }
-            }
-
-        }
-        if (!foundProgram) {
-            foundProgram = false;
+        let existiongProgram = this.installedPrograms.filter(x => x.name == name)[0];
+        if (!existiongProgram) {
             throw new Error(`The ${name} is not recognized`);
-
         }
 
+        if (this.taskManager.some(x => x.name === name)) /// check in the task manager if it is open
+        {
+            throw new Error(`The ${name} is already open`);
+        }
+
+        let ramUsage = (existiongProgram.requiredSpace / this.ramMemory) * 1.5;
+        let cpuUsage = ((existiongProgram.requiredSpace / this.cpuGHz) / 500) * 1.5;
+
+        let totalRam = this.taskManager.map(x => x.ramUsage).reduce((a, b) => a + b, 0) + ramUsage;
+        let totalCpu = this.taskManager.map(x => x.cpuUsage).reduce((a, b) => a + b, 0) + cpuUsage;
+
+        if (totalRam > 100) {
+            throw new Error(`${name} caused out of memory exception`);
+        }
+
+        if (totalCpu > 100) {
+            throw new Error(`${name} caused out of cpu exception`);
+        }
+
+        let obj = {
+            name,
+            ramUsage,
+            cpuUsage,
+        };
+
+        this.taskManager.push(obj);
+
+        return obj;
     }
 
     taskManagerView() {
-        let stringToReturn = ''
-        if (this.taskManager.length === 0) {
-            throw new Error(`All running smooth so far`)
-        } else {
-            this.taskManager.forEach(program => {
-                stringToReturn += `Name - ${program.name} | Usage - CPU: ${program.cpuUsage.toFixed(0)}%, RAM: ${program.ramUsage.toFixed(0)}%\n`;
-            });
-            return stringToReturn;
+        if (this.taskManager.length == 0) {
+            return "All running smooth so far";
+        }
+        let result = [];
+
+        for (const p of this.taskManager) {
+            result.push(`Name - ${p.name} | Usage - CPU: ${p.cpuUsage.toFixed(0)}%, RAM: ${p.ramUsage.toFixed(0)}%`);
         }
 
+        return result.join("\n");
     }
 }
 
