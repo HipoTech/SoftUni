@@ -10,17 +10,11 @@
 
 <body>
   <div class="container">
-    <header>
-      <ul>
-        <li><img class="logo" src="/images/logo.png"></li>
-        <li><a href="/">Browse</a></li>
-        <li><a href="/create">Add a Cube</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
-    </header>
+    {{>header}}
     <main>
       <h1>Gan356 Air SM</h1>
-      <img class="cube" src="https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg">
+      <img class="cube"
+        src="https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg">
       <div class="details">
         <p><span>Description:</span> Magnets in AirSM will not drop, and their positions will be more precise with the
           Magnets-Snap-On design. With the use of 3mm*2mm magnets, the handfeel will be more stable and more
@@ -30,7 +24,7 @@
       </div>
     </main>
   </div>
-  <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
+  {{>footer}}
 </body>
 
 </html>
