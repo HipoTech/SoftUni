@@ -1,4 +1,3 @@
-const data = require('../../config/database');
 
 function renderHomePage(req, res) {
     res.render('../views/index.hbs');
