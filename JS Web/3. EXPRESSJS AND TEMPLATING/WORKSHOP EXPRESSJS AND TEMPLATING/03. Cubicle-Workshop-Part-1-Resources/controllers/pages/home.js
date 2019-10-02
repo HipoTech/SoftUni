@@ -1,6 +1,12 @@
+const cubeController = require('../cube-Controller');
+const getAllCubes = cubeController.getAllCubes;
+console.log(getAllCubes);
 
 function renderHomePage(req, res) {
-    res.render('../views/index.hbs');
+    getAllCubes(req, res)
+        .then((cubes) => {
+            res.render('../views/index.hbs', { cubes });
+        })
 }
 
 module.exports = {

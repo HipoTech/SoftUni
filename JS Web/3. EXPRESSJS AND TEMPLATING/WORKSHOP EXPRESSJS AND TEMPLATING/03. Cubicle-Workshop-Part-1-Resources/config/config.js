@@ -1,19 +1,9 @@
-const mongodb = require('mongodb');
-const MongoClient = mongodb.MongoClient;
-const dataBaseURL = 'mongodb://localhost:27017';
-const client = new MongoClient(dataBaseURL);
-client.connect({ useNewUrlParser: true }, function (err) {
-    if (err) {
-        throw new Error(err);
-    } else {
-        console.log(`Connected to DataBase ${dataBaseURL} !`);
-
-    }
-});
-
+const dbport = 27017;
 module.exports = {
     development: {
-        port: process.env.PORT || 8080
+        port: process.env.PORT || 8080,
+        dbURL: 'mongodb://localhost:27017/cube'
     },
-    production: {}
+    production: {},
+    dbport
 };

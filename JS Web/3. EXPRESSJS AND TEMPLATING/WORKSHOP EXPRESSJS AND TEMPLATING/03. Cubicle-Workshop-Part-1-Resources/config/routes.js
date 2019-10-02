@@ -1,6 +1,6 @@
 // TODO: Require Controllers...
 const render = require('../controllers/render');
-const createCube = require('../controllers/createCube').createCube;
+const createCube = require('../controllers/cube-Controller').createCube;
 
 const router = function (app) {
     app.get('/', render.home);
