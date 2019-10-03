@@ -10,7 +10,7 @@ const router = function (app) {
 
     app.get('/about', render.about);
 
-    app.get('/details', render.details);
+    app.get('/details/:id', render.details);
 
     app.use(render.pageNotFound);
 }

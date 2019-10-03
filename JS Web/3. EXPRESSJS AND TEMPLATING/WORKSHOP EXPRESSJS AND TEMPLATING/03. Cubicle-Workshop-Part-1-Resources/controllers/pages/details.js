@@ -1,5 +1,12 @@
+const cubeController = require('../cube-Controller');
+const getDetaeldCube = cubeController.getDetaeldCube;
+
+
 function renderDetailsPage(req, res) {
-    res.render('../views/details.hbs');
+    getDetaeldCube(req, res)
+        .then((cube) => {
+            res.render('../views/details.hbs', { cube });
+        })
 }
 
 module.exports = {
