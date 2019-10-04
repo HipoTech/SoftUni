@@ -1,4 +1,4 @@
-const cubeModels = require('../models/cube');
+const cubeModels = require('../models/cube-model');
 const Cube = cubeModels.Cube;
 const Cubicle = cubeModels.Cubicle;
 
