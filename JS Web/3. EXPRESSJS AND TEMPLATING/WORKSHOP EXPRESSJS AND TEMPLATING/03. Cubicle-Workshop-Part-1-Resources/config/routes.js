@@ -1,7 +1,7 @@
 // TODO: Require Controllers...
 const render = require('../controllers/render');
-const createCube = require('../controllers/cube-Controller').createCube;
-const createAccessory = require('../controllers/accessory-Controller').createAccessory;
+const { createCube, deleteCube } = require('../controllers/cube-Controller');
+const { createAccessory, attachAccessory } = require('../controllers/accessory-Controller');
 
 const router = function (app) {
     app.get('/', render.home);
@@ -13,9 +13,13 @@ const router = function (app) {
 
     app.get('/details/:id', render.details);
 
+    app.get('/delete/:id', deleteCube);
+
     app.get('/create/accessory', render.accessory);
     app.post('/create/accessory', createAccessory);
-    // app.get('/create/accessory/:id', render.accessoryDetails);
+
+    app.get('/attach/accessory/:id', render.accessoryDetails);
+    app.post('/attach/accessory/:id', attachAccessory);
 
     app.use(render.pageNotFound);
 }

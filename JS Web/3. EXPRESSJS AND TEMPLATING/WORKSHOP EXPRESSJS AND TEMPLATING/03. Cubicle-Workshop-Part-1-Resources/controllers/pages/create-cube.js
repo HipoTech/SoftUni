@@ -1,5 +1,5 @@
 function renderCreatePage(req, res) {
-    res.render('../views/create.hbs');
+    res.render('../views/create-cube.hbs');
 }
 
 module.exports = {

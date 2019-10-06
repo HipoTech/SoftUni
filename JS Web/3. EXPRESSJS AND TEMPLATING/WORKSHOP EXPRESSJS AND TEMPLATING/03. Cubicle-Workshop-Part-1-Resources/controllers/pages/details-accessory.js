@@ -1,11 +1,18 @@
-const cubeController = require('../cube-Controller');
-const getDetaeldCube = cubeController.getDetaeldCube;
-
+const { getDetailidCube } = require('../cube-Controller');
+const { Accessorydb } = require('../../models/accessory-model');
+const { readAll } = require('../../helpers/requester');
 
 function renderDetailsPage(req, res) {
-    getDetaeldCube(req, res)
+    getDetailidCube(req, res)
         .then((cube) => {
-            res.render('../../views/home-search.hbs', { cube });
+            Accessorydb.find({ cubes: { $nin: cube.id } })
+                .then((accessories) => {
+                    res.render('../views/details-accessory.hbs', { cube, accessories });
+                })
+                .catch((error) => {
+                    console.log(`Faild to search in DB. Error: ${error}`)
+                    res.send('Server Error!')
+                })
         })
 }
 

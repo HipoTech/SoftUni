@@ -1,12 +1,18 @@
 const cubeModels = require('../models/cube-model');
+const { create, deleteOne } = require('../helpers/requester');
 const Cube = cubeModels.Cube;
 const Cubicle = cubeModels.Cubicle;
 
-const postCube = function (element, req, res) {
-    Cube.create(element)
-        .then((elementFromDb) => console.log(`Sucksesfuli added to DB: ${elementFromDb}`))
-        .then(() => res.redirect('/'))
-        .catch((error) => console.log(`Faild to write to DB. Error: ${error}`));
+const searchByName = function (array, name) {
+    const showCubes = [];
+    array.forEach(cube => {
+        const cubeName = cube['name'].toLowerCase();
+        const nameToSearch = name.toLowerCase();
+        if (cubeName.includes(nameToSearch)) {
+            showCubes.push(cube);
+        }
+    });
+    return showCubes
 }
 
 const getAllCubesOrSearch = function (req, res) {
@@ -25,38 +31,41 @@ const getAllCubesOrSearch = function (req, res) {
 
     return Cube.find(difficulty)
         .then((cubes) => {
-            const showCubes = [];
-            cubes.forEach(cube => {
-                const cubeName = cube['name'].toLowerCase();
-                const nameToSearch = name.toLowerCase();
-                if (cubeName.includes(nameToSearch)) {
-                    showCubes.push(cube);
-                }
-            });
-
-            return showCubes
+            return searchByName(cubes, name);
         })
         .catch((error) => console.log(`Faild to search in DB. Error: ${error}`));
 }
 
-const getDetaeldCube = function (req, res) {
+const getDetailidCube = function (req, res) {
     const id = req.params.id;
     return Cube.findById(id)
-        .then((cube) => {
-            return cube
+        .populate('accessories')
+        .then((resultFromDB) => {
+            return resultFromDB;
         })
-        .catch((error) => console.log(`Faild to search in DB. Error: ${error}`));
+        .catch((error) => {
+            console.log(`Faild to search in DB. Error: ${error}`)
+            res.send('Server Error!')
+        });
 }
 
 const createCube = function (req, res) {
     const { name, description, imageUrl, difficultyLevel } = req.body;
     const newCube = new Cubicle(name, description, imageUrl, difficultyLevel);
-    postCube(newCube, req, res)
+    create(Cube, newCube, req, res);
 };
+
+const deleteCube = function (req, res, next) {
+    const cubeId = req.params.id;
+    deleteOne(Cube, cubeId)
+        .then(() => res.redirect('/'))
+        .catch(e => next(e));
+}
 
 module.exports = {
     createCube,
     getAllCubesOrSearch,
-    getDetaeldCube,
+    getDetailidCube,
+    deleteCube,
 
 }

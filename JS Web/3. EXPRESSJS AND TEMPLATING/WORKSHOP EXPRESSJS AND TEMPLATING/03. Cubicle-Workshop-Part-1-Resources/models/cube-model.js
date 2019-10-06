@@ -17,6 +17,10 @@ const cubeSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    accessories: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Accessory'
+    }],
 
 })
 
@@ -26,6 +30,7 @@ class Cubicle {
         this.description = description;
         this.imageUrl = imageUrl;
         this.difficultyLevel = difficultyLevel;
+        this.accessories = [];
     }
 }
 

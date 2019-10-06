@@ -1,20 +1,33 @@
 const accessoryModels = require('../models/accessory-model');
-const Accessorydb = accessoryModels.Accessorydb;
-const Accessoryes = accessoryModels.Accessoryes;
-
-const postAccessory = function (element, req, res) {
-    Accessorydb.create(element)
-        .then((elementFromDb) => console.log(`Sucksesfuli added to DB: ${elementFromDb}`))
-        .then(() => res.redirect('/'))
-        .catch((error) => console.log(`Faild to write to DB. Error: ${error}`));
-}
+const { updateDbElement, create } = require('../helpers/requester');
+const { Accessoryes, Accessorydb } = accessoryModels;
+const { Cube } = require('../models/cube-model');
 
 const createAccessory = function (req, res) {
     const { name, description, imageUrl } = req.body;
     const newAccessory = new Accessoryes(name, description, imageUrl);
-    postAccessory(newAccessory, req, res);
+    create(Accessorydb, newAccessory, req, res);
 };
+
+const attachAccessory = function (req, res) {
+    cubeId = req.params.id;
+    accessoryId = req.body.accessory;
+    Accessorydb.findById(accessoryId)
+        .then((accessory) => {
+            updateDbElement(Cube, cubeId, { $push: { accessories: accessory } }, req, res);
+        })
+        .then(() => {
+            updateDbElement(Accessorydb, accessoryId, { $push: { cubes: cubeId } }, req, res)
+        })
+        .then(() => res.redirect(`/details/${cubeId}`))
+        .catch((error) => {
+            console.log(`Faild to search in DB. Error: ${error}`)
+            res.send('Server Error!')
+        });
+}
 
 module.exports = {
     createAccessory,
+    attachAccessory,
+
 }

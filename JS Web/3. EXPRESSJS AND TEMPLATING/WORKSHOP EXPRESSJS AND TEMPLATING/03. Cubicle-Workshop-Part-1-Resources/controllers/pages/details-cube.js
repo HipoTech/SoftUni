@@ -1,11 +1,10 @@
 const cubeController = require('../cube-Controller');
-const getDetaeldCube = cubeController.getDetaeldCube;
-
+const { getDetailidCube } = cubeController;
 
 function renderDetailsPage(req, res) {
-    getDetaeldCube(req, res)
+    getDetailidCube(req, res)
         .then((cube) => {
-            res.render('../views/details.hbs', { cube });
+            res.render('../views/details-cube.hbs', { cube });
         })
 }
 
