@@ -1,5 +1,6 @@
 const about = require('./pages/about').renderAbougthPage;
 const create = require('./pages/create-cube').renderCreatePage;
+const editCube = require('./pages/edit-cube').renderEditPage;
 const accessory = require('./pages/create-accessory').renderCreateAccessory;
 const accessoryDetails = require('./pages/details-accessory').renderDetailsPage;
 const details = require('./pages/details-cube').renderDetailsPage;
@@ -14,5 +15,6 @@ module.exports = {
     pageNotFound,
     accessory,
     accessoryDetails,
+    editCube,
 
 }

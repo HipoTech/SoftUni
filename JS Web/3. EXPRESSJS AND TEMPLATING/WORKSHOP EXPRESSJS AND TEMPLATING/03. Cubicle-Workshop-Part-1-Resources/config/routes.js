@@ -1,5 +1,5 @@
 const render = require('../controllers/render-pages');
-const { createCube, deleteCube } = require('../controllers/cube-Controller');
+const { createCube, deleteCube, editCube } = require('../controllers/cube-Controller');
 const { createAccessory, attachAccessory } = require('../controllers/accessory-Controller');
 
 const router = function (app) {
@@ -15,6 +15,10 @@ const router = function (app) {
 
     // detaiCube
     app.get('/details/:id', render.details);
+
+    // editCube
+    app.get('/edit/:id', render.editCube);
+    app.post('/edit/:id', editCube);
 
     // deleteCube
     app.get('/delete/:id', deleteCube);

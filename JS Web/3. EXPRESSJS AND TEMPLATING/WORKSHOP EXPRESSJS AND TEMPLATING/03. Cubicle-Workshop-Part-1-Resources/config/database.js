@@ -6,7 +6,7 @@ module.exports = config => {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-        .then((data) => {
+        .then(() => {
             console.log(`Database connected on ${dbport}!`);
         })
         .catch((error) => {

@@ -1,6 +1,6 @@
 const create = function (Model, object, req, res) {
     Model.create(object)
-        .then(() => console.log(`Sucksesfuli added to DB`))
+        .then(() => console.log(`Sucksesfuly added to DB`))
         .then(() => res.redirect('/'))
         .catch((error) => console.log(`Faild to write to DB. Error: ${error}`));
 }
@@ -14,7 +14,7 @@ const readAll = function (Model) {
 }
 
 const updateDbElement = function (Model, id, updatedKVP, req, res) {
-    Model.updateOne({ _id: id }, updatedKVP)
+    return Model.updateOne({ _id: id }, updatedKVP)
         .then(() => {
             console.log(`Updated server object with id: ${id}`);
         })

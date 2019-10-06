@@ -7,7 +7,8 @@
       <p><span>Description:</span> {{cube.description}}</p>
       <p><span>Difficulty level:</span> {{cube.difficultyLevel}}</p>
       <a class="btn" href="/">Back</a>
-      <a class="btn" href="/delete/{{cube._id}}">Delete</a>
+      <a class="btn deleteBtn" href="/delete/{{cube._id}}">Delete</a>
+      <a class="btn editBtn" href="/Edit/{{cube._id}}">Edit</a>
     </div>
     <h2>Accessories</h2>
     <div class="accessories">
@@ -17,6 +18,7 @@
         <img src="{{imageUrl}}" alt="stickerName">
         <h3>{{cube.accessories.name}}</h3>
         <p>{{description}}</p>
+        <a class="btn editBtn" href="/delete/{{cube._id}}">Remove</a>
       </div>
       {{/each}}
       {{else}}

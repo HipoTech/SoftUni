@@ -1,5 +1,5 @@
 const cubeModels = require('../models/cube-model');
-const { create, deleteOne } = require('../helpers/requester');
+const { create, deleteOne, updateDbElement } = require('../helpers/requester');
 const { Cube } = cubeModels;
 const { Cubicle } = cubeModels;
 
@@ -68,10 +68,17 @@ const deleteCube = function (req, res) {
         });
 }
 
+const editCube = function (req, res) {
+    const cubeId = req.params.id;
+    updateDbElement(Cube, cubeId, req.body)
+        .then(() => res.redirect(`/details/${cubeId}`));
+}
+
 module.exports = {
     createCube,
     getAllCubesOrSearch,
     getDetailidCube,
     deleteCube,
+    editCube,
 
 }
