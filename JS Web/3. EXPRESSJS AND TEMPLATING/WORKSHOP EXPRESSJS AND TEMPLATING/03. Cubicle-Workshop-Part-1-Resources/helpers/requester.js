@@ -10,10 +10,7 @@ const readAll = function (Model) {
         .then((resultFromDB) => {
             return resultFromDB;
         })
-        .catch((error) => {
-            console.log(`Faild to search in DB. Error: ${error}`)
-            res.send('Server Error!')
-        });
+        .catch((error) => console.log(`Faild to search in DB. Error: ${error}`));
 }
 
 const updateDbElement = function (Model, id, updatedKVP, req, res) {
@@ -21,15 +18,13 @@ const updateDbElement = function (Model, id, updatedKVP, req, res) {
         .then(() => {
             console.log(`Updated server object with id: ${id}`);
         })
-        .catch((error) => {
-            console.log(`Faild to search in DB. Error: ${error}`)
-            res.send('Server Error!');
-        });;
+        .catch((error) => { console.log(`Faild to search in DB. Error: ${error}`) });;
 }
 
 const deleteOne = function (Model, id) {
     return Model.findByIdAndDelete(id)
-        .then(() => console.log(`Item deleted from DB: ${id}`));
+        .then(() => console.log(`Item deleted from DB: ${id}`))
+        .catch((error) => console.log(`Server error while deleting: ${error}`))
 }
 
 module.exports = {

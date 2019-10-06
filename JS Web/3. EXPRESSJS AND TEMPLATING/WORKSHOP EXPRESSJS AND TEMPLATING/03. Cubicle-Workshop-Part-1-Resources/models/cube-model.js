@@ -3,23 +3,23 @@ const mongoose = require('mongoose');
 const cubeSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     description: {
         type: String,
-        required: true
+        required: true,
     },
     imageUrl: {
         type: String,
-        required: true
+        required: true,
     },
     difficultyLevel: {
         type: Number,
-        required: true
+        required: true,
     },
     accessories: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Accessory'
+        ref: 'Accessory', // Name of the model
     }],
 
 })
@@ -36,4 +36,4 @@ class Cubicle {
 
 const Cube = mongoose.model('Cube', cubeSchema);
 
-module.exports = { Cube, Cubicle }
+module.exports = { Cube, Cubicle };

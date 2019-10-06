@@ -1,6 +1,5 @@
-const accessoryModels = require('../models/accessory-model');
+const { Accessoryes, Accessorydb } = require('../models/accessory-model');
 const { updateDbElement, create } = require('../helpers/requester');
-const { Accessoryes, Accessorydb } = accessoryModels;
 const { Cube } = require('../models/cube-model');
 
 const createAccessory = function (req, res) {

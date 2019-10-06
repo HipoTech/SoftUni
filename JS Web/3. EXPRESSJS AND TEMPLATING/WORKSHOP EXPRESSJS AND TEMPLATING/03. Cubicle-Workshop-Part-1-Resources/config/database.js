@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbport = require('./config').dbport;
+const { dbport } = require('./config');
 
 module.exports = config => {
     mongoose.connect(config.dbURL, {
@@ -10,7 +10,7 @@ module.exports = config => {
             console.log(`Database connected on ${dbport}!`);
         })
         .catch((error) => {
-            console.log('something has go to hell:');
+            console.log('Database Error detected:');
             console.log(error);
         });
 };

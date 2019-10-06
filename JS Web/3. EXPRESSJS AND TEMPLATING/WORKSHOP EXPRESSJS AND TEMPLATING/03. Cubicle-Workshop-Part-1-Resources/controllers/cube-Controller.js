@@ -1,7 +1,7 @@
 const cubeModels = require('../models/cube-model');
 const { create, deleteOne } = require('../helpers/requester');
-const Cube = cubeModels.Cube;
-const Cubicle = cubeModels.Cubicle;
+const { Cube } = cubeModels;
+const { Cubicle } = cubeModels;
 
 const searchByName = function (array, name) {
     const showCubes = [];
@@ -33,18 +33,21 @@ const getAllCubesOrSearch = function (req, res) {
         .then((cubes) => {
             return searchByName(cubes, name);
         })
-        .catch((error) => console.log(`Faild to search in DB. Error: ${error}`));
+        .catch((error) => {
+            console.log(`Faild to search for cubes in DB. Error: ${error}`)
+            res.send('Server Error!')
+        });
 }
 
 const getDetailidCube = function (req, res) {
     const id = req.params.id;
     return Cube.findById(id)
-        .populate('accessories')
+        .populate('accessories') // Name of the DB collection
         .then((resultFromDB) => {
             return resultFromDB;
         })
         .catch((error) => {
-            console.log(`Faild to search in DB. Error: ${error}`)
+            console.log(`Faild to search for cube in DB. Error: ${error}`)
             res.send('Server Error!')
         });
 }
@@ -52,14 +55,17 @@ const getDetailidCube = function (req, res) {
 const createCube = function (req, res) {
     const { name, description, imageUrl, difficultyLevel } = req.body;
     const newCube = new Cubicle(name, description, imageUrl, difficultyLevel);
-    create(Cube, newCube, req, res);
+    create(Cube, newCube, req, res)
+        .catch(() => { res.send('Server Error!') });
 };
 
-const deleteCube = function (req, res, next) {
+const deleteCube = function (req, res) {
     const cubeId = req.params.id;
     deleteOne(Cube, cubeId)
         .then(() => res.redirect('/'))
-        .catch(e => next(e));
+        .catch(() => {
+            res.send('Server Error!')
+        });
 }
 
 module.exports = {

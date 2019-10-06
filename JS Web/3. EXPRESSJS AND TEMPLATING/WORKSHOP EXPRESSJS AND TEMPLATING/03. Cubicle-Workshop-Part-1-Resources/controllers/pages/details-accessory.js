@@ -1,6 +1,5 @@
 const { getDetailidCube } = require('../cube-Controller');
 const { Accessorydb } = require('../../models/accessory-model');
-const { readAll } = require('../../helpers/requester');
 
 function renderDetailsPage(req, res) {
     getDetailidCube(req, res)

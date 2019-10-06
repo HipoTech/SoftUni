@@ -3,19 +3,19 @@ const mongoose = require('mongoose');
 const accessorySchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     description: {
         type: String,
-        required: true
+        required: true,
     },
     imageUrl: {
         type: String,
-        required: true
+        required: true,
     },
     cubes: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cube'
+        ref: 'Cube', // Name of the model
     }],
 
 })
@@ -31,4 +31,4 @@ class Accessoryes {
 
 const Accessorydb = mongoose.model('Accessory', accessorySchema);
 
-module.exports = { Accessorydb, Accessoryes }
+module.exports = { Accessorydb, Accessoryes };
