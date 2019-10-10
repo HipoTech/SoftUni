@@ -1,6 +1,7 @@
-const { Accessoryes, Accessorydb } = require('../models/accessory-model');
-const { updateDbElement, create } = require('../helpers/requester');
-const { Cube } = require('../models/cube-model');
+const path = require('path');
+const { Accessoryes, Accessorydb } = require(path.resolve(__projectDir, 'models', 'accessory-model'));
+const { updateDbElement, create } = require(path.resolve(__projectDir, 'helpers', 'requester'));
+const { Cube } = require(path.resolve(__projectDir, 'models', 'cube-model'));
 
 const createAccessory = function (req, res) {
     const { name, description, imageUrl } = req.body;

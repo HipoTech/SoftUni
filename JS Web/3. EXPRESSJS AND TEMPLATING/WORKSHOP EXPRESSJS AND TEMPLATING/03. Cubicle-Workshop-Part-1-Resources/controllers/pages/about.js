@@ -1,5 +1,8 @@
+const path = require('path');
+
 function renderAbougthPage(req, res) {
-    res.render('../views/about.hbs');
+    const template = path.resolve('views', 'about.hbs');
+    res.render(template);
 }
 
 module.exports = {

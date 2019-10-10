@@ -1,5 +1,8 @@
+const path = require('path');
+
 function render404Page(req, res) {
-    res.render('../views/404.hbs');
+    const template = path.resolve('views', '404.hbs');
+    res.render(template);
 }
 
 module.exports = {

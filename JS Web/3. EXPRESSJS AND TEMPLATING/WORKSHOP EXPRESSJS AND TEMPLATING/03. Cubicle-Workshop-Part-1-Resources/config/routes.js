@@ -21,7 +21,8 @@ const router = function (app) {
     app.post('/edit/:id', editCube);
 
     // deleteCube
-    app.get('/delete/:id', deleteCube);
+    // app.get('/delete/:id', render.deleteCube); //new
+    app.post('/delete/:id', deleteCube);
 
     // createAccessory
     app.get('/create/accessory', render.accessory);
@@ -30,6 +31,12 @@ const router = function (app) {
     // attachAccessory
     app.get('/attach/accessory/:id', render.accessoryDetails);
     app.post('/attach/accessory/:id', attachAccessory);
+
+    // user
+    app.get('/login', render.login); //new
+    // app.post('/login', render.login); //new
+    app.get('/register', render.register); //new
+    // app.post('/register', render.register); //new
 
     // render Page Not Found
     app.use(render.pageNotFound);

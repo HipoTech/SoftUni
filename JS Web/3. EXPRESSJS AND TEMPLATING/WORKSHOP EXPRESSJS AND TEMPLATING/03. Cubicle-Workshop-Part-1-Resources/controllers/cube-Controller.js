@@ -1,7 +1,6 @@
-const cubeModels = require('../models/cube-model');
-const { create, deleteOne, updateDbElement } = require('../helpers/requester');
-const { Cube } = cubeModels;
-const { Cubicle } = cubeModels;
+const path = require('path');
+const { Cube, Cubicle } = require(path.resolve(__projectDir, 'models', 'cube-model'));
+const { create, deleteOne, updateDbElement } = require(path.resolve(__projectDir, 'helpers', 'requester'));
 
 const searchByName = function (array, name) {
     const showCubes = [];
@@ -47,8 +46,9 @@ const getDetailidCube = function (req, res) {
             return resultFromDB;
         })
         .catch((error) => {
-            console.log(`Faild to search for cube in DB. Error: ${error}`)
             res.send('Server Error!')
+            res.end();
+            console.log(`Faild to search for cube in DB. Error: ${error}`)
         });
 }
 
@@ -63,9 +63,7 @@ const deleteCube = function (req, res) {
     const cubeId = req.params.id;
     deleteOne(Cube, cubeId)
         .then(() => res.redirect('/'))
-        .catch(() => {
-            res.send('Server Error!')
-        });
+        .catch(() => { res.send('Server Error!') });
 }
 
 const editCube = function (req, res) {

@@ -7,7 +7,7 @@ module.exports = config => {
         useUnifiedTopology: true
     })
         .then(() => {
-            console.log(`Database connected on ${dbport}!`);
+            console.log(`Database connected on port ${dbport}!`);
         })
         .catch((error) => {
             console.log('Database Error detected:');

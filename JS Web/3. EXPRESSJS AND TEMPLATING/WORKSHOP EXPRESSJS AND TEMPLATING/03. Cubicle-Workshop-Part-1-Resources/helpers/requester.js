@@ -1,5 +1,5 @@
 const create = function (Model, object, req, res) {
-    Model.create(object)
+    return Model.create(object)
         .then(() => console.log(`Sucksesfuly added to DB`))
         .then(() => res.redirect('/'))
         .catch((error) => console.log(`Faild to write to DB. Error: ${error}`));

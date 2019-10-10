@@ -16,9 +16,9 @@
       {{#each cube.accessories}}
       <div class="accessory">
         <img src="{{imageUrl}}" alt="stickerName">
-        <h3>{{cube.accessories.name}}</h3>
+        <h3>{{accessories.name}}</h3>
         <p>{{description}}</p>
-        <a class="btn editBtn" href="/delete/{{cube._id}}">Remove</a>
+        <a class="btn editBtn" href="/delete/{{_id}}">Remove</a>
       </div>
       {{/each}}
       {{else}}
