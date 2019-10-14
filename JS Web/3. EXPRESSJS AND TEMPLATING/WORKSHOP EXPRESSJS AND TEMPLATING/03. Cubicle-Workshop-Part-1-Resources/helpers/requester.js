@@ -27,6 +27,8 @@ const deleteOne = function (Model, id) {
         .catch((error) => console.log(`Server error while deleting: ${error}`))
 }
 
+
+
 module.exports = {
     create,
     readAll,

@@ -1,9 +1,9 @@
-const render = require('../controllers/render-pages');
+const render = require('../controllers/view');
 const { createCube, deleteCube, editCube } = require('../controllers/cube-Controller');
 const { createAccessory, attachAccessory } = require('../controllers/accessory-Controller');
+const { createUser, loginUser } = require('../controllers/user-Controller');
 
 const router = function (app) {
-
     app.get('/', render.home);
 
     // createCube
@@ -34,9 +34,9 @@ const router = function (app) {
 
     // user
     app.get('/login', render.login); //new
-    // app.post('/login', render.login); //new
+    app.post('/login', loginUser); //new
     app.get('/register', render.register); //new
-    // app.post('/register', render.register); //new
+    app.post('/register', createUser); //new
 
     // render Page Not Found
     app.use(render.pageNotFound);
