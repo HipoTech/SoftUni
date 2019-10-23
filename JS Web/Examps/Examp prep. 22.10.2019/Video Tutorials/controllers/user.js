@@ -26,13 +26,14 @@ module.exports = {
                     .then(([user, match]) => {
                         if (!match) {
                             console.log('Password is invalid');
+                            res.render('loginPage.hbs', {
+                                message: 'Wrong password or username!',
+                            });
                             return
                         }
 
                         const token = jwt.createToken({ id: user._id });
-
-                        res
-                            .cookie(config.cookie, token)
+                        res.cookie(config.cookie, token)
                             .redirect('/home/');
 
                     })
@@ -41,10 +42,17 @@ module.exports = {
 
         register: (req, res, next) => {
             const { username, password, repeatPassword } = req.body;
+            if (password !== repeatPassword) {
 
+                res.render('registerPage.hbs', {
+                    pageTitle: 'Register Page',
+                    message: 'Passwords don\'t match!',
+                    oldInput: req.body
+                });
+                return;
+            }
             models.User.create({ username, password }).then((registeredUser) => {
                 const token = jwt.createToken({ id: registeredUser._id });
-
                 res
                     .cookie(config.cookie, token)
                     .redirect('/home/');

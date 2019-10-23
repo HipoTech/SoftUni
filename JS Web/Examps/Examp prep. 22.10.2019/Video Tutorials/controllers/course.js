@@ -9,8 +9,10 @@ module.exports = {
             const hbsObject = {
                 pageTitle: 'Home Page',
                 isLoggedIn: req.cookies[config.cookie] !== undefined,
-                username: req.user.username
             };
+            if (req.user) {
+                hbsObject.username = req.user.username
+            }
             res.render('createCoursePage.hbs', hbsObject);
         },
 
@@ -26,6 +28,9 @@ module.exports = {
                     isCreator: req.user.id.toString() === course.creator.toString(),
                     isLoggedIn: req.cookies[config.cookie] !== undefined
                 }
+                if (req.user) {
+                    hbsObject.username = req.user.username
+                }
                 res.render('detailsCoursePage.hbs', hbsObject);
             }).catch(console.log);
         },
@@ -38,7 +43,9 @@ module.exports = {
                     course,
                     isLoggedIn: req.cookies[config.cookie] !== undefined
                 };
-
+                if (req.user) {
+                    hbsObject.username = req.user.username
+                }
                 res.render('editCoursePage.hbs', hbsObject);
             })
         },
@@ -69,9 +76,10 @@ module.exports = {
                 })
             }
 
-            models.Course.create({ title, description, imageUrl, isPublic: isChecked, createdAt, creator: req.user.id }).then((createdCourse) => {
-                res.redirect('/home/');
-            })
+            models.Course.create({ title, description, imageUrl, isPublic: isChecked, createdAt, creator: req.user.id })
+                .then((createdCourse) => {
+                    res.redirect('/home/');
+                })
         },
 
         edit: (req, res, next) => {

@@ -19,12 +19,13 @@ const courseSchema = new Schema({
 
     imageUrl: {
         type: String,
-        required: true
+        required: true,
     },
 
     isPublic: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false,
     },
 
     createdAt: {

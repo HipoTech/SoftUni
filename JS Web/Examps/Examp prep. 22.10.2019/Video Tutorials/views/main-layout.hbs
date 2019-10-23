@@ -11,21 +11,15 @@
 
 <body>
     <div class="container">
-        
-        {{> navigation}}
 
-        {{#if message}}
-        <section class="notifications">
-            <p class="notification-message">{{message}}</p>
-        </section>
-        {{/if}}
-    
+        {{> navigation}}
+        {{> errorMessage}}
+
         <main>
             {{{ body }}}
         </main>
 
-       {{> footer}}
-
+        {{> footer}}
     </div>
 </body>
 
