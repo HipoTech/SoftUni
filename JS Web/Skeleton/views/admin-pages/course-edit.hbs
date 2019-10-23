@@ -1,0 +1,29 @@
+{{>header}}
+<main>
+    <form action="/edit/{{course._id}}" method="POST" class="text-center border border-light p-5">
+        <h1>Edit Course</h1>
+        <div class="form-group">
+            <label for="title">Course Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Course name" value={{course.title}}>
+        </div>
+        <div class="form-group">
+            <label for="description">Course Description</label>
+            <textarea class="form-control" name="description"
+                placeholder="Description">{{course.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">{{ImageUrl}}</label>
+            <input type="text" class="form-control" name="imageUrl" placeholder="Image Url" value="{{course.imageUrl}}">
+        </div>
+        <div class="form-check">
+            {{#if course.isPublic}}
+            <input type="checkbox" name="isPublic" class="form-check-input" id="check-box" checked>
+            {{else}}
+            <input type="checkbox" name="isPublic" class="form-check-input" id="check-box">
+            {{/if}}
+            <label class="form-check-label" for="check-box">Public</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+{{>footer}}

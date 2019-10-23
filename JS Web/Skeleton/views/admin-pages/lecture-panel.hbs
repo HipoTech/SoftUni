@@ -1,0 +1,31 @@
+{{>header}}
+<main>
+    <form action="/addLecture/{{course._id}}" method="POST" class="text-center border border-light p-5">
+        <h1>Add lecture to course {{course.title}}</h1>
+
+        <div class="form-group">
+            <label for="title">Lecture Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Lecture title">
+        </div>
+        <div class="form-group">
+            <label for="videoUrl">Video Url</label>
+            <input type="text" class="form-control" name="videoUrl" placeholder="Video Url">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h2 class="text-center">There are {{course.lectures.length}} lectures in this course</h2>
+
+    <ul class="list-group">
+        {{#each course.lectures}}
+        <li class="list-group-item">
+            <h5 class="mb-1">{{title}}</h5>
+            <span class="float-right">
+                <a href="/delete/lecture/{{_id}}"><button class="btn btn-danger">Delete</button></a>
+            </span>
+        </li>
+        {{/each}}
+    </ul>
+</main>
+{{>footer}}

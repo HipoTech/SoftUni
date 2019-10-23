@@ -1,0 +1,70 @@
+{{>header}}
+<main>
+    {{#if isAdmin}}
+    <div class="col text-center">
+        <a href="/create"><button type="button" class="btn btn-primary btn-lg">Create Course</button></a>
+    </div>
+    <div class="border border-light p-5">
+        <h1 class="text-center">Choose Course</h1>
+        <ul class="list-group">
+            {{#if courses}}
+            {{#each courses}}
+            <li class="list-group-item">
+                {{title}}
+                <div class="float-right">
+                    <div class="btn-group" role="group">
+                        <a href="/edit/{{_id}}">
+                            <button type="button" class="btn btn-warning">
+                                Edit Course
+                            </button>
+                        </a>
+                        <a href="/addLecture/{{_id}}">
+                            <button type="button" class="btn btn-success">
+                                Add lectures
+                            </button>
+                        </a>
+                    </div>
+                    Lectures in course
+                    <span class="badge badge-primary badge-pill">{{lectures.length}}</span>
+                </div>
+            </li>
+            {{/each}}
+            {{else}}
+            <h1>No courses in database. Please create one!</h1>
+            {{/if}}
+        </ul>
+    </div>
+    {{else}}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Video Tutorials</h1>
+            <p class="lead">Start Self-Study Today: It'll Change Your Life</p>
+        </div>
+    </div>
+
+    <div>
+        <h1 class="text-center">Top Courses</h1>
+        <div class="container mt-3">
+            <div class="row d-flex justify-content-center">
+
+                <div class="card-deck">
+                    {{#if courses}}
+                    {{#each courses}}
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="{{imageUrl}}" alt="Card image cap" width="400">
+                        <div class="card-body">
+                            <h4 class="card-title">{{title}}</h4>
+                            <p class="card-text">{{description}}</p>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{else}}
+                    <h1>No courses in database. Please create one!</h1>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</main>
+{{>footer}}
