@@ -7,5 +7,5 @@ require('./config/database')().then(() => {
     require('./config/express')(app);
     require('./config/routes')(app);
 
-    app.listen(config.port, console.log(`***Server is ready! Listening on port: ${config.port}...***`));
+    app.listen(config.port, console.log(`Server active on port: ${config.port}_____________________________________________`));
 });

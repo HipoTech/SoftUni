@@ -9,12 +9,16 @@ function auth(redirectUnauthenticated = true) {
             jwt.verifyToken(token),
         ]).then(([data]) => {
             models.User.findById(data.id).then(user => {
-                req.user = user;
                 next();
             });
         }).catch(err => {
-            if (!redirectUnauthenticated) { next(); return; }
-            next(err);
+            if (!redirectUnauthenticated) {
+                next();
+                return;
+            } else {
+                res.redirect('/');
+                next(err);
+            }
         });
     };
 }

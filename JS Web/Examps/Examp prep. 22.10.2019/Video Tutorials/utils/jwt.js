@@ -8,7 +8,10 @@ function createToken(data) {
 function verifyToken(token) {
   return new Promise((resolve, reject) => {
     jwt.verify(token, secret, (err, data) => {
-      if (err) { reject(err); return; }
+      if (err) {
+        reject(err);
+        return;
+      }
       resolve(data);
     });
   });

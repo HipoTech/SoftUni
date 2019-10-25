@@ -31,6 +31,7 @@ module.exports = {
                 if (req.user) {
                     hbsObject.username = req.user.username
                 }
+
                 res.render('detailsCoursePage.hbs', hbsObject);
             }).catch(console.log);
         },
