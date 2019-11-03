@@ -13,7 +13,6 @@ const Slider = () => (
                             <li data-target="#slider-carousel" data-slide-to="1"></li>
                             <li data-target="#slider-carousel" data-slide-to="2"></li>
                         </ol>
-
                         <div className="carousel-inner">
                             <div className="item active">
                                 <div className="col-sm-6">
@@ -41,7 +40,6 @@ const Slider = () => (
                                     <img src="images/home/pricing.png" className="pricing" alt="" />
                                 </div>
                             </div>
-
                             <div className="item">
                                 <div className="col-sm-6">
                                     <h1><span>E</span>-SHOPPER</h1>
@@ -55,9 +53,7 @@ const Slider = () => (
                                     <img src="images/home/pricing.png" className="pricing" alt="" />
                                 </div>
                             </div>
-
                         </div>
-
                         <a href="#slider-carousel" className="left control-carousel hidden-xs" data-slide="prev">
                             <i className="fa fa-angle-left"></i>
                         </a>
@@ -65,7 +61,6 @@ const Slider = () => (
                             <i className="fa fa-angle-right"></i>
                         </a>
                     </div>
-
                 </div>
             </div>
         </div>
