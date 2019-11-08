@@ -1,7 +1,6 @@
 import React from 'react';
 import './slider.css';
 
-
 const Slider = () => (
     <section id="slider">
         <div className="container">

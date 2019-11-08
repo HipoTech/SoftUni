@@ -3,7 +3,7 @@ const controllers = require('../controllers');
 // const auth = require('../utils/auth');
 
 // Register
-router.get('/', (req, res) => res.send('Hello'));
+router.get('/', (req, res) => { res.send('Hello') });
 router.get('/register', controllers.user.get.register);
 router.post('/register', controllers.user.post.register);
 

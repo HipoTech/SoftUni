@@ -14,7 +14,7 @@ const RecommendedItems = () => (
                                     <img src="images/home/recommend1.jpg" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
-                                    <a href="#" className="btn btn-default add-to-cart"><i
+                                    <a href="/" className="btn btn-default add-to-cart"><i
                                         className="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             </div>
@@ -27,7 +27,7 @@ const RecommendedItems = () => (
                                     <img src="images/home/recommend2.jpg" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
-                                    <a href="#" className="btn btn-default add-to-cart"><i
+                                    <a href="/" className="btn btn-default add-to-cart"><i
                                         className="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@ const RecommendedItems = () => (
                                     <img src="images/home/recommend3.jpg" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
-                                    <a href="#" className="btn btn-default add-to-cart"><i
+                                    <a href="/" className="btn btn-default add-to-cart"><i
                                         className="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ const RecommendedItems = () => (
                                     <img src="images/home/recommend1.jpg" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
-                                    <a href="#" className="btn btn-default add-to-cart"><i
+                                    <a href="/" className="btn btn-default add-to-cart"><i
                                         className="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@ const RecommendedItems = () => (
                                     <img src="images/home/recommend2.jpg" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
-                                    <a href="#" className="btn btn-default add-to-cart"><i
+                                    <a href="/" className="btn btn-default add-to-cart"><i
                                         className="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ const RecommendedItems = () => (
                                     <img src="images/home/recommend3.jpg" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
-                                    <a href="#" className="btn btn-default add-to-cart"><i
+                                    <a href="/" className="btn btn-default add-to-cart"><i
                                         className="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             </div>
@@ -89,11 +89,11 @@ const RecommendedItems = () => (
                     </div>
                 </div>
             </div>
-            <a className="left recommended-item-control" href="#recommended-item-carousel"
+            <a className="left recommended-item-control" href="/recommended-item-carousel"
                 data-slide="prev">
                 <i className="fa fa-angle-left"></i>
             </a>
-            <a className="right recommended-item-control" href="#recommended-item-carousel"
+            <a className="right recommended-item-control" href="/recommended-item-carousel"
                 data-slide="next">
                 <i className="fa fa-angle-right"></i>
             </a>

@@ -1,6 +1,6 @@
 const express = require('express');
 const config = require('../config/config');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // const cookieParser = require('cookie-parser');
 // const handlebars = require('express-handlebars');
 
@@ -33,7 +33,14 @@ module.exports = (app) => {
             .send(`Server Error!`)
     })
 
+    app.use(function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "http://localhost:8081"); // update to match the domain you will make the request from
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+
     // app.use(cookieParser());
 
-    // app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json())
 };

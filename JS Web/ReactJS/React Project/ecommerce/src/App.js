@@ -1,21 +1,33 @@
 import React from 'react';
 import './App.css';
+import {
+  BrowserRouter as
+    Router,
+  // Switch,
+  Route,
+  // Link
+} from "react-router-dom";
+
 import Header from './components/header/header';
-import Slider from './components/slider/slider';
-import SidebarLeft from './components/sidebar-left/sidebar-left';
-import Items from './components/items/items';
 import Footer from './components/footer/footer';
+import Home from './components/pages/home/home';
+import Login from './components/user/login/login';
+import Slider from './components/slider/slider';
+import requester from './api/requester';
+import submitter from './api/submitter';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Slider />
+      <Route path='/' exact component={Slider} />
+      <Route path='/Home' exact component={Slider} />
       <section>
         <div className="container">
           <div className="row">
-            <SidebarLeft />
-            <Items />
+            <Route path='/' exact component={Home} />
+            <Route path='/home' exact component={Home} />
+            <Route path='/login' component={Login} />
           </div>
         </div>
       </section>

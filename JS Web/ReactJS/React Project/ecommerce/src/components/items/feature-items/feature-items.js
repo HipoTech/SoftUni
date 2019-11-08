@@ -11,22 +11,22 @@ const FeatureItems = () => (
                         <img src="images/home/product1.jpg" alt="" />
                         <h2>$56</h2>
                         <p>Easy Polo Black Edition</p>
-                        <a href="#" className="btn btn-default add-to-cart"><i
+                        <a href="/" className="btn btn-default add-to-cart"><i
                             className="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                     <div className="product-overlay">
                         <div className="overlay-content">
                             <h2>$56</h2>
                             <p>Easy Polo Black Edition</p>
-                            <a href="#" className="btn btn-default add-to-cart"><i
+                            <a href="/" className="btn btn-default add-to-cart"><i
                                 className="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
                     </div>
                 </div>
                 <div className="choose">
                     <ul className="nav nav-pills nav-justified">
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to compare</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to compare</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,22 +38,22 @@ const FeatureItems = () => (
                         <img src="images/home/product2.jpg" alt="" />
                         <h2>$56</h2>
                         <p>Easy Polo Black Edition</p>
-                        <a href="#" className="btn btn-default add-to-cart"><i
+                        <a href="/" className="btn btn-default add-to-cart"><i
                             className="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                     <div className="product-overlay">
                         <div className="overlay-content">
                             <h2>$56</h2>
                             <p>Easy Polo Black Edition</p>
-                            <a href="#" className="btn btn-default add-to-cart"><i
+                            <a href="/" className="btn btn-default add-to-cart"><i
                                 className="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
                     </div>
                 </div>
                 <div className="choose">
                     <ul className="nav nav-pills nav-justified">
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to compare</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to compare</a></li>
                     </ul>
                 </div>
             </div>
@@ -65,22 +65,22 @@ const FeatureItems = () => (
                         <img src="images/home/product3.jpg" alt="" />
                         <h2>$56</h2>
                         <p>Easy Polo Black Edition</p>
-                        <a href="#" className="btn btn-default add-to-cart"><i
+                        <a href="/" className="btn btn-default add-to-cart"><i
                             className="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                     <div className="product-overlay">
                         <div className="overlay-content">
                             <h2>$56</h2>
                             <p>Easy Polo Black Edition</p>
-                            <a href="#" className="btn btn-default add-to-cart"><i
+                            <a href="/" className="btn btn-default add-to-cart"><i
                                 className="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
                     </div>
                 </div>
                 <div className="choose">
                     <ul className="nav nav-pills nav-justified">
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to compare</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to compare</a></li>
                     </ul>
                 </div>
             </div>
@@ -92,14 +92,14 @@ const FeatureItems = () => (
                         <img src="images/home/product4.jpg" alt="" />
                         <h2>$56</h2>
                         <p>Easy Polo Black Edition</p>
-                        <a href="#" className="btn btn-default add-to-cart"><i
+                        <a href="/" className="btn btn-default add-to-cart"><i
                             className="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                     <div className="product-overlay">
                         <div className="overlay-content">
                             <h2>$56</h2>
                             <p>Easy Polo Black Edition</p>
-                            <a href="#" className="btn btn-default add-to-cart"><i
+                            <a href="/" className="btn btn-default add-to-cart"><i
                                 className="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
                     </div>
@@ -107,8 +107,8 @@ const FeatureItems = () => (
                 </div>
                 <div className="choose">
                     <ul className="nav nav-pills nav-justified">
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to compare</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to compare</a></li>
                     </ul>
                 </div>
             </div>
@@ -120,14 +120,14 @@ const FeatureItems = () => (
                         <img src="images/home/product5.jpg" alt="" />
                         <h2>$56</h2>
                         <p>Easy Polo Black Edition</p>
-                        <a href="#" className="btn btn-default add-to-cart"><i
+                        <a href="/" className="btn btn-default add-to-cart"><i
                             className="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                     <div className="product-overlay">
                         <div className="overlay-content">
                             <h2>$56</h2>
                             <p>Easy Polo Black Edition</p>
-                            <a href="#" className="btn btn-default add-to-cart"><i
+                            <a href="/" className="btn btn-default add-to-cart"><i
                                 className="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
                     </div>
@@ -135,8 +135,8 @@ const FeatureItems = () => (
                 </div>
                 <div className="choose">
                     <ul className="nav nav-pills nav-justified">
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to compare</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to compare</a></li>
                     </ul>
                 </div>
             </div>
@@ -148,22 +148,22 @@ const FeatureItems = () => (
                         <img src="images/home/product6.jpg" alt="" />
                         <h2>$56</h2>
                         <p>Easy Polo Black Edition</p>
-                        <a href="#" className="btn btn-default add-to-cart"><i
+                        <a href="/" className="btn btn-default add-to-cart"><i
                             className="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                     <div className="product-overlay">
                         <div className="overlay-content">
                             <h2>$56</h2>
                             <p>Easy Polo Black Edition</p>
-                            <a href="#" className="btn btn-default add-to-cart"><i
+                            <a href="/" className="btn btn-default add-to-cart"><i
                                 className="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
                     </div>
                 </div>
                 <div className="choose">
                     <ul className="nav nav-pills nav-justified">
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i className="fa fa-plus-square"></i>Add to compare</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="/"><i className="fa fa-plus-square"></i>Add to compare</a></li>
                     </ul>
                 </div>
             </div>

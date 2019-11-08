@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './middle-header.css';
 
 const MiddleHeader = () => (
@@ -7,7 +8,8 @@ const MiddleHeader = () => (
             <div className="row">
                 <div className="col-md-4 clearfix">
                     <div className="logo pull-left">
-                        <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                        <Link to="/Home"><img src="images/home/logo.png" alt="" /></Link>
+                        {/* <img src="images/loading.gif" alt="" /> */}
                     </div>
                     <div className="btn-group pull-right clearfix">
                         <div className="btn-group">
@@ -17,8 +19,8 @@ const MiddleHeader = () => (
                                 <span className="caret"></span>
                             </button>
                             <ul className="dropdown-menu">
-                                <li><a href="">Canada</a></li>
-                                <li><a href="">UK</a></li>
+                                <li><a href="/">Canada</a></li>
+                                <li><a href="/">UK</a></li>
                             </ul>
                         </div>
 
@@ -29,8 +31,8 @@ const MiddleHeader = () => (
                                 <span className="caret"></span>
                             </button>
                             <ul className="dropdown-menu">
-                                <li><a href="">Canadian Dollar</a></li>
-                                <li><a href="">Pound</a></li>
+                                <li><a href="/">Canadian Dollar</a></li>
+                                <li><a href="/">Pound</a></li>
                             </ul>
                         </div>
                     </div>
@@ -38,11 +40,11 @@ const MiddleHeader = () => (
                 <div className="col-md-8 clearfix">
                     <div className="shop-menu clearfix pull-right">
                         <ul className="nav navbar-nav">
-                            <li><a href=""><i className="fa fa-user"></i> Account</a></li>
-                            <li><a href=""><i className="fa fa-star"></i> Wishlist</a></li>
-                            <li><a href="checkout.html"><i className="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="login.html"><i className="fa fa-lock"></i> Login</a></li>
+                            <li><Link to="/account"><i className="fa fa-user"></i> Account</Link></li>
+                            <li><Link to="/wishList"><i className="fa fa-star"></i> Wishlist</Link></li>
+                            <li><Link to="/checkout"><i className="fa fa-crosshairs"></i> Checkout</Link></li>
+                            <li><Link to="/cart"><i className="fa fa-shopping-cart"></i> Cart</Link></li>
+                            <li><Link to="/login"><i className="fa fa-lock"></i> Login</Link></li>
                         </ul>
                     </div>
                 </div>
