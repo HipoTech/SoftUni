@@ -4,7 +4,7 @@ const config = {
     development: {
         port: process.env.PORT || 8080,
         dbURL: 'mongodb://localhost:27017/',
-        cookie: 'x-auth-token'
+        cookie: 'ecom-auth-token'
     },
     production: {}
 };

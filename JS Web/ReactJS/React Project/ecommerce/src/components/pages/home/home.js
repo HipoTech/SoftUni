@@ -2,15 +2,34 @@ import React from 'react';
 import './home.css';
 
 import SidebarLeft from '../../sidebar-left/sidebar-left';
-import Items from '../../items/items';
+import Items from './items/items';
+import Loader from '../../propmts/loader/loader';
+import { getAllProducts } from '../../../api';
+const { Fragment, Component } = React;
 
-function Home() {
-    return (
-        <div>
+class Home extends Component {
+    state = {
+        isLoading: true,
+        products: [],
+    }
+
+    componentDidMount() {
+        getAllProducts()
+            .then(response => {
+                this.setState({
+                    isLoading: false,
+                    products: response
+                })
+            })
+    }
+
+    render() {
+        return <Fragment>
             <SidebarLeft />
-            <Items />
-        </div>
-    );
+            {this.state.isLoading ? <Loader /> : null}
+            <Items products={this.state.products} />
+        </Fragment>
+    }
 }
 
 export default Home;

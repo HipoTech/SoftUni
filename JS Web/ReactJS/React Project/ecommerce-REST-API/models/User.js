@@ -7,39 +7,39 @@ const { String, Number, Boolean, ObjectId } = Schema.Types;
 
 const userSchema = new Schema({
 
+    userName: {
+        type: String,
+        required: true,
+        unique: true
+    },
+
+    password: {
+        type: String,
+        required: true,
+    },
+
     email: {
         type: String,
         required: true,
         unique: true
     },
 
-    username: {
+    imageUrl: {
         type: String,
-        required: true,
-        unique: true
+        default: ''
     },
 
-    firstName: {
-        type: String,
-        required: true,
-    },
-
-    lastName: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 });
 
-// userSchema.methods = {
-//     matchPassword: function (password) {
-//         return bcrypt.compare(password, this.password);
-//     }
-// };
+userSchema.methods = {
+    matchPassword: function (password) {
+        return bcrypt.compare(password, this.password);
+    }
+};
 
 userSchema.pre('save', function (next) {
     if (this.isModified('password')) {

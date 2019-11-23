@@ -8,7 +8,7 @@ const MiddleHeader = () => (
             <div className="row">
                 <div className="col-md-4 clearfix">
                     <div className="logo pull-left">
-                        <Link to="/Home"><img src="images/home/logo.png" alt="" /></Link>
+                        <Link to="/home"><img src="/images/home/logo.png" alt="" /></Link>
                         {/* <img src="images/loading.gif" alt="" /> */}
                     </div>
                     <div className="btn-group pull-right clearfix">
@@ -44,7 +44,7 @@ const MiddleHeader = () => (
                             <li><Link to="/wishList"><i className="fa fa-star"></i> Wishlist</Link></li>
                             <li><Link to="/checkout"><i className="fa fa-crosshairs"></i> Checkout</Link></li>
                             <li><Link to="/cart"><i className="fa fa-shopping-cart"></i> Cart</Link></li>
-                            <li><Link to="/login"><i className="fa fa-lock"></i> Login</Link></li>
+                            <li><Link to="/loginOrRegister"><i className="fa fa-lock"></i> Login/Register</Link></li>
                         </ul>
                     </div>
                 </div>

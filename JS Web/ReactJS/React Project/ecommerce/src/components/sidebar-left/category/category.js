@@ -1,14 +1,15 @@
 import React from 'react';
 import './category.css';
+const { Fragment } = React;
 
-const Category = () => (
-    <>
+const Category = () => {
+    return <Fragment>
         <h2>Category</h2>
         <div className="panel-group category-products" id="accordian">
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <h4 className="panel-title">
-                        <a data-toggle="collapse" data-parent="/accordian" href="/sportswear">
+                        <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
                             <span className="badge pull-right"><i className="fa fa-plus"></i></span>
                             Sportswear
 							</a>
@@ -29,7 +30,7 @@ const Category = () => (
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <h4 className="panel-title">
-                        <a data-toggle="collapse" data-parent="/accordian" href="/mens">
+                        <a data-toggle="collapse" data-parent="#accordian" href="#mens">
                             <span className="badge pull-right"><i className="fa fa-plus"></i></span>
                             Mens
 							</a>
@@ -55,7 +56,7 @@ const Category = () => (
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <h4 className="panel-title">
-                        <a data-toggle="collapse" data-parent="/accordian" href="/womens">
+                        <a data-toggle="collapse" data-parent="#accordian" href="#womens">
                             <span className="badge pull-right"><i className="fa fa-plus"></i></span>
                             Womens
 							</a>
@@ -109,7 +110,7 @@ const Category = () => (
                 </div>
             </div>
         </div>
-    </>
-);
+    </Fragment >
+};
 
 export default Category;
