@@ -24,6 +24,8 @@ class Home extends Component {
     }
 
     render() {
+        console.log(this.state.products);
+
         return <Fragment>
             <SidebarLeft />
             {this.state.isLoading ? <Loader /> : null}

@@ -23,8 +23,6 @@ module.exports = {
             const newProduct = { name, imageUrl, products }
             models.Category.create(newProduct)
                 .then(() => {
-                    console.log(newProduct);
-
                     res.status(200);
                     res.send({ newProduct })
                 })

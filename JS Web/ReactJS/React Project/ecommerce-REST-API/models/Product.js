@@ -46,12 +46,13 @@ const productSchema = new Schema({
 
     brand: {
         type: ObjectId,
+        ref: 'Brand',
     },
 
-    categories: [{
+    category: {
         type: ObjectId,
-        unique: true,
-    }],
+        ref: 'Category',
+    },
 });
 
 module.exports = new Model('Product', productSchema);

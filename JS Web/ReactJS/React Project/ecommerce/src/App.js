@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './components/pages/home/home';
+import Shop from './components/pages/shop/shop';
 import UserCotrol from './components/user/loginOrRegister/UserCotrol';
 import Slider from './components/slider/slider';
 import ProductDetails from './components/pages/products/details/details';
@@ -15,13 +16,16 @@ import CreateBrand from './components/pages/brands/create/create';
 import notFound from './components/pages/notFound/notFound';
 
 function App() {
-
-  const username = Cookies.get('ecom-user-info')
-  console.log(username);
+  const cookie = Cookies.get('ecom-user-info');
+  const userData = {}
+  if (cookie) {
+    userData = JSON.parse()
+    console.log(userData);
+  }
 
   return (
     <div className="App">
-      <Header />
+      <Header userData={userData} />
       <Route path='/' exact component={Slider} />
       <Route path='/home' exact component={Slider} />
       <section>
@@ -30,6 +34,7 @@ function App() {
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/home' exact component={Home} />
+              <Route path='/shop' exact component={Shop} />
               <Route path='/product-details/:id' exact component={ProductDetails} />
               <Route path='/product-create' exact component={CreateProduct} />
               <Route path='/brand-create' exact component={CreateBrand} />

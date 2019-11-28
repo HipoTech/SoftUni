@@ -18,6 +18,7 @@ const categorySchema = new Schema({
 
     products: [{
         type: ObjectId,
+        ref: 'Product'
         // unique: true,
     }],
 

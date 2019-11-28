@@ -1425,6 +1425,7 @@ h2.title {
 
 .login-form input,
 .product-create-form input,
+.product-create-form select,
 .signup-form input {
     background: #F0F0E9;
     border: medium none;

@@ -18,6 +18,7 @@ const brandSchema = new Schema({
 
     products: [{
         type: ObjectId,
+        ref: 'Product'
         // unique: true,
     }],
 });

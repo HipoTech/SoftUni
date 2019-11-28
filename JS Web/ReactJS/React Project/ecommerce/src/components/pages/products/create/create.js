@@ -1,15 +1,24 @@
-import React from 'react';
-import { createProduct } from '../../../../api';
-import Error from '../../../propmts/error/error';
-import './create.css';
+import React, { Component, Fragment } from 'react';
+import * as yup from 'yup';
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
-const { Component } = React;
+
+import {
+    createProduct,
+    getAllCategories,
+    getAllBrands
+} from '../../../../api';
+import Error from '../../../propmts/error/error';
+import { getDataFromForm } from '../../../../globalFunctions/formsHanler'
+
+import './create.css';
 
 class CreateProduct extends Component {
     state = {
         showError: false,
         gotError: true,
         message: '',
+        brands: [],
+        categories: []
     }
 
     product = {
@@ -20,68 +29,70 @@ class CreateProduct extends Component {
         availability: false,
         featuredItem: false,
         condition: '',
+        category: '',
+        brand: '',
     }
 
-    getRegisterData = (event) => {
-        const { name, value, type, checked } = event.target;
-        type === 'checkbox' ? this.product[name] = checked : this.product[name] = value
+    componentDidMount() {
+        getAllCategories().then(response => {
+            this.setState({
+                categories: response,
+            })
+        })
+        getAllBrands().then(response => {
+            this.setState({
+                brands: response,
+            })
+        })
     }
 
-    validateInput = (btn) => {
+    getRegisterData = (event) => getDataFromForm(event, this.product)
 
-        if (!this.product.title) {
-            this.setState({
-                gotError: true,
-                showError: true,
-                message: 'Please enter a title!'
-            });
-            return;
-        }
-        if (!this.product.webId) {
-            this.setState({
-                gotError: true,
-                showError: true,
-                message: 'Please enter an ID!'
-            });
-            return;
-        }
-        if (!this.product.price) {
-            this.setState({
-                gotError: true,
-                showError: true,
-                message: 'Please enter price!'
-            });
-            return;
-        }
-        if (!this.product.condition) {
-            this.setState({
-                gotError: true,
-                showError: true,
-                message: 'Please enter a condition!'
-            });
-            return;
-        }
-        if (!this.product.imageUrl) {
-            this.setState({
-                gotError: true,
-                showError: true,
-                message: 'Please upload a picture!'
-            });
-            return;
-        }
-        this.setState({
-            gotError: false,
-            showError: false,
-            message: 'No error to show!'
+    sendProduct = () => {
+        return createProduct(this.product)
+            .then((res) => {
+                res.ok ? this.resetForm() : this.serverErrorHandler(res.json());
+                this.setState({
+                    gotError: false,
+                    showError: false,
+                    message: 'No error to show!'
+                });
+            })
+
+    }
+
+    validateInput = () => {
+        const productForm = yup.object({
+            title: yup
+                .string()
+                .required('Please enter a title!'),
+            webId: yup
+                .string()
+                .required('Please enter an ID!'),
+            price: yup
+                .string()
+                .required('Please enter price!'),
+            imageUrl: yup
+                .string()
+                .required('Please upload a picture!'),
+            condition: yup
+                .string()
+                .required('Please enter a condition!'),
         });
 
-        this.sendProduct(btn);
+        productForm.validate({
+            title: this.product.title,
+            webId: this.product.webId,
+            price: this.product.price,
+            imageUrl: this.product.imageUrl,
+            condition: this.product.condition,
+        }).then(isValid => this.sendProduct())
+            .catch((err) => console.log(err))
     }
 
     serverErrorHandler = (err) => {
         err.then(err => {
             if (err.errmsg) {
-                console.log(err)
                 if (err.errmsg.includes('webId')) {
                     this.setState({
                         gotError: true,
@@ -91,13 +102,6 @@ class CreateProduct extends Component {
                 }
             }
         })
-    }
-
-    sendProduct = (btn) => {
-        createProduct(this.product)
-            .then((res) => {
-                res.ok ? this.resetForm(btn) : this.serverErrorHandler(res.json());
-            })
     }
 
     resetForm = () => {
@@ -119,6 +123,7 @@ class CreateProduct extends Component {
         this.validateInput(btn);
     }
 
+    // Cloudinary widget
     cloudinaryWidget = window.cloudinary.createUploadWidget({
         cloudName: 'dmogsuybw',
         uploadPreset: 'cgbbyz73'
@@ -127,8 +132,7 @@ class CreateProduct extends Component {
             console.log('Done! Here is the image info: ', result.info);
             this.product.imageUrl = result.info.url;
         }
-    }
-    )
+    })
     showClaudinaryWidget = () => {
         this.cloudinaryWidget.open()
     }
@@ -142,6 +146,40 @@ class CreateProduct extends Component {
                     <input type="number" min="0" onChange={this.getRegisterData} autoComplete="on" name="webId" placeholder="Product ID number" />
                     <input type="number" min="0" onChange={this.getRegisterData} autoComplete="on" name="price" placeholder="Product price $" />
                     <input type="text" onChange={this.getRegisterData} autoComplete="on" name="condition" placeholder="Product condition" />
+                    {this.state.brands.length > 0 ?
+                        <select defaultValue="defaut" name="brand" onChange={this.getRegisterData}>
+                            <option value="defaut" disabled>
+                                Please select a brand:
+                            </option>
+                            {this.state.brands.map(brand => {
+                                return <option key={brand.name} value={brand._id}>
+                                    {brand.name}
+                                </option>
+                            })}
+                        </select>
+                        :
+                        <Fragment>
+                            <br />
+                            <span>No brands available! Please create a brand!</span>
+                        </Fragment>
+                    }
+                    {this.state.categories.length > 0 ?
+                        <select defaultValue="defaut" name="category" onChange={this.getRegisterData}>
+                            <option value="defaut" disabled>
+                                Please select a category:
+                            </option>
+                            {this.state.categories.map(category => {
+                                return <option key={category.name} value={category._id}>
+                                    {category.name}
+                                </option>
+                            })}
+                        </select>
+                        :
+                        <Fragment>
+                            <br />
+                            <span>No categories available! Please create a category!</span>
+                        </Fragment>
+                    }
                     <span className="checkboxConteiner">
                         <input type="checkbox" onChange={this.getRegisterData} autoComplete="off" className="checkbox" name="availability" />
                         Product is available

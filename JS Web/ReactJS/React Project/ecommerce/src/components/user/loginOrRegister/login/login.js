@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import * as yup from 'yup';
+
 import { logInUser } from '../../../../api';
 import Error from '../../../propmts/error/error';
+import { getDataFromForm } from '../../../../globalFunctions/formsHanler'
+
 import './login.css';
-import * as yup from 'yup';
-const { Component } = React;
 
 class Login extends Component {
     state = {
@@ -17,62 +19,40 @@ class Login extends Component {
         password: '',
     }
 
-    getRegisterData = (event) => {
-        switch (event.target.name) {
-            case 'userName':
-                this.user.userName = event.target.value;
-                break;
-            case 'password':
-                this.user.password = event.target.value;
-                break;
-            default:
-                break;
-        }
-    }
+    getRegisterData = (event) => getDataFromForm(event, this.user)
 
-
-    validateInput = (btn) => {
-        // const login = yup.object()({
-        //     name: yup.string().required(),
-        //     age: yup.string().required('Age is required')
-        // });
-
-        // login.isValid({
-        //     name: 'jimmy',
-        //     age: '',
-        // })
-        //     .then(function (valid) {
-        //         console.log(valid);
-        //         // => true
-        //     })
-        //     .catch(err => console.log(err))
-        //     ;
-
-
-        if (!this.user.userName) {
-            this.setState({
-                gotError: true,
-                showError: true,
-                message: 'Please enter an username!'
-            });
-            return;
-        }
-        if (!this.user.password) {
-            this.setState({
-                gotError: true,
-                showError: true,
-                message: 'Please enter an password!'
-            });
-            return;
-        }
-        this.setState({
-            gotError: false,
-            showError: false,
-            message: 'No error to show!'
+    validateInput = () => {
+        const login = yup.object({
+            userName: yup
+                .string()
+                .required('Please enter an username!'),
+            password: yup
+                .string()
+                .required('Please enter an password!'),
         });
-        logInUser(this.user)
-            .then((res) => {
-                res.ok ? this.resetUser(btn) : this.serverErrorHandler(res.json());
+
+        login.validate({
+            userName: this.user.userName,
+            password: this.user.password,
+        })
+            .then(isValid => {
+                logInUser(this.user)
+                    .then((res) => {
+                        res.ok ? this.resetForm() : this.serverErrorHandler(res.json());
+                    })
+                    .catch((err) => console.log(err));
+                this.setState({
+                    gotError: false,
+                    showError: false,
+                    message: 'No error to show!'
+                });
+            })
+            .catch(error => {
+                this.setState({
+                    gotError: true,
+                    showError: true,
+                    message: error.message
+                });
             });
     }
 
@@ -84,8 +64,18 @@ class Login extends Component {
                     showError: true,
                     message: `${err.message}`
                 })
+                return;
             }
+            console.log(err);
         })
+    }
+
+    resetForm = () => {
+        document.getElementById('myform').reset();
+        this.user = {
+            userName: '',
+            password: '',
+        }
     }
 
     resetUser = (btn) => {
@@ -97,20 +87,20 @@ class Login extends Component {
 
     submit = (event) => {
         event.preventDefault();
-        const btn = event.target;
-        const staySignedIn = btn.nextElementSibling.firstElementChild;
-        this.validateInput(btn);
+        // const btn = event.target;
+        // const staySignedIn = btn.nextElementSibling.firstElementChild;
+        this.validateInput();
     }
 
     render() {
 
         return <div className="col-sm-4 col-sm-offset-1">
             <div className="login-form">
-                <form>
+                <form id="myform" onSubmit={this.submit}>
                     <Error showError={this.state.showError} message={this.state.message} title='Login:' />
                     <input type="text" onChange={this.getRegisterData} autoComplete="on" name="userName" placeholder="Name" />
                     <input type="password" onChange={this.getRegisterData} autoComplete="off" name="password" placeholder="Password" />
-                    <button onClick={this.submit} type="submit" className="btn btn-default">Login</button>
+                    <button type="submit" className="btn btn-default">Login</button>
                     <span>
                         <input name="staySignedIn" autoComplete="off" type="checkbox" className="checkbox" />
                         Keep me signed in

@@ -7,6 +7,10 @@ module.exports = {
         userInfo: (req, res, next) => {
             console.log(req.params);
         },
+        logout: (req, res, next) => {
+            res.clearCookie(config.cookie)
+                .redirect('/');
+        },
     },
 
     post: {
@@ -25,26 +29,33 @@ module.exports = {
                 })
         },
         login: (req, res, next) => {
-            const { username, password } = req.body;
-            models.User.findOne({ username }).then((user) => {
-                Promise.all([user, user.matchPassword(password)])
-                    .then(([user, match]) => {
-                        if (!match) {
-                            res.status(401)
-                            res.send({ message: 'Wrong username or password!', });
-                            return;
-                        }
-                        const token = jwt.createToken({ id: user._id });
-                        res.cookie(config.cookie, token)
-                        res.cookie('ecom-user-info', {
-                            userName: user.userName,
-                            email: user.email,
-                            imageUrl: user.umageUrl,
-                            isAdmin: user.isAdmin,
+            const { userName, password } = req.body;
+            models.User.findOne({ userName: { $eq: userName } })
+                .then((user) => {
+                    Promise.all([user, user.matchPassword(password)])
+                        .then(([user, match]) => {
+                            if (!match) {
+                                res.status(401)
+                                res.send({ message: 'Wrong username or password!', });
+                                return;
+                            }
+                            const token = jwt.createToken({ id: user._id });
+
+                            res.cookie(config.cookie, token)
+                            res.cookie('ecom-user-info', JSON.stringify({
+                                userName: user.userName,
+                                email: user.email,
+                                imageUrl: user.umageUrl,
+                                isAdmin: user.isAdmin,
+                            }))
+                                .sendStatus(200)
                         })
-                            .sendStatus(200)
-                    })
-            })
-        }
+                }).catch(err => {
+                    console.log(err);
+                    res.status(401)
+                    res.send({ message: 'Wrong username or password!', });
+                })
+        },
+
     }
 };

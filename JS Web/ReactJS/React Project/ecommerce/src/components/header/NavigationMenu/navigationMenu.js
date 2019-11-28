@@ -10,9 +10,6 @@ const NavigationMenu = () => (
                     <div className="mainmenu pull-left">
                         <ul className="nav navbar-nav collapse navbar-collapse">
                             <li><Link to="/" >Home</Link></li>
-                            <li><Link to="/product-create" >Create product</Link></li>
-                            <li><Link to="/category-create" >Create category</Link></li>
-                            <li><Link to="/brand-create" >Create brand</Link></li>
                             <li className="dropdown"><Link to="/">Shop<i className="fa fa-angle-down"></i></Link>
                                 <ul role="menu" className="sub-menu">
                                     <li><Link to="/">Products</Link></li>
@@ -36,6 +33,17 @@ const NavigationMenu = () => (
                 <div className="col-sm-3">
                     <div className="search_box pull-right">
                         <input type="text" placeholder="Search" />
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-sm-9">
+                    <div className="mainmenu pull-left">
+                        <ul className="nav navbar-nav collapse navbar-collapse">
+                            <li><Link to="/product-create" >Create product</Link></li>
+                            <li><Link to="/category-create" >Create category</Link></li>
+                            <li><Link to="/brand-create" >Create brand</Link></li>
+                        </ul>
                     </div>
                 </div>
             </div>
