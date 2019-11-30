@@ -34,12 +34,12 @@ function App() {
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/home' exact component={Home} />
-              <Route path='/shop' exact component={Shop} />
+              <Route path='/shop/:page' exact component={Shop} />
               <Route path='/product-details/:id' exact component={ProductDetails} />
               <Route path='/product-create' exact component={CreateProduct} />
               <Route path='/brand-create' exact component={CreateBrand} />
               <Route path='/category-create' exact component={CreateCategory} />
-              <Route path='/loginOrRegister' component={UserCotrol} />
+              <Route path='/loginOrRegister' exact component={UserCotrol} />
               <Route component={notFound} />
             </Switch>
           </div>

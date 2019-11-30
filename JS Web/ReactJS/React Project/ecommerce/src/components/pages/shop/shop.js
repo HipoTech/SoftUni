@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import { Route } from "react-router-dom";
 
 import SidebarLeft from '../../sidebar-left/sidebar-left';
 import Loader from '../../propmts/loader/loader';
@@ -6,6 +7,9 @@ import Product from '../../../components/product/product';
 import { getAllProducts } from '../../../api';
 
 class Shop extends Component {
+    constructor(props) {
+        super(props)
+    }
     state = {
         isLoading: true,
         products: [],
@@ -19,6 +23,7 @@ class Shop extends Component {
                     products: response
                 })
             })
+
     }
 
     split = (arey) => {
@@ -38,24 +43,25 @@ class Shop extends Component {
         return pages;
     }
 
+
     render() {
         const products = this.state.products;
         const pages = this.split(products);
-        console.log(pages);
+        const currentPage = this.props.match.params.page;
+        console.log(pages[currentPage]);
+        console.log(currentPage);
 
         return <Fragment>
             <SidebarLeft />
             {this.state.isLoading ?
                 <Loader /> :
+
                 <div className="col-sm-9 padding-right">
                     <div className="features_items">
                         <h2 className="title text-center">Features Items</h2>
-                        {pages
-                            .map(page => page
-                                .map(product => <Product key={product.webId} product={product} />)
-                            )}
+                        {pages[currentPage].map(product => <Product key={product.webId} product={product} />)}
                         <ul className="pagination">
-                            {pages.map((page, index) => <li><a href="">{index + 1}</a></li>)}
+                            {pages.map((page, index) => <li key={index} ><a href={`/shop/${index}`}>{index + 1}</a></li>)}
                         </ul>
                     </div>
                 </div>

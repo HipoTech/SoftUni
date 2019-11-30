@@ -10,14 +10,10 @@ const NavigationMenu = () => (
                     <div className="mainmenu pull-left">
                         <ul className="nav navbar-nav collapse navbar-collapse">
                             <li><Link to="/" >Home</Link></li>
-                            <li className="dropdown"><Link to="/">Shop<i className="fa fa-angle-down"></i></Link>
-                                <ul role="menu" className="sub-menu">
-                                    <li><Link to="/">Products</Link></li>
-                                    <li><Link to="/">Product Details</Link></li>
-                                    <li><Link to="/">Checkout</Link></li>
-                                    <li><Link to="/">Cart</Link></li>
-                                    <li><Link to="/">Login</Link></li>
-                                </ul>
+                            <li className="dropdown">
+                                <Link to="/shop/0">Shop</Link>
+                                <Link to="/brands">Brands</Link>
+                                <Link to="/categories">Categories</Link>
                             </li>
                             <li className="dropdown"><Link to="/">Blog<i className="fa fa-angle-down"></i></Link>
                                 <ul role="menu" className="sub-menu">
@@ -40,7 +36,7 @@ const NavigationMenu = () => (
                 <div className="col-sm-9">
                     <div className="mainmenu pull-left">
                         <ul className="nav navbar-nav collapse navbar-collapse">
-                            <li><Link to="/product-create" >Create product</Link></li>
+                            <li><Link className='active' to="/product-create" >Create product</Link></li>
                             <li><Link to="/category-create" >Create category</Link></li>
                             <li><Link to="/brand-create" >Create brand</Link></li>
                         </ul>
