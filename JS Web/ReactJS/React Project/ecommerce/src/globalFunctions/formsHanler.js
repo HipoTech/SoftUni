@@ -13,6 +13,8 @@ const getDataFromForm = (event, element) => {
     } else {
         element[name] = event.target.value
     }
+    console.log(element[name]);
+
 }
 
 export {

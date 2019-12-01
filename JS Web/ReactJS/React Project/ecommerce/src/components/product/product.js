@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FeatureItems = (props) => {
+const Product = (props) => {
     const product = props.product;
     return <div key={product.webId} className="col-sm-4">
         <div className="product-image-wrapper">
@@ -36,4 +36,4 @@ const FeatureItems = (props) => {
     </div>
 }
 
-export default FeatureItems;
+export default Product;

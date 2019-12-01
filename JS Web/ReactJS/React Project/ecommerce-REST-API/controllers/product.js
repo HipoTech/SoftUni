@@ -25,22 +25,26 @@ module.exports = {
                 webId,
                 price,
                 imageUrl,
-                availability,
-                featuredItem,
                 condition,
+                description,
                 brand,
                 category,
+                availability,
+                featuredItem,
+                recommended,
             } = req.body;
             const newProduct = {
                 title,
                 webId,
                 price,
                 imageUrl,
-                availability,
-                featuredItem,
                 condition,
+                description,
                 brand,
                 category,
+                availability,
+                featuredItem,
+                recommended,
             }
             models.Product.create(newProduct)
                 .then((result) => {

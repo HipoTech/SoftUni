@@ -7,6 +7,8 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './components/pages/home/home';
 import Shop from './components/pages/shop/shop';
+import CategoryPage from './components/pages/categories/categoryPage/categoryPage';
+import BrandPage from './components/pages/brands/brandPage/brandPage';
 import UserCotrol from './components/user/loginOrRegister/UserCotrol';
 import Slider from './components/slider/slider';
 import ProductDetails from './components/pages/products/details/details';
@@ -35,6 +37,8 @@ function App() {
               <Route path='/' exact component={Home} />
               <Route path='/home' exact component={Home} />
               <Route path='/shop/:page' exact component={Shop} />
+              <Route path='/categories' exact component={CategoryPage} />
+              <Route path='/brands' exact component={BrandPage} />
               <Route path='/product-details/:id' exact component={ProductDetails} />
               <Route path='/product-create' exact component={CreateProduct} />
               <Route path='/brand-create' exact component={CreateBrand} />

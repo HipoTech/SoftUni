@@ -12,7 +12,11 @@ const NavigationMenu = () => (
                             <li><Link to="/" >Home</Link></li>
                             <li className="dropdown">
                                 <Link to="/shop/0">Shop</Link>
+                            </li>
+                            <li className="dropdown">
                                 <Link to="/brands">Brands</Link>
+                            </li>
+                            <li className="dropdown">
                                 <Link to="/categories">Categories</Link>
                             </li>
                             <li className="dropdown"><Link to="/">Blog<i className="fa fa-angle-down"></i></Link>

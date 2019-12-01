@@ -20,7 +20,18 @@ const productSchema = new Schema({
         type: Number,
         required: true,
     },
+
+    description: {
+        type: String,
+        required: true,
+    },
+
     imageUrl: {
+        type: String,
+        required: true,
+    },
+
+    condition: {
         type: String,
         required: true,
     },
@@ -39,9 +50,10 @@ const productSchema = new Schema({
 
     },
 
-    condition: {
-        type: String,
+    recommended: {
+        type: Boolean,
         required: true,
+        default: false,
     },
 
     brand: {

@@ -26,8 +26,10 @@ class CreateProduct extends Component {
         webId: '',
         price: '',
         imageUrl: '',
+        description: '',
         availability: false,
         featuredItem: false,
+        recommended: false,
         condition: '',
         category: '',
         brand: '',
@@ -78,6 +80,10 @@ class CreateProduct extends Component {
             condition: yup
                 .string()
                 .required('Please enter a condition!'),
+            description: yup
+                .string()
+                .required('Please enter a description!')
+                .test('length', 'The description must be more than 5 characters', val => val.length >= 5),
         });
 
         productForm.validate({
@@ -86,8 +92,16 @@ class CreateProduct extends Component {
             price: this.product.price,
             imageUrl: this.product.imageUrl,
             condition: this.product.condition,
-        }).then(isValid => this.sendProduct())
-            .catch((err) => console.log(err))
+            description: this.product.description,
+        })
+            .then(isValid => this.sendProduct())
+            .catch(error => {
+                this.setState({
+                    gotError: true,
+                    showError: true,
+                    message: error.message
+                });
+            });
     }
 
     serverErrorHandler = (err) => {
@@ -111,8 +125,10 @@ class CreateProduct extends Component {
             webId: '',
             price: '',
             imageUrl: '',
+            description: '',
             availability: false,
             featuredItem: false,
+            recommended: false,
             condition: '',
         }
     }
@@ -180,6 +196,7 @@ class CreateProduct extends Component {
                             <span>No categories available! Please create a category!</span>
                         </Fragment>
                     }
+                    <textarea onChange={this.getRegisterData} name='description'></textarea>
                     <span className="checkboxConteiner">
                         <input type="checkbox" onChange={this.getRegisterData} autoComplete="off" className="checkbox" name="availability" />
                         Product is available
@@ -187,6 +204,10 @@ class CreateProduct extends Component {
                     <span className="checkboxConteiner">
                         <input type="checkbox" onChange={this.getRegisterData} autoComplete="off" className="checkbox" name="featuredItem" />
                         Product is featured
+                    </span>
+                    <span className="checkboxConteiner">
+                        <input type="checkbox" onChange={this.getRegisterData} autoComplete="off" className="checkbox" name="recommended" />
+                        Product is recommended
                     </span>
                     <button type="button" id="upload_widget" onClick={this.showClaudinaryWidget} className="cloudinary-button">Upload files</button>
                     <button type="submit" className="btn btn-default">Create</button>

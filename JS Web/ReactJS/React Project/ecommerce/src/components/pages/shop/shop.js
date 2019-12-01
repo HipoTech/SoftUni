@@ -18,14 +18,14 @@ class Shop extends Component {
     }
 
     componentDidMount() {
-        const currentPage = this.props.match.params.page;
         getAllProducts()
             .then(response => {
                 this.setState({
                     isLoading: false,
                     products: response
                 })
-            }).then(() => {
+            })
+            .then(() => {
                 const allPages = this.split(this.state.products);
                 this.setState({
                     pages: allPages
@@ -50,12 +50,6 @@ class Shop extends Component {
         return pages;
     }
 
-    changePage = () => {
-        this.setState({
-            page: this.props.match.params.page,
-        })
-    }
-
     render() {
         const currentPage = this.props.match.params.page;
 
@@ -65,7 +59,7 @@ class Shop extends Component {
                 <Loader /> :
                 <div className="col-sm-9 padding-right">
                     <div className="features_items">
-                        <h2 className="title text-center">Features Items</h2>
+                        <h2 className="title text-center">All products:</h2>
                         {this.state.pages.length !== 0 && this.state.pages[currentPage].map(product => <Product key={product.webId} product={product} />)}
                         <ul className="pagination">
                             {this.state.pages.length !== 0 ? this.state.pages.map((page, index) => {
@@ -73,9 +67,13 @@ class Shop extends Component {
                                     <Link to={`/shop/${index}`}>{index + 1}</Link>
                                 </li>
                             }) :
-                                <li className='active'>
-                                    <Link to={`/shop/0`}>1</Link>
-                                </li>
+                                <Fragment>
+                                    <span>NO PRODUCTS TO SHOW! PLEASE CREATE A PRODUCT.</span>
+                                    <br />
+                                    <li className='active'>
+                                        <Link to={`/shop/0`}>1</Link>
+                                    </li>
+                                </Fragment>
                             }
                         </ul>
                     </div>
