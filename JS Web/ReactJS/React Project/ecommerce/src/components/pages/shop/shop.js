@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import SidebarLeft from '../../sidebar-left/sidebar-left';
 import Loader from '../../propmts/loader/loader';
@@ -13,21 +13,28 @@ class Shop extends Component {
     state = {
         isLoading: true,
         products: [],
+        pages: [],
+        page: 1,
     }
 
     componentDidMount() {
+        const currentPage = this.props.match.params.page;
         getAllProducts()
             .then(response => {
                 this.setState({
                     isLoading: false,
                     products: response
                 })
+            }).then(() => {
+                const allPages = this.split(this.state.products);
+                this.setState({
+                    pages: allPages
+                })
             })
-
     }
 
     split = (arey) => {
-        const elements = arey;
+        const elements = arey.map(e => e);
         const pages = [];
         let chunk = [];
         while (elements.length !== 0) {
@@ -43,25 +50,33 @@ class Shop extends Component {
         return pages;
     }
 
+    changePage = () => {
+        this.setState({
+            page: this.props.match.params.page,
+        })
+    }
 
     render() {
-        const products = this.state.products;
-        const pages = this.split(products);
         const currentPage = this.props.match.params.page;
-        console.log(pages[currentPage]);
-        console.log(currentPage);
 
         return <Fragment>
             <SidebarLeft />
             {this.state.isLoading ?
                 <Loader /> :
-
                 <div className="col-sm-9 padding-right">
                     <div className="features_items">
                         <h2 className="title text-center">Features Items</h2>
-                        {pages[currentPage].map(product => <Product key={product.webId} product={product} />)}
+                        {this.state.pages.length !== 0 && this.state.pages[currentPage].map(product => <Product key={product.webId} product={product} />)}
                         <ul className="pagination">
-                            {pages.map((page, index) => <li key={index} ><a href={`/shop/${index}`}>{index + 1}</a></li>)}
+                            {this.state.pages.length !== 0 ? this.state.pages.map((page, index) => {
+                                return <li key={index} className={+currentPage === index ? 'active' : null} >
+                                    <Link to={`/shop/${index}`}>{index + 1}</Link>
+                                </li>
+                            }) :
+                                <li className='active'>
+                                    <Link to={`/shop/0`}>1</Link>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
