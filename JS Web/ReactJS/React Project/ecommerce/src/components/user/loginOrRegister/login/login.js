@@ -17,6 +17,7 @@ class Login extends Component {
     user = {
         userName: '',
         password: '',
+        staySignedIn: false,
     }
 
     getRegisterData = (event) => getDataFromForm(event, this.user)
@@ -75,20 +76,15 @@ class Login extends Component {
         this.user = {
             userName: '',
             password: '',
+            staySignedIn: false,
         }
-    }
-
-    resetUser = (btn) => {
-        const password = btn.previousElementSibling;
-        const userName = password.previousElementSibling;
-        userName.value = '';
-        password.value = '';
     }
 
     submit = (event) => {
         event.preventDefault();
-        // const btn = event.target;
-        // const staySignedIn = btn.nextElementSibling.firstElementChild;
+        const btn = event.target;
+        const staySignedInBoolian = btn.lastElementChild.firstElementChild.checked;
+        this.user.staySignedIn = staySignedInBoolian;
         this.validateInput();
     }
 

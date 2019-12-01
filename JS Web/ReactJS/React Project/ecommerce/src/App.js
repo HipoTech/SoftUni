@@ -19,9 +19,9 @@ import notFound from './components/pages/notFound/notFound';
 
 function App() {
   const cookie = Cookies.get('ecom-user-info');
-  const userData = {}
+  let userData = {}
   if (cookie) {
-    userData = JSON.parse()
+    userData = JSON.parse(cookie).user
     console.log(userData);
   }
 

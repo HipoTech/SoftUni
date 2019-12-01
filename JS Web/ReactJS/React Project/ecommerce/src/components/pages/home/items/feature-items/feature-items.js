@@ -13,7 +13,7 @@ const FeatureItems = (props) => {
         </div>
     } else {
         return <div className="features_items">
-            <h2 className="title text-center">No products to show! Please create a product.</h2>
+            <h2 className="title text-center">No feature products to show!</h2>
         </div>
     }
 }

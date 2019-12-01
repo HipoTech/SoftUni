@@ -49,14 +49,27 @@ module.exports = {
             models.Product.create(newProduct)
                 .then((result) => {
                     const productId = result._id;
-                    models.Category.updateOne(
-                        { _id: newProduct.category },
-                        { $push: { products: productId } }
-                    ).catch(err => console.log(err))
-                    models.Brand.updateOne(
-                        { _id: newProduct.brand },
-                        { $push: { products: productId } }
-                    ).catch(err => console.log(err))
+                    const productBrandId = newProduct.brand;
+                    const productCategoryId = newProduct.brand;
+                    models.Category
+                        .updateOne(
+                            { _id: newProduct.category },
+                            {
+                                $push: { products: productId },
+                                $push: { brands: productBrandId }
+                            }
+                        )
+
+                        .catch(err => console.log(err))
+                    models.Brand
+                        .updateOne(
+                            { _id: newProduct.brand },
+                            {
+                                $push: { products: productId },
+                                $push: { categories: productCategoryId }
+                            }
+                        )
+                        .catch(err => console.log(err))
                     res.status(200);
                     res.send({ newProduct })
                 })

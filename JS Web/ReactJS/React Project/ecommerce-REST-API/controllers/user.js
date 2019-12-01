@@ -29,7 +29,9 @@ module.exports = {
                 })
         },
         login: (req, res, next) => {
-            const { userName, password } = req.body;
+            const { userName, password, staySignedIn } = req.body;
+            console.log(`stay sined in: ${staySignedIn}`);
+
             models.User.findOne({ userName: { $eq: userName } })
                 .then((user) => {
                     Promise.all([user, user.matchPassword(password)])
@@ -40,13 +42,9 @@ module.exports = {
                                 return;
                             }
                             const token = jwt.createToken({ id: user._id });
-
                             res.cookie(config.cookie, token)
                             res.cookie('ecom-user-info', JSON.stringify({
-                                userName: user.userName,
-                                email: user.email,
-                                imageUrl: user.umageUrl,
-                                isAdmin: user.isAdmin,
+                                user
                             }))
                                 .sendStatus(200)
                         })

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 
@@ -181,7 +182,8 @@ class CreateProduct extends Component {
                         :
                         <Fragment>
                             <br />
-                            <span>No brands available! Please create a brand!</span>
+                            <span>No brands available! Please create a <Link to="/brand-create">brand</Link>!</span>
+                            <br />
                         </Fragment>
                     }
                     <label>Category:</label>
@@ -199,7 +201,8 @@ class CreateProduct extends Component {
                         :
                         <Fragment>
                             <br />
-                            <span>No categories available! Please create a category!</span>
+                            <span>No categories available! Please create a <Link to="/category-create">category</Link>!</span>
+                            <br />
                         </Fragment>
                     }
                     <label>Description:</label>

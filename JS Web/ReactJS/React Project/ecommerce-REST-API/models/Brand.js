@@ -21,6 +21,13 @@ const brandSchema = new Schema({
         ref: 'Product'
         // unique: true,
     }],
+
+    categories: [{
+        type: ObjectId,
+        ref: 'Product'
+        // unique: true,
+    }],
+
 });
 
 module.exports = new Model('Brand', brandSchema);
