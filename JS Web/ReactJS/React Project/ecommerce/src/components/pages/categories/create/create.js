@@ -106,6 +106,7 @@ class CreateCategory extends Component {
             <div className="product-create-form">
                 <form id="myform" onSubmit={this.submit}>
                     <Error showError={this.state.showError} message={this.state.message} title='Create new category:' />
+                    <label>Name:</label>
                     <input type="text" onChange={this.getRegisterData} autoComplete="on" name="name" placeholder="Category name" />
                     <button type="button" id="upload_widget" onClick={this.showClaudinaryWidget} className="cloudinary-button">Upload files</button>
                     <button type="submit" className="btn btn-default">Create</button>

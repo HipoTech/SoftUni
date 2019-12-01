@@ -158,10 +158,15 @@ class CreateProduct extends Component {
             <div className="product-create-form">
                 <form id="myform" onSubmit={this.submit}>
                     <Error showError={this.state.showError} message={this.state.message} title='Create new product:' />
+                    <label>Name:</label>
                     <input type="text" onChange={this.getRegisterData} autoComplete="on" name="title" placeholder="Product title" />
+                    <label>Art. number:</label>
                     <input type="number" min="0" onChange={this.getRegisterData} autoComplete="on" name="webId" placeholder="Product ID number" />
+                    <label>Price:</label>
                     <input type="number" min="0" onChange={this.getRegisterData} autoComplete="on" name="price" placeholder="Product price $" />
+                    <label>Condition:</label>
                     <input type="text" onChange={this.getRegisterData} autoComplete="on" name="condition" placeholder="Product condition" />
+                    <label>Brand:</label>
                     {this.state.brands.length > 0 ?
                         <select defaultValue="defaut" name="brand" onChange={this.getRegisterData}>
                             <option value="defaut" disabled>
@@ -179,6 +184,7 @@ class CreateProduct extends Component {
                             <span>No brands available! Please create a brand!</span>
                         </Fragment>
                     }
+                    <label>Category:</label>
                     {this.state.categories.length > 0 ?
                         <select defaultValue="defaut" name="category" onChange={this.getRegisterData}>
                             <option value="defaut" disabled>
@@ -196,6 +202,7 @@ class CreateProduct extends Component {
                             <span>No categories available! Please create a category!</span>
                         </Fragment>
                     }
+                    <label>Description:</label>
                     <textarea onChange={this.getRegisterData} name='description'></textarea>
                     <span className="checkboxConteiner">
                         <input type="checkbox" onChange={this.getRegisterData} autoComplete="off" className="checkbox" name="availability" />
