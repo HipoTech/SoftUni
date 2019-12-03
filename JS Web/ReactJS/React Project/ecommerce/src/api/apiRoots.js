@@ -11,6 +11,7 @@ export default {
     productCreate: 'http://localhost:8080/api/products/create',
     productGetAll: 'http://localhost:8080/api/products/getAll',
     productGetOne: 'http://localhost:8080/api/products/getOne',
+    productEditOne: 'http://localhost:8080/api/products/edit',
 
     //Category
     categoryCreate: 'http://localhost:8080/api/categories/create',

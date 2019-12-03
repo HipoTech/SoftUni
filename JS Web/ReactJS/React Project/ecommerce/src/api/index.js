@@ -18,8 +18,8 @@ const post = (route, data) => {
 const get = (route) => {
     return api(route, 'GET')
 }
-const put = (route) => {
-    return api(route, 'PUT')
+const put = (route, data) => {
+    return api(route, 'PUT', data)
 }
 const _delete = (route) => {
     return api(route, 'DELETE')
@@ -37,6 +37,9 @@ const logInUser = (user) => {
 // Product
 const createProduct = (product) => {
     return post(route.productCreate, product)
+}
+const editProduct = (product) => {
+    return put(route.productEditOne, product)
 }
 const getAllProducts = () => {
     return get(route.productGetAll).then(res => res.json())
@@ -81,5 +84,6 @@ export {
     createBrand,
     getAllBrands,
     getOneBrand,
+    editProduct,
 
 }

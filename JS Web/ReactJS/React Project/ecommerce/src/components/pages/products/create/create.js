@@ -1,17 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
-
 import {
     createProduct,
     getAllCategories,
-    getAllBrands
+    getAllBrands,
 } from '../../../../api';
 import Error from '../../../propmts/error/error';
 import { getDataFromForm } from '../../../../globalFunctions/formsHanler'
-
-import './create.css';
 
 class CreateProduct extends Component {
     state = {

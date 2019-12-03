@@ -5,7 +5,7 @@ import './create.css';
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 const { Component } = React;
 
-class CreateCategory extends Component {
+class CategoryCreate extends Component {
     state = {
         showError: false,
         gotError: true,
@@ -116,4 +116,4 @@ class CreateCategory extends Component {
     }
 }
 
-export default CreateCategory;
+export default CategoryCreate;

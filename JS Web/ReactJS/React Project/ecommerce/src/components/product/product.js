@@ -23,6 +23,14 @@ const Product = (props) => {
                             <Link to={`/product-details/${product._id}`} className="btn btn-default add-to-cart">
                                 <i className="fa fa-info-circle"></i>Product Info</Link>
                         </h2>
+                        <h2>
+                            <Link to={`/product-edit/${product._id}`} className="btn btn-default add-to-cart">
+                                <i className="fa fa-edit"></i>Product edit</Link>
+                        </h2>
+                        <h2>
+                            <Link to={`/product-edit/${product._id}`} className="btn btn-default add-to-cart">
+                                <i className="fa fa-trash"></i>Product delete</Link>
+                        </h2>
                     </div>
                 </div>
             </div>

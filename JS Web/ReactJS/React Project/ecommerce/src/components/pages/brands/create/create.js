@@ -5,7 +5,7 @@ import './create.css';
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 const { Component } = React;
 
-class CreateBrand extends Component {
+class BrandCreate extends Component {
     state = {
         showError: false,
         gotError: true,
@@ -113,4 +113,4 @@ class CreateBrand extends Component {
     }
 }
 
-export default CreateBrand;
+export default BrandCreate;

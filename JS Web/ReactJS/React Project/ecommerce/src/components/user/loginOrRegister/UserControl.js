@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './login/login';
 import Register from './register/register';
-import './UserCotrol.css';
+import './UserControl.css';
 const { Component, Fragment } = React;
 
 class UserCotrol extends Component {
