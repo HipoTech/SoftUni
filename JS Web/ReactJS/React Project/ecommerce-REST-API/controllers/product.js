@@ -159,5 +159,42 @@ module.exports = {
                     res.send(err)
                 })
         },
+    },
+
+    delete: {
+        deleteProduct: (req, res, next) => {
+            const {
+                webId,
+                brand,
+                category,
+            } = req.body;
+            models.Product.findOneAndDelete({ webId: webId })
+                .then((result) => {
+                    const productId = result._id;
+                    models.Category
+                        .updateOne(
+                            { _id: category },
+                            {
+                                $pull: { products: productId },
+                            }
+                        )
+
+                        .catch(err => console.log(err))
+                    models.Brand
+                        .updateOne(
+                            { _id: brand },
+                            {
+                                $pull: { products: productId },
+                            }
+                        )
+                        .catch(err => console.log(err))
+                    res.status(200);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(409)
+                    res.send(err)
+                })
+        }
     }
 };

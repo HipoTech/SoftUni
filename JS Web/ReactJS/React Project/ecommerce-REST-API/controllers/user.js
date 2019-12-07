@@ -8,8 +8,15 @@ module.exports = {
             console.log(req.params);
         },
         logout: (req, res, next) => {
-            res.clearCookie(config.cookie)
-                .redirect('/');
+            res.clearCookie(config.cookie).send('Logout successfully!');
+        },
+
+        auth: (req, res) => {
+            const token = req.cookies[config.cookie];
+            jwt.verifyToken(token)
+                .then(({ id }) => models.User.findById(id))
+                .then(user => { res.send(user) })
+                .catch(() => res.status(401).send('HELLO!'));
         },
     },
 
@@ -29,8 +36,8 @@ module.exports = {
                 })
         },
         login: (req, res, next) => {
-            const { userName, password, staySignedIn } = req.body;
-            console.log(`stay sined in: ${staySignedIn}`);
+            const { userName, password } = req.body;
+            // console.log(`stay sined in: ${staySignedIn}`);
 
             models.User.findOne({ userName: { $eq: userName } })
                 .then((user) => {
@@ -42,11 +49,14 @@ module.exports = {
                                 return;
                             }
                             const token = jwt.createToken({ id: user._id });
+                            const userForFrontEnd = {
+                                userName: user.userName,
+                            }
+                            console.log(userForFrontEnd);
+
                             res.cookie(config.cookie, token)
-                            res.cookie('ecom-user-info', JSON.stringify({
-                                user
-                            }))
-                                .sendStatus(200)
+                                .cookie('ecom-user-info', JSON.stringify({ user }))
+                                .send(user)
                         })
                 }).catch(err => {
                     console.log(err);
@@ -54,6 +64,8 @@ module.exports = {
                     res.send({ message: 'Wrong username or password!', });
                 })
         },
+
+
 
     }
 };

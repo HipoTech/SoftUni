@@ -43,5 +43,40 @@ module.exports = {
                     res.send(err)
                 })
         },
+    },
+
+    put: {
+        edit: (req, res, next) => {
+            const { name, imageUrl, products = [] } = req.body;
+            const newCategory = { name, imageUrl, products };
+            models.Category.updateOne({ name: newCategory.name }, { ...newCategory })
+                .then((result) => {
+                    console.log(req.body);
+                    res.status(200);
+                    res.send({ newCategory })
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(409)
+                    res.send(err)
+                })
+        },
+    },
+
+    delete: {
+        deleteCategory: (req, res, next) => {
+            const {
+                name,
+            } = req.body;
+            models.Category.findOneAndDelete({ name: name })
+                .then((result) => {
+                    res.status(200);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(409)
+                    res.send(err)
+                })
+        }
     }
 };

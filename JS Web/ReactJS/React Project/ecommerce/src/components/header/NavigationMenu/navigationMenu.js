@@ -6,17 +6,9 @@ class NavigationMenu extends Component {
     constructor(props) {
         super(props)
     }
-    activate = (e) => {
-        e.target.className = "active"
-        console.log(e.target);
-
-    }
-
 
     render() {
         const currentPage = this.props;
-        console.log(currentPage);
-
         return <div className="header-bottom">
             <div className="container">
                 <div className="row">

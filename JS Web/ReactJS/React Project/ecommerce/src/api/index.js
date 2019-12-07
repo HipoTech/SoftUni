@@ -21,8 +21,8 @@ const get = (route) => {
 const put = (route, data) => {
     return api(route, 'PUT', data)
 }
-const _delete = (route) => {
-    return api(route, 'DELETE')
+const _delete = (route, data) => {
+    return api(route, 'DELETE', data)
 }
 // Services
 
@@ -32,6 +32,10 @@ const registerUser = (user) => {
 }
 const logInUser = (user) => {
     return post(route.userLogIn, user)
+        .then(res => res.status === 200 ? res.json() : res.text())
+}
+const logOutUser = () => {
+    return get(route.userLogOut)
 }
 
 // Product
@@ -40,6 +44,9 @@ const createProduct = (product) => {
 }
 const editProduct = (product) => {
     return put(route.productEditOne, product)
+}
+const deleteProduct = (product) => {
+    return _delete(route.productDeleteOne, product)
 }
 const getAllProducts = () => {
     return get(route.productGetAll).then(res => res.json())
@@ -52,6 +59,12 @@ const getOneProduct = (product) => {
 const createCategory = (category) => {
     return post(route.categoryCreate, category)
 }
+const editCategory = (category) => {
+    return put(route.categoryEditOne, category)
+}
+const deleteCategory = (category) => {
+    return _delete(route.categoryDeleteOne, category)
+}
 const getAllCategories = () => {
     return get(route.categoryGetAll).then(res => res.json())
 }
@@ -62,6 +75,12 @@ const getOneCategory = (category) => {
 // Brand
 const createBrand = (brand) => {
     return post(route.brandCreate, brand)
+}
+const editBrand = (brand) => {
+    return put(route.brandEditOne, brand)
+}
+const deleteBrand = (brand) => {
+    return _delete(route.brandDeleteOne, brand)
 }
 const getAllBrands = () => {
     return get(route.brandGetAll).then(res => res.json())
@@ -85,5 +104,11 @@ export {
     getAllBrands,
     getOneBrand,
     editProduct,
+    deleteProduct,
+    editCategory,
+    deleteCategory,
+    editBrand,
+    deleteBrand,
+    logOutUser,
 
 }

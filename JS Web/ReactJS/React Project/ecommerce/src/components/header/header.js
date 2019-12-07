@@ -4,10 +4,10 @@ import TopHeader from './top-header/top-header';
 import MiddleHeader from './middle-header/middle-header';
 import NavigationMenu from './NavigationMenu/navigationMenu';
 
-const Header = ({ userData }) => {
+const Header = ({ user, isLogged }) => {
     return <header id="header">
         <TopHeader />
-        <MiddleHeader userData={userData} />
+        <MiddleHeader user={user} isLogged={isLogged} />
         <NavigationMenu />
     </header>
 };

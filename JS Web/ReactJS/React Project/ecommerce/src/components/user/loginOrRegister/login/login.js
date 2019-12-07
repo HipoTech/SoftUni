@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect, useCallback } from 'react';
 import * as yup from 'yup';
+import { Redirect } from 'react-router-dom';
 
-import { logInUser } from '../../../../api';
 import Error from '../../../propmts/error/error';
 import { getDataFromForm } from '../../../../globalFunctions/formsHanler'
+import { StoreContext } from '../../../../globalFunctions/Store/Store';
+import { login } from '../../../../globalFunctions/Store/actions';
 
 import './login.css';
 
-class Login extends Component {
-    state = {
-        showError: false,
-        gotError: true,
-        message: '',
-    }
+const Login = () => {
+    const [showError, setShowError] = useState(false);
+    const [message, setMessage] = useState('');
 
-    user = {
-        userName: '',
-        password: '',
-        staySignedIn: false,
-    }
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const [staySignedIn, setStaySignedIn] = useState(false);
 
-    getRegisterData = (event) => getDataFromForm(event, this.user)
+    const { state, dispatch } = React.useContext(StoreContext);
+    const loginAction = login;
 
-    validateInput = () => {
+    const validateInput = useCallback(() => {
         const login = yup.object({
             userName: yup
                 .string()
@@ -33,79 +31,53 @@ class Login extends Component {
         });
 
         login.validate({
-            userName: this.user.userName,
-            password: this.user.password,
+            userName: userName,
+            password: password,
         })
             .then(isValid => {
-                logInUser(this.user)
-                    .then((res) => {
-                        res.ok ? this.resetForm() : this.serverErrorHandler(res.json());
-                    })
-                    .catch((err) => console.log(err));
-                this.setState({
-                    gotError: false,
-                    showError: false,
-                    message: 'No error to show!'
-                });
+                dispatch(loginAction(isValid))
             })
             .catch(error => {
-                this.setState({
-                    gotError: true,
-                    showError: true,
-                    message: error.message
-                });
+                console.log(error);
+                setShowError(true);
+                setMessage(error.message);
             });
-    }
+    }, [userName, password, dispatch])
 
-    serverErrorHandler = (err) => {
+    const serverErrorHandler = (err) => {
         err.then(err => {
             if (err.message) {
-                this.setState({
-                    gotError: true,
-                    showError: true,
-                    message: `${err.message}`
-                })
+                setShowError(true);
+                setMessage(`${err.message}`);
                 return;
             }
             console.log(err);
         })
     }
 
-    resetForm = () => {
-        document.getElementById('myform').reset();
-        this.user = {
-            userName: '',
-            password: '',
-            staySignedIn: false,
-        }
-    }
-
-    submit = (event) => {
+    const submit = (event) => {
         event.preventDefault();
         const btn = event.target;
         const staySignedInBoolian = btn.lastElementChild.firstElementChild.checked;
-        this.user.staySignedIn = staySignedInBoolian;
-        this.validateInput();
+        setStaySignedIn(staySignedInBoolian)
+        validateInput();
     }
 
-    render() {
-
-        return <div className="col-sm-4 col-sm-offset-1">
-            <div className="login-form">
-                <form id="myform" onSubmit={this.submit}>
-                    <Error showError={this.state.showError} message={this.state.message} title='Login:' />
-                    <input type="text" onChange={this.getRegisterData} autoComplete="on" name="userName" placeholder="Name" />
-                    <input type="password" onChange={this.getRegisterData} autoComplete="off" name="password" placeholder="Password" />
-                    <button type="submit" className="btn btn-default">Login</button>
-                    <span>
-                        <input name="staySignedIn" autoComplete="off" type="checkbox" className="checkbox" />
-                        Keep me signed in
+    return <div className="col-sm-4 col-sm-offset-1">
+        <div className="login-form">
+            <form id="myform" onSubmit={submit}>
+                <Error showError={showError} message={message} title='Login:' />
+                <input type="text" onChange={(e) => setUserName(e.target.value)} autoComplete="on" name="userName" placeholder="Name" />
+                <input type="password" onChange={(e) => setPassword(e.target.value)} autoComplete="off" name="password" placeholder="Password" />
+                <button type="submit" className="btn btn-default">Login</button>
+                <span>
+                    <input name="staySignedIn" autoComplete="off" type="checkbox" className="checkbox" />
+                    Keep me signed in
                     </span>
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
 
-    }
 }
 
 export default Login;

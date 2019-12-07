@@ -14,11 +14,13 @@ const Brand = (props) => {
                     <div className="overlay-content">
                         <h2>${brand.price}</h2>
                         <p>{brand.title}</p>
-                        <Link to="/" className="btn btn-default add-to-cart"><i
-                            className="fa fa-shopping-cart"></i>Add to cart</Link>
                         <h2>
-                            <Link to={`/product-details/${brand._id}`} className="btn btn-default add-to-cart">
-                                <i className="fa fa-info-circle"></i>Product Info</Link>
+                            <Link to={`/brand-edit/${brand._id}`} className="btn btn-default add-to-cart">
+                                <i className="fa fa-edit"></i>Brand edit</Link>
+                        </h2>
+                        <h2>
+                            <Link className='deleteBtn' to={`/brand-delete/${brand._id}`} className="btn btn-default add-to-cart">
+                                <i className="fa fa-trash"></i>Brand delete</Link>
                         </h2>
                     </div>
                 </div>

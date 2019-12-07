@@ -11,6 +11,8 @@ router.post('/login', controllers.user.post.login);
 // // Logout
 router.get('/logout', controllers.user.get.logout);
 
+router.get('/auth', controllers.user.get.auth);
+
 // router.get('/details/:id',auth(), controllers.user.get.details);
 
 // router.post('/refill', auth(), controllers.user.post.refill);

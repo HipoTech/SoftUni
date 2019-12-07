@@ -14,11 +14,13 @@ const Category = (props) => {
                     <div className="overlay-content">
                         <h2>${category.price}</h2>
                         <p>{category.title}</p>
-                        <Link to="/" className="btn btn-default add-to-cart"><i
-                            className="fa fa-shopping-cart"></i>Add to cart</Link>
                         <h2>
-                            <Link to={`/product-details/${category._id}`} className="btn btn-default add-to-cart">
-                                <i className="fa fa-info-circle"></i>Product Info</Link>
+                            <Link to={`/category-edit/${category._id}`} className="btn btn-default add-to-cart">
+                                <i className="fa fa-edit"></i>Category edit</Link>
+                        </h2>
+                        <h2>
+                            <Link className='deleteBtn' to={`/category-delete/${category._id}`} className="btn btn-default add-to-cart">
+                                <i className="fa fa-trash"></i>Category delete</Link>
                         </h2>
                     </div>
                 </div>

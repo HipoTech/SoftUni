@@ -28,7 +28,7 @@ const Product = (props) => {
                                 <i className="fa fa-edit"></i>Product edit</Link>
                         </h2>
                         <h2>
-                            <Link to={`/product-edit/${product._id}`} className="btn btn-default add-to-cart">
+                            <Link className='deleteBtn' to={`/product-delete/${product._id}`} className="btn btn-default add-to-cart">
                                 <i className="fa fa-trash"></i>Product delete</Link>
                         </h2>
                     </div>

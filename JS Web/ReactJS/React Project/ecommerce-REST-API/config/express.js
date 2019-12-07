@@ -25,6 +25,7 @@ module.exports = (app) => {
         res.header("Access-Control-Allow-Credentials", true); // update to match the domain you will make the request from
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.header("Access-Control-Allow-Methods", "PUT");
+        res.header("Access-Control-Allow-Methods", "DELETE");
         next();
     });
 

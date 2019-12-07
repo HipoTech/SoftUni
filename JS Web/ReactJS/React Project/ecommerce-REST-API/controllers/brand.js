@@ -20,13 +20,13 @@ module.exports = {
     post: {
         create: (req, res, next) => {
             const { name, imageUrl, products = [] } = req.body;
-            const newProduct = { name, imageUrl, products }
-            console.log(newProduct);
+            const newBrand = { name, imageUrl, products };
+            console.log(newBrand);
 
-            models.Brand.create(newProduct)
+            models.Brand.create(newBrand)
                 .then(() => {
                     res.status(200);
-                    res.send({ newProduct })
+                    res.send({ newBrand })
                 })
                 .catch(err => {
                     res.status(409)
@@ -45,5 +45,40 @@ module.exports = {
                     res.send(err)
                 })
         },
+    },
+
+    put: {
+        edit: (req, res, next) => {
+            const { name, imageUrl, products = [] } = req.body;
+            const newBrand = { name, imageUrl, products };
+            models.Brand.updateOne({ name: newBrand.name }, { ...newBrand })
+                .then((result) => {
+                    console.log(req.body);
+                    res.status(200);
+                    res.send({ newProduct })
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(409)
+                    res.send(err)
+                })
+        },
+    },
+
+    delete: {
+        deleteBrand: (req, res, next) => {
+            const {
+                name,
+            } = req.body;
+            models.Brand.findOneAndDelete({ name: name })
+                .then((result) => {
+                    res.status(200);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(409)
+                    res.send(err)
+                })
+        }
     }
 };
