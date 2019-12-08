@@ -24,6 +24,16 @@ Back-End uses http://localhost:8080
     "react-test-renderer": "^16.12.0",
     "yup": "^0.27.0"
 
+## Public pages:
+Home, Shop, Categories, Brands
+
+## User pages:
+Create product
+Create brand
+Create category
+Edit product
+Delete product
+
 ## Available Scripts
 
 In the project directory, you can run:
