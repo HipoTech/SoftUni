@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Befor starting please download run the back-end for the app:
+## Befor starting please download and run the back-end for the app:
 https://github.com/HipoTech/SoftUni/tree/master/JS%20Web/ReactJS/React%20Project/ecommerce-REST-API
 use npm install and npm start to run it.
 
