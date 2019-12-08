@@ -12,10 +12,6 @@ import { getDataFromForm } from '../../../../globalFunctions/formsHanler'
 import './edit.css';
 
 class ProductEdit extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     state = {
         isLoading: true,
         product: {},

@@ -2,18 +2,16 @@ import React from 'react';
 import Login from './login/login';
 import Register from './register/register';
 import './UserControl.css';
-const { Component, Fragment } = React;
+const { Fragment } = React;
 
-class UserCotrol extends Component {
-    render() {
-        return <Fragment>
-            <Login />
-            <div className="col-sm-1">
-                <h2 className="or">OR</h2>
-            </div>
-            <Register />
-        </Fragment>
-    }
+const UserCotrol = ({ hasError }) => {
+    return <Fragment>
+        <Login hasError={hasError} />
+        <div className="col-sm-1">
+            <h2 className="or">OR</h2>
+        </div>
+        <Register />
+    </Fragment>
 }
 
 export default UserCotrol;

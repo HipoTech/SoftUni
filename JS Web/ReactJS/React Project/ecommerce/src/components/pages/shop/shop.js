@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import SidebarLeft from '../../sidebar-left/sidebar-left';
 import Loader from '../../propmts/loader/loader';
@@ -7,9 +7,6 @@ import Product from '../../../components/product/product';
 import { getAllProducts } from '../../../api';
 
 class Shop extends Component {
-    constructor(props) {
-        super(props)
-    }
     state = {
         isLoading: true,
         products: [],

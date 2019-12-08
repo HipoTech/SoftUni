@@ -1,5 +1,23 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Befor starting please download run the back-end for the app:
+https://github.com/HipoTech/SoftUni/tree/master/JS%20Web/ReactJS/React%20Project/ecommerce-REST-API
+use npm install and npm start to run it.
+
+## Project dependencies:
+    "axios": "^0.19.0",
+    "cloudinary-react": "^1.2.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "js-cookie": "^2.2.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-facebook-login": "^4.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-test-renderer": "^16.12.0",
+    "yup": "^0.27.0"
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,6 +1,5 @@
-import React, { Component, useContext, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { StoreContext } from '../../../globalFunctions/Store/Store';
 import './middle-header.css';
 
 const MiddleHeader = ({ user, isLogged }) => {

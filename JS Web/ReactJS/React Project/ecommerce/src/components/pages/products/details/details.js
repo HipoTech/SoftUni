@@ -8,10 +8,6 @@ import { getOneProduct } from '../../../../api';
 const { Fragment } = React;
 
 class ProductDetails extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     state = {
         isLoading: true,
         product: {},

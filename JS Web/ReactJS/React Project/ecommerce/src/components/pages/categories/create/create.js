@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { createCategory } from '../../../../api';
 import Error from '../../../propmts/error/error';
 import './create.css';
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
-const { Component } = React;
 
 class CategoryCreate extends Component {
     state = {

@@ -1,5 +1,5 @@
 const getDataFromForm = (event, element) => {
-    const { name, value, type, checked } = event.target;
+    const { name, type } = event.target;
     if (type === 'checkbox') {
         if (event.target.checked && event.target.value === 'on') {
             element[name] = true;

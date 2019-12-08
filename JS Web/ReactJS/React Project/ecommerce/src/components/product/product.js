@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
+
+
 const Product = (props) => {
     const product = props.product;
     return <div key={product.webId} className="col-sm-4">
@@ -28,7 +31,7 @@ const Product = (props) => {
                                 <i className="fa fa-edit"></i>Product edit</Link>
                         </h2>
                         <h2>
-                            <Link className='deleteBtn' to={`/product-delete/${product._id}`} className="btn btn-default add-to-cart">
+                            <Link to={`/product-delete/${product._id}`} className="btn btn-default add-to-cart deleteBtn">
                                 <i className="fa fa-trash"></i>Product delete</Link>
                         </h2>
                     </div>

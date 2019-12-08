@@ -32,7 +32,6 @@ const registerUser = (user) => {
 }
 const logInUser = (user) => {
     return post(route.userLogIn, user)
-        .then(res => res.status === 200 ? res.json() : res.text())
 }
 const logOutUser = () => {
     return get(route.userLogOut)

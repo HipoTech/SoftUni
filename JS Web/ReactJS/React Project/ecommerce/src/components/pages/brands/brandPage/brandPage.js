@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react';
-import { Route, Link } from "react-router-dom";
 
 import SidebarLeft from '../../../sidebar-left/sidebar-left';
 import Loader from '../../../propmts/loader/loader';

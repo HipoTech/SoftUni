@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react';
-import { Route, Link } from "react-router-dom";
 
 import SidebarLeft from '../../../sidebar-left/sidebar-left';
 import Loader from '../../../propmts/loader/loader';
@@ -7,9 +6,6 @@ import Category from '../../../category/category';
 import { getAllCategories } from '../../../../api';
 
 class CategoryPage extends Component {
-    constructor(props) {
-        super(props)
-    }
     state = {
         isLoading: true,
         categories: [],

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Brand = (props) => {
-    const brand = props.brand;
+const Brand = ({ brand }) => {
     return <div key={brand.webId} className="col-sm-4">
         <div className="product-image-wrapper">
             <div className="single-products">
@@ -19,7 +18,7 @@ const Brand = (props) => {
                                 <i className="fa fa-edit"></i>Brand edit</Link>
                         </h2>
                         <h2>
-                            <Link className='deleteBtn' to={`/brand-delete/${brand._id}`} className="btn btn-default add-to-cart">
+                            <Link to={`/brand-delete/${brand._id}`} className="btn btn-default add-to-cart deleteBtn">
                                 <i className="fa fa-trash"></i>Brand delete</Link>
                         </h2>
                     </div>

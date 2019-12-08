@@ -1,7 +1,6 @@
 import React from 'react';
 import { StoreContext } from "./Store/Store";
 import { loginSuccess } from "./Store/actions";
-import { logInUser } from '../api';
 
 const Auth = ({ children }) => {
     const { dispatch } = React.useContext(StoreContext);
@@ -14,7 +13,7 @@ const Auth = ({ children }) => {
             )
             .then(user => dispatch(loginSuccess(user)))
             .catch((err) => {
-                console.log(err);
+                console.log(`Error from server: ${err}`);
                 dispatch(loginSuccess(null));
             });
     }, []);

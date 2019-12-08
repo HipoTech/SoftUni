@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch, Redirect } from "react-router-dom";
-import Cookies from 'js-cookie';
 import Store, { StoreContext } from "./globalFunctions/Store/Store";
 import Auth from "./globalFunctions/Authenticator";
 
@@ -33,22 +32,14 @@ import CategoryCreate from './components/pages/categories/create/create';
 // import CategoryDelete from './components/pages/categories/delete/delete';
 
 function App() {
-  const cookie = Cookies.get('ecom-user-info');
-  let userData = false;
-  if (cookie) {
-    userData = JSON.parse(cookie).user
-  }
-
   return (
     < Store >
       <Auth>
         <StoreContext.Consumer>
           {({ state }) => {
             const user = state.user;
-            console.log('here');
-            console.log(state);
-
-            const isLogged = !!state.user;
+            const hasError = false;
+            let isLogged = !!state.user;
             return user === undefined
               ? <Loader />
               : <div className="App">
@@ -62,7 +53,7 @@ function App() {
                         <Route path='/' exact component={Home} />
                         <Route path='/home' exact component={Home} />
                         <Route path='/shop/:page' exact component={Shop} />
-                        <Route path='/loginOrRegister' exact component={!isLogged ? UserControl : () => <Redirect to='/' />} />
+                        <Route path='/loginOrRegister' exact component={!isLogged ? () => <UserControl hasError={hasError} /> : () => <Redirect to='/' />} />
                         <Route path='/logOut' exact component={isLogged ? LogOut : () => <Redirect to='/' />} />
                         {/* Product */}
                         <Route path='/product-create' exact component={ProductCreate} />

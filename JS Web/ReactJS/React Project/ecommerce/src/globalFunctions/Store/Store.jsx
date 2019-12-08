@@ -9,6 +9,8 @@ const initialState = {
   error: null
 };
 
+let hasError = false;
+
 function init(state) {
   return initialState;
 }
@@ -16,8 +18,17 @@ function init(state) {
 const asyncActionMap = {
   [ActionTypes.Login]:
     ({ user }) => logInUser(user)
-      .then(user => loginSuccess(user))
-      .catch(error => loginFailure(error)),
+      .then(res => {
+        if (res.status === 401) {
+          hasError = true;
+        } else {
+          hasError = false;
+        }
+        return res;
+      })
+      .then(res => res.json())
+      .then(res => hasError ? loginFailure(res) : loginSuccess(res)),
+  // .catch(error => loginFailure(error)),
   [ActionTypes.Logout]:
     () => logOutUser()
       .then(() => logoutSuccess())

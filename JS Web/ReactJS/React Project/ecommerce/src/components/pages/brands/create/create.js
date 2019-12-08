@@ -2,7 +2,6 @@ import React from 'react';
 import { createBrand } from '../../../../api';
 import Error from '../../../propmts/error/error';
 import './create.css';
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 const { Component } = React;
 
 class BrandCreate extends Component {

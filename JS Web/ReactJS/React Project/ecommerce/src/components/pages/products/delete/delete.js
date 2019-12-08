@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import * as yup from 'yup';
 import { Link } from 'react-router-dom';
 import {
     deleteProduct,
@@ -12,10 +11,6 @@ import { getDataFromForm } from '../../../../globalFunctions/formsHanler'
 import './delete.css';
 
 class ProductDelete extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     state = {
         isLoading: true,
         product: {},

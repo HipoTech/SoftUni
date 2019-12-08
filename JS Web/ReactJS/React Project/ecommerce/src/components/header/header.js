@@ -8,7 +8,7 @@ const Header = ({ user, isLogged }) => {
     return <header id="header">
         <TopHeader />
         <MiddleHeader user={user} isLogged={isLogged} />
-        <NavigationMenu />
+        <NavigationMenu isLogged={isLogged} />
     </header>
 };
 

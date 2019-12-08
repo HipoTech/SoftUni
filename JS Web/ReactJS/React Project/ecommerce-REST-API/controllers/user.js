@@ -16,7 +16,7 @@ module.exports = {
             jwt.verifyToken(token)
                 .then(({ id }) => models.User.findById(id))
                 .then(user => { res.send(user) })
-                .catch(() => res.status(401).send('HELLO!'));
+                .catch(() => res.status(401).send('Not logged in!'));
         },
     },
 
@@ -35,37 +35,36 @@ module.exports = {
                     res.send(err)
                 })
         },
+
         login: (req, res, next) => {
             const { userName, password } = req.body;
             // console.log(`stay sined in: ${staySignedIn}`);
 
             models.User.findOne({ userName: { $eq: userName } })
                 .then((user) => {
+                    if (user === null) {
+                        res.status(401).send({ error: 'Wrong username or password!' });
+                        return;
+                    }
                     Promise.all([user, user.matchPassword(password)])
                         .then(([user, match]) => {
                             if (!match) {
-                                res.status(401)
-                                res.send({ message: 'Wrong username or password!', });
+                                res.status(401).send({ error: 'Wrong username or password!' });
                                 return;
                             }
                             const token = jwt.createToken({ id: user._id });
                             const userForFrontEnd = {
                                 userName: user.userName,
                             }
-                            console.log(userForFrontEnd);
-
                             res.cookie(config.cookie, token)
-                                .cookie('ecom-user-info', JSON.stringify({ user }))
+                                // .cookie('ecom-user-info', JSON.stringify({ user }))
                                 .send(user)
                         })
                 }).catch(err => {
                     console.log(err);
                     res.status(401)
-                    res.send({ message: 'Wrong username or password!', });
+                    res.send('Wrong username or password!');
                 })
         },
-
-
-
     }
 };
