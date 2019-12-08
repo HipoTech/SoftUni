@@ -12,6 +12,7 @@ import Loader from './components/propmts/loader/loader';
 // Pages
 import Home from './components/pages/home/home';
 import Shop from './components/pages/shop/shop';
+import Contact from './components/pages/contacts/contacts';
 import UserControl from './components/user/loginOrRegister/UserControl';
 import LogOut from './components/user/loginOrRegister/logOut/logOut';
 import notFound from './components/pages/notFound/notFound';
@@ -52,6 +53,7 @@ function App() {
                       <Switch>
                         <Route path='/' exact component={Home} />
                         <Route path='/home' exact component={Home} />
+                        <Route path='/contacts' exact component={Contact} />
                         <Route path='/shop/:page' exact component={Shop} />
                         <Route path='/loginOrRegister' exact component={!isLogged ? () => <UserControl hasError={hasError} /> : () => <Redirect to='/' />} />
                         <Route path='/logOut' exact component={isLogged ? LogOut : () => <Redirect to='/' />} />

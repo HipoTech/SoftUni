@@ -22,6 +22,9 @@ const NavigationMenu = ({ isLogged }) => {
                             <li>
                                 <Link className="navLink" to="/categories">Categories</Link>
                             </li>
+                            <li>
+                                <Link className="navLink" to="/contacts">Contact us</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
