@@ -72,6 +72,8 @@ module.exports = {
             } = req.body;
             models.Brand.findOneAndDelete({ name: name })
                 .then((result) => {
+                    console.log('deleted');
+
                     res.status(200);
                 })
                 .catch(err => {

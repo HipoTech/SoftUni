@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllBrands } from '../../../api';
-import Loader from '../../../components/propmts/loader/loader';
+import { Link } from 'react-router-dom';
 
 const Brands = () => {
     const [brands, setBrands] = useState([]);
@@ -18,7 +18,7 @@ const Brands = () => {
             <ul className="nav nav-pills nav-stacked">
                 {!!brands.length
                     ? brands.map(brand => <li key={brand.name}><a href="/"> <span className="pull-right"></span>{brand.name}</a></li>)
-                    : <Loader />
+                    : <span>No brands available! Please create a <Link to="/brand-create">brand</Link>!</span>
                 }
             </ul>
         </div>

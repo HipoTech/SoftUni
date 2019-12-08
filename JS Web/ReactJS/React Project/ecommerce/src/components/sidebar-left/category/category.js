@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { getAllCategories } from '../../../api';
-import Loader from '../../../components/propmts/loader/loader';
+import { Link } from 'react-router-dom';
 
 
 const Category = () => {
@@ -22,7 +22,7 @@ const Category = () => {
                     </div>
                 </div>
                 )
-                : <Loader />
+                : <span>No categories available! Please create a <Link to="/category-create">category</Link>!</span>
             }
         </div>
     </Fragment >

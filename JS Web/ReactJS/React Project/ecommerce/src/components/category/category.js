@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StoreContext } from "../../globalFunctions/Store/Store";
+import { deleteCategory } from '../../api';
 
 const Category = (props) => {
     const { state } = React.useContext(StoreContext);
@@ -22,7 +23,7 @@ const Category = (props) => {
                                     <i className="fa fa-edit"></i>Edit {category.name}</Link>
                             </h2>
                             <h2>
-                                <Link to={`/category-delete/${category._id}`} className="btn btn-default add-to-cart deleteBtn">
+                                <Link to={`/`} onClick={() => deleteCategory(category)} className="btn btn-default add-to-cart deleteBtn">
                                     <i className="fa fa-trash"></i>Delete {category.name}</Link>
                             </h2>
                         </div>

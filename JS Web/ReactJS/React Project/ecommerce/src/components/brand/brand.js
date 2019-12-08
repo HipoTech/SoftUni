@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StoreContext } from "../../globalFunctions/Store/Store";
+import { deleteBrand } from '../../api';
 
 const Brand = ({ brand }) => {
     const { state } = React.useContext(StoreContext);
@@ -21,7 +22,7 @@ const Brand = ({ brand }) => {
                                     <i className="fa fa-edit"></i>Edit {brand.name}</Link>
                             </h2>
                             <h2>
-                                <Link to={`/brand-delete/${brand._id}`} className="btn btn-default add-to-cart deleteBtn">
+                                <Link to='/' onClick={() => deleteBrand(brand)} className="btn btn-default add-to-cart deleteBtn">
                                     <i className="fa fa-trash"></i>Delete {brand.name}</Link>
                             </h2>
                         </div>

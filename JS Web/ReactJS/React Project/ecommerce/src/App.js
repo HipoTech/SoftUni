@@ -56,21 +56,18 @@ function App() {
                         <Route path='/loginOrRegister' exact component={!isLogged ? () => <UserControl hasError={hasError} /> : () => <Redirect to='/' />} />
                         <Route path='/logOut' exact component={isLogged ? LogOut : () => <Redirect to='/' />} />
                         {/* Product */}
-                        <Route path='/product-create' exact component={ProductCreate} />
+                        <Route path='/product-create' exact component={isLogged ? ProductCreate : () => <Redirect to='/' />} />
+                        <Route path='/product-edit/:id' exact component={isLogged ? ProductEdit : () => <Redirect to='/' />} />
+                        <Route path='/product-delete/:id' exact component={isLogged ? ProductDelete : () => <Redirect to='/' />} />
                         <Route path='/product-details/:id' exact component={ProductDetails} />
-                        <Route path='/product-edit/:id' exact component={ProductEdit} />
-                        <Route path='/product-delete/:id' exact component={ProductDelete} />
                         {/* Brand */}
-                        <Route path='/brand-create' exact component={BrandCreate} />
+                        <Route path='/brand-create' exact component={isLogged ? BrandCreate : () => <Redirect to='/' />} />
                         <Route path='/brands' exact component={BrandPage} />
-                        {/* <Route path='/product-edit/:id' exact component={BrandEdit} />
-              <Route path='/product-delete/:id' exact component={BrandDelete} /> */}
+                        {/* <Route path='/product-edit/:id' exact component={BrandEdit} /> */}
                         {/* Category */}
-                        <Route path='/category-create' exact component={CategoryCreate} />
+                        <Route path='/category-create' exact component={isLogged ? CategoryCreate : () => <Redirect to='/' />} />
                         <Route path='/categories' exact component={CategoryPage} />
-                        {/* <Route path='/product-edit/:id' exact component={CategoryEdit} />
-              <Route path='/product-delete/:id' exact component={CategoryDelete} /> */}
-
+                        {/* <Route path='/product-edit/:id' exact component={CategoryEdit} /> */}
                         <Route component={notFound} />
                       </Switch>
                     </div>

@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAllProducts } from '../../api';
-import Loader from '../../components/propmts/loader/loader';
+import { Link } from 'react-router-dom';
 
 const Slider = () => {
     const [products, setProducts] = useState([]);
@@ -35,10 +35,19 @@ const Slider = () => {
                                         </div>
                                         <div className="col-sm-6">
                                             <img src={product.imageUrl} className="girl img-responsive" alt={product.name} />
-                                            <img src="images/home/pricing.png" className="pricing" alt="" />
                                         </div>
                                     </div>)
-                                : <Loader />
+                                : <div className="item active">
+                                    <div className="col-sm-6">
+                                        <h1><span>E</span>-SHOPPER</h1>
+                                        <h2>Dummy item!</h2>
+                                        <p> No products are available! Please create a <Link to="/product-create">product</Link> and make it recommended!</p>
+                                        <button type="button" className="btn btn-default get">Get it now</button>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <img src="images/home/girl1.jpg" className="girl img-responsive" alt="" />
+                                    </div>
+                                </div>
                             }
                         </div>
                         <a href="#slider-carousel" className="left control-carousel hidden-xs" data-slide="prev">

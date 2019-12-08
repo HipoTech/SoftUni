@@ -31,11 +31,12 @@ class Shop extends Component {
     }
 
     split = (arey) => {
+        const pageSize = 2;
         const elements = arey.map(e => e);
         const pages = [];
         let chunk = [];
         while (elements.length !== 0) {
-            for (let i = 0; i < 1; i++) {
+            for (let i = 0; i < pageSize; i++) {
                 const elemet = elements.shift();
                 if (elemet) {
                     chunk.push(elemet);
@@ -65,7 +66,7 @@ class Shop extends Component {
                                 </li>
                             }) :
                                 <Fragment>
-                                    <span>NO PRODUCTS TO SHOW! PLEASE CREATE A PRODUCT.</span>
+                                    <span>No products are available! Please create a <Link to="/product-create">product</Link>!</span>
                                     <br />
                                     <li className='active'>
                                         <Link to={`/shop/0`}>1</Link>
