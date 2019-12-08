@@ -25,7 +25,11 @@ Back-End uses http://localhost:8080
     "yup": "^0.27.0"
 
 ## Public pages:
-Home, Shop, Categories, Brands
+Home, 
+Shop, 
+Categories, 
+Brands,
+Contact
 
 ## User pages:
 Create product,
