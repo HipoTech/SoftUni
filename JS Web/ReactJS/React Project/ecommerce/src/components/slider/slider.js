@@ -1,8 +1,18 @@
-import React from 'react';
-import './slider.css';
+import React, { Fragment, useEffect, useState } from 'react';
+import { getAllProducts } from '../../api';
+import Loader from '../../components/propmts/loader/loader';
 
-const Slider = () => (
-    <section id="slider">
+const Slider = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        getAllProducts()
+            .then(res => setProducts(res))
+            .catch(err => console.log(err))
+    }, [])
+
+
+    return <section id="slider">
         <div className="container">
             <div className="row">
                 <div className="col-sm-12">
@@ -13,45 +23,23 @@ const Slider = () => (
                             <li data-target="#slider-carousel" data-slide-to="2"></li>
                         </ol>
                         <div className="carousel-inner">
-                            <div className="item active">
-                                <div className="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>Free E-Commerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-										incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" className="btn btn-default get">Get it now</button>
-                                </div>
-                                <div className="col-sm-6">
-                                    <img src="images/home/girl1.jpg" className="girl img-responsive" alt="" />
-                                    <img src="images/home/pricing.png" className="pricing" alt="" />
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>100% Responsive Design</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-										incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" className="btn btn-default get">Get it now</button>
-                                </div>
-                                <div className="col-sm-6">
-                                    <img src="images/home/girl2.jpg" className="girl img-responsive" alt="" />
-                                    <img src="images/home/pricing.png" className="pricing" alt="" />
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>Free Ecommerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-										incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" className="btn btn-default get">Get it now</button>
-                                </div>
-                                <div className="col-sm-6">
-                                    <img src="images/home/girl3.jpg" className="girl img-responsive" alt="" />
-                                    <img src="images/home/pricing.png" className="pricing" alt="" />
-                                </div>
-                            </div>
+                            {!!products.length
+                                ? products
+                                    .filter(product => product.recommended === true)
+                                    .map((product, index) => <div key={product.webId} className={index === 0 ? 'item active' : 'item'}>
+                                        <div className="col-sm-6">
+                                            <h1><span>E</span>-SHOPPER</h1>
+                                            <h2>{product.name}</h2>
+                                            <p>{product.description} </p>
+                                            <button type="button" className="btn btn-default get">Get it now</button>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <img src={product.imageUrl} className="girl img-responsive" alt={product.name} />
+                                            <img src="images/home/pricing.png" className="pricing" alt="" />
+                                        </div>
+                                    </div>)
+                                : <Loader />
+                            }
                         </div>
                         <a href="#slider-carousel" className="left control-carousel hidden-xs" data-slide="prev">
                             <i className="fa fa-angle-left"></i>
@@ -64,6 +52,6 @@ const Slider = () => (
             </div>
         </div>
     </section>
-);
+};
 
 export default Slider;

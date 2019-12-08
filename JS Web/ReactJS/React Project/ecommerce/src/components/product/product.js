@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-
-
+import { StoreContext } from "../../globalFunctions/Store/Store";
 
 
 const Product = (props) => {
+    const { state } = React.useContext(StoreContext);
+    const isLoggedIn = !!state.user;
     const product = props.product;
+
+
     return <div key={product.webId} className="col-sm-4">
         <div className="product-image-wrapper">
             <div className="single-products">
@@ -22,18 +25,23 @@ const Product = (props) => {
                         <p>{product.title}</p>
                         <Link to="/" className="btn btn-default add-to-cart"><i
                             className="fa fa-shopping-cart"></i>Add to cart</Link>
-                        <h2>
-                            <Link to={`/product-details/${product._id}`} className="btn btn-default add-to-cart">
-                                <i className="fa fa-info-circle"></i>Product Info</Link>
-                        </h2>
-                        <h2>
-                            <Link to={`/product-edit/${product._id}`} className="btn btn-default add-to-cart">
-                                <i className="fa fa-edit"></i>Product edit</Link>
-                        </h2>
-                        <h2>
-                            <Link to={`/product-delete/${product._id}`} className="btn btn-default add-to-cart deleteBtn">
-                                <i className="fa fa-trash"></i>Product delete</Link>
-                        </h2>
+                        {isLoggedIn
+                            ? <Fragment>
+                                <h2>
+                                    <Link to={`/product-details/${product._id}`} className="btn btn-default add-to-cart">
+                                        <i className="fa fa-info-circle"></i>Product Info</Link>
+                                </h2>
+                                <h2>
+                                    <Link to={`/product-edit/${product._id}`} className="btn btn-default add-to-cart">
+                                        <i className="fa fa-edit"></i>Product edit</Link>
+                                </h2>
+                                <h2>
+                                    <Link to={`/product-delete/${product._id}`} className="btn btn-default add-to-cart deleteBtn">
+                                        <i className="fa fa-trash"></i>Product delete</Link>
+                                </h2>
+                            </Fragment>
+                            : null
+                        }
                     </div>
                 </div>
             </div>

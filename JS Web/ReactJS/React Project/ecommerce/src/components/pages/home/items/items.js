@@ -7,8 +7,8 @@ import RecommendedItems from './recommended-items/recommended-items';
 const Items = (props) => {
     return <div className="col-sm-9 padding-right" >
         <FeatureItems products={props.products} />
-        <CategoriMainSection />
-        <RecommendedItems />
+        {/* <CategoriMainSection />
+        <RecommendedItems /> */}
     </div >
 };
 
