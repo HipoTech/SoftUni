@@ -28,10 +28,10 @@ Back-End uses http://localhost:8080
 Home, Shop, Categories, Brands
 
 ## User pages:
-Create product
-Create brand
-Create category
-Edit product
+Create product,
+Create brand,
+Create category,
+Edit product,
 Delete product
 
 ## Available Scripts
