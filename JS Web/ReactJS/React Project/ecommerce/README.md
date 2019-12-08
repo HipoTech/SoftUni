@@ -2,7 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Befor starting please download and run the back-end for the app:
 https://github.com/HipoTech/SoftUni/tree/master/JS%20Web/ReactJS/React%20Project/ecommerce-REST-API
-use npm install and npm start to run it.
+Use npm install and npm start to run it.
+Back-End uses http://localhost:8080 
 
 ## Project dependencies:
     "axios": "^0.19.0",
@@ -25,7 +26,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
