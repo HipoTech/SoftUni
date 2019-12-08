@@ -3,9 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Befor starting please download and run the back-end for the app:
 https://github.com/HipoTech/SoftUni/tree/master/JS%20Web/ReactJS/React%20Project/ecommerce-REST-API
 Use 
-## npm install 
+## `npm install`
 and 
-## npm start 
+## `npm start`
 to run it.
 
 Back-End uses http://localhost:8080 
