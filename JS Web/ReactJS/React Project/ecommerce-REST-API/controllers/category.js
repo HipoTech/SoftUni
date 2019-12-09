@@ -32,8 +32,9 @@ module.exports = {
                 })
         },
         findOne: (req, res, next) => {
-            const productId = req.body.id;
-            models.Category.find({ _id: productId })
+            const categoryId = req.body.id;
+            models.Category.find({ _id: categoryId })
+                .populate('products')
                 .then((response) => {
                     res.status(200);
                     res.send(response)

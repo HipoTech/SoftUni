@@ -18,7 +18,7 @@ const Category = () => {
             {!!categories.length
                 ? categories.map(category => <div key={category.name} className="panel panel-default">
                     <div className="panel-heading">
-                        <h4 className="panel-title"><a href="/">{category.name}</a></h4>
+                        <h4 className="panel-title"><Link to={`/category/${category._id}`}>{category.name}</Link></h4>
                     </div>
                 </div>
                 )

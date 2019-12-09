@@ -10,12 +10,14 @@ const Brand = ({ brand }) => {
     return <div key={brand.webId} className="col-sm-4">
         <div className="product-image-wrapper">
             <div className="single-products">
-                <div className="productinfo text-center">
-                    <img src={brand.imageUrl} alt={brand.name} />
-                    <p>{brand.name}</p>
-                </div>
+                <Link to={`/brand/${brand._id}`} >
+                    <div className="productinfo text-center">
+                        <img src={brand.imageUrl} alt={brand.name} />
+                        <p>{brand.name}</p>
+                    </div>
+                </Link>
                 {isLoggedIn
-                    ? <div className="product-overlay">
+                    ? < div className="product-overlay">
                         <div className="overlay-content">
                             <h2>
                                 <Link to={`/brand-edit/${brand._id}`} className="btn btn-default add-to-cart">
@@ -31,7 +33,7 @@ const Brand = ({ brand }) => {
                 }
             </div>
         </div>
-    </div>
+    </div >
 }
 
 export default Brand;

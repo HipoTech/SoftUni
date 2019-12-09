@@ -11,10 +11,12 @@ const Category = (props) => {
     return <div key={category.webId} className="col-sm-4">
         <div className="product-image-wrapper">
             <div className="single-products">
-                <div className="productinfo text-center">
-                    <img src={category.imageUrl} alt={category.name} />
-                    <p>{category.name}</p>
-                </div>
+                <Link to={`/category/${category._id}`} >
+                    <div className="productinfo text-center">
+                        <img src={category.imageUrl} alt={category.name} />
+                        <p>{category.name}</p>
+                    </div>
+                </Link>
                 {isLoggedIn
                     ? <div className="product-overlay">
                         <div className="overlay-content">

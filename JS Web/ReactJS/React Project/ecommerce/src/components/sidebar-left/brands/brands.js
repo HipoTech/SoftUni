@@ -17,7 +17,7 @@ const Brands = () => {
         <div className="brands-name">
             <ul className="nav nav-pills nav-stacked">
                 {!!brands.length
-                    ? brands.map(brand => <li key={brand.name}><a href="/"> <span className="pull-right"></span>{brand.name}</a></li>)
+                    ? brands.map(brand => <li key={brand.name}><Link to={`/brand/${brand._id}`}> <span className="pull-right"></span>{brand.name}</Link></li>)
                     : <span>No brands available! Please create a <Link to="/brand-create">brand</Link>!</span>
                 }
             </ul>

@@ -50,12 +50,17 @@ module.exports = {
                 .then((result) => {
                     const productId = result._id;
                     const productBrandId = newProduct.brand;
-                    const productCategoryId = newProduct.brand;
+                    const productCategoryId = newProduct.category;
                     models.Category
                         .updateOne(
                             { _id: newProduct.category },
                             {
                                 $push: { products: productId },
+                            }
+                        )
+                        .updateOne(
+                            { _id: newProduct.category },
+                            {
                                 $push: { brands: productBrandId }
                             }
                         )
@@ -66,6 +71,11 @@ module.exports = {
                             { _id: newProduct.brand },
                             {
                                 $push: { products: productId },
+                            }
+                        )
+                        .updateOne(
+                            { _id: newProduct.brand },
+                            {
                                 $push: { categories: productCategoryId }
                             }
                         )

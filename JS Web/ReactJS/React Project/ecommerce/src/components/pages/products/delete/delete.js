@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {
     deleteProduct,
     getAllCategories,
@@ -79,13 +79,17 @@ class ProductDelete extends Component {
         event.preventDefault();
         deleteProduct(this.product)
             .then((res) => {
-                res.ok ? console.log('product has been deleted') : this.serverErrorHandler(res.json());
+                res.ok
+                    ? this.props.history.push(`/`)
+                    : this.serverErrorHandler(res.json());
                 this.setState({
                     gotError: false,
                     showError: false,
                     message: 'No error to show!'
                 });
+
             })
+            .catch(err => console.log(err))
     }
 
     // Cloudinary widget

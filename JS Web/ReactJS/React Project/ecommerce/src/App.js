@@ -24,13 +24,13 @@ import ProductDelete from './components/pages/products/delete/delete';
 // Brand
 import BrandPage from './components/pages/brands/brandPage/brandPage';
 import BrandCreate from './components/pages/brands/create/create';
+import BrandProgucts from './components/pages/brands/brandProducts/brandProgucts';
 // import BrandEdit from './components/pages/brands/edit/edit';
-// import BrandDelete from './components/pages/brands/delete/delete';
 // Category
 import CategoryPage from './components/pages/categories/categoryPage/categoryPage';
 import CategoryCreate from './components/pages/categories/create/create';
+import CategoryProgucts from './components/pages/categories/categoryProducts/categoryProgucts';
 // import CategoryEdit from './components/pages/categories/edit/edit';
-// import CategoryDelete from './components/pages/categories/delete/delete';
 
 function App() {
   return (
@@ -65,10 +65,12 @@ function App() {
                         {/* Brand */}
                         <Route path='/brand-create' exact component={isLogged ? BrandCreate : () => <Redirect to='/' />} />
                         <Route path='/brands' exact component={BrandPage} />
+                        <Route path='/brand/:id' exact component={BrandProgucts} />
                         {/* <Route path='/product-edit/:id' exact component={BrandEdit} /> */}
                         {/* Category */}
                         <Route path='/category-create' exact component={isLogged ? CategoryCreate : () => <Redirect to='/' />} />
                         <Route path='/categories' exact component={CategoryPage} />
+                        <Route path='/category/:id' exact component={CategoryProgucts} />
                         {/* <Route path='/product-edit/:id' exact component={CategoryEdit} /> */}
                         <Route component={notFound} />
                       </Switch>

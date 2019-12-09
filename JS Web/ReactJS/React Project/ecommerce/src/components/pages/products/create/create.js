@@ -77,6 +77,12 @@ class CreateProduct extends Component {
             condition: yup
                 .string()
                 .required('Please enter a condition!'),
+            category: yup
+                .string()
+                .required('Please pick a category!'),
+            brand: yup
+                .string()
+                .required('Please pick a brand!'),
             description: yup
                 .string()
                 .required('Please enter a description!')
@@ -90,6 +96,8 @@ class CreateProduct extends Component {
             imageUrl: this.product.imageUrl,
             condition: this.product.condition,
             description: this.product.description,
+            brand: this.product.brand,
+            category: this.product.category,
         })
             .then(isValid => this.sendProduct())
             .catch(error => {
