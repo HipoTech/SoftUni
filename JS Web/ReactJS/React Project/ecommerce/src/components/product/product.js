@@ -25,12 +25,12 @@ const Product = (props) => {
                         <p>{product.title}</p>
                         <Link to="/" className="btn btn-default add-to-cart"><i
                             className="fa fa-shopping-cart"></i>Add to cart</Link>
+                        <h2>
+                            <Link to={`/product-details/${product._id}`} className="btn btn-default add-to-cart">
+                                <i className="fa fa-info-circle"></i>Product Info</Link>
+                        </h2>
                         {isLoggedIn
                             ? <Fragment>
-                                <h2>
-                                    <Link to={`/product-details/${product._id}`} className="btn btn-default add-to-cart">
-                                        <i className="fa fa-info-circle"></i>Product Info</Link>
-                                </h2>
                                 <h2>
                                     <Link to={`/product-edit/${product._id}`} className="btn btn-default add-to-cart">
                                         <i className="fa fa-edit"></i>Product edit</Link>

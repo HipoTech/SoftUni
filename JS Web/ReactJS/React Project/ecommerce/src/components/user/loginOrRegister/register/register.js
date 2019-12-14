@@ -38,7 +38,6 @@ class Register extends Component {
     }
 
     validateInput = (btn) => {
-
         if (!this.user.userName) {
             this.setState({
                 gotError: true,
@@ -124,6 +123,10 @@ class Register extends Component {
         email.value = '';
         password.value = '';
         repeatePassword.value = '';
+        this.user.userName = '';
+        this.user.email = '';
+        this.user.password = '';
+        this.user.repeatePassword = '';
     }
 
     submit = (event) => {

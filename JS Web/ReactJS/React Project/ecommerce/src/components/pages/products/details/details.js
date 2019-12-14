@@ -25,7 +25,6 @@ class ProductDetails extends Component {
     }
 
     render() {
-        console.log(this.state.product);
         return (
             <Fragment>
                 <SidebarLeft />

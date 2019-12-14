@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+import { Link } from "react-router-dom";
+
 import './product.css';
 import RecommendedItems from '../../../home/items/recommended-items/recommended-items';
 import NotFound from '../../../notFound/notFound';
@@ -65,8 +67,8 @@ const Product = (props) => {
                             </span>
                             <p><b>Availability:</b> {product.availability ? "Available" : "Not available"}</p>
                             <p><b>Condition:</b> {product.condition}</p>
-                            <p><b>Brand:</b> {product.brand.name}</p>
-                            <p><b>Categoey:</b> {product.category.name}</p>
+                            <p><b>Brand:</b> <Link to={`/brand/${product.brand._id}`}>{product.brand.name}</Link></p>
+                            <p><b>Categoey:</b><Link to={`/category/${product.category._id}`}>{product.category.name}</Link></p>
                         </div>
                         {/* <!--/product-information--> */}
                     </div>
