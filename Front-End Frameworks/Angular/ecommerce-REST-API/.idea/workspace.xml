@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9fdd4d9-975d-444d-82a0-d3ae3471c8ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ecommerce/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce/src/components/pages/brands/create/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/src/components/pages/brands/create/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce/src/components/pages/categories/create/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/src/components/pages/categories/create/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce/src/components/pages/products/create/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/src/components/pages/products/create/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce/src/components/product/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/src/components/product/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce/src/components/user/loginOrRegister/UserCotrol.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce/src/components/user/loginOrRegister/UserCotrol.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce/src/components/user/loginOrRegister/UserCotrol.test.js" beforeDir="false" />
-    </list>
+    <list default="true" id="e9fdd4d9-975d-444d-82a0-d3ae3471c8ff" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -21,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1273" />
@@ -66,23 +57,20 @@
       <option name="presentableId" value="Default" />
       <updated>1575308714413</updated>
       <workItem from="1575308723898" duration="599000" />
+      <workItem from="1579339979409" duration="7000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="599000" />
+    <option name="totallyTimeSpent" value="606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
     <layout>
-      <window_info id="npm" side_tool="true" />
-      <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980299" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -90,6 +78,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
