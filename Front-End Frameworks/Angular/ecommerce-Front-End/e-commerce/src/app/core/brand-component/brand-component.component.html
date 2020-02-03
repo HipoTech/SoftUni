@@ -1,0 +1,26 @@
+<div class="col-sm-4">
+  <div class="product-image-wrapper">
+    <div class="single-products">
+      <a [routerLink]="['/brand', brand._id]">
+        <div class="productinfo text-center">
+          <img src={{brand.imageUrl}} alt={{brand.name}} />
+          <p>{{brand.name}}</p>
+        </div>
+      </a>
+      <!-- isLoggedIn -->
+      <div class="product-overlay">
+        <div class="overlay-content">
+          <h2>
+            <a routerLink='/brand-edit/{{brand._id}}' class="btn btn-default add-to-cart">
+              <i class="fa fa-edit"></i>Edit {{brand.name}}</a>
+          </h2>
+          <h2>
+            <a routerLink='/' class="btn btn-default add-to-cart">
+              <i class="fa fa-trash"></i>Delete {{brand.name}}</a>
+          </h2>
+        </div>
+      </div>
+      <!-- /isLoggedIn -->
+    </div>
+  </div>
+</div>

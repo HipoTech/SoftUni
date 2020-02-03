@@ -1,0 +1,18 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="left-sidebar">
+          <app-category-side-bar></app-category-side-bar>
+          <app-brands-side-bar></app-brands-side-bar>
+          <app-price-range-side-bar></app-price-range-side-bar>
+        </div>
+      </div>
+      <div class="col-sm-9 padding-right">
+        <ng-container *ngFor="let category of allCategories">
+          <app-category-component [category]='category'></app-category-component>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

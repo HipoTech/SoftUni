@@ -1,22 +1,19 @@
-<header id="header">
-  <app-slider></app-slider>
-
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="left-sidebar">
-            <app-category-side-bar></app-category-side-bar>
-            <app-brands-side-bar></app-brands-side-bar>
-            <app-price-range-side-bar></app-price-range-side-bar>
-          </div>
-        </div>
-
-        <div class="col-sm-9 padding-right">
-          <app-features-items></app-features-items>
-          <app-category-tab></app-category-tab>
-          <app-recommended-items></app-recommended-items>
+<app-slider></app-slider>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="left-sidebar">
+          <app-category-side-bar></app-category-side-bar>
+          <app-brands-side-bar></app-brands-side-bar>
+          <app-price-range-side-bar></app-price-range-side-bar>
         </div>
       </div>
+      <div class="col-sm-9 padding-right">
+        <app-features-items [allProducts]="allProducts"></app-features-items>
+        <app-category-tab></app-category-tab>
+        <app-recommended-items></app-recommended-items>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
