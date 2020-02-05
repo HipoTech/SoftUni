@@ -30,6 +30,7 @@ module.exports = {
                 brand,
                 category,
                 availability,
+                onSlider,
                 featuredItem,
                 recommended,
             } = req.body;
@@ -43,6 +44,7 @@ module.exports = {
                 brand,
                 category,
                 availability,
+                onSlider,
                 featuredItem,
                 recommended,
             }
@@ -118,6 +120,7 @@ module.exports = {
                 brand,
                 category,
                 availability,
+                onSlider,
                 featuredItem,
                 recommended,
             } = req.body;
@@ -131,6 +134,7 @@ module.exports = {
                 brand,
                 category,
                 availability,
+                onSlider,
                 featuredItem,
                 recommended,
             }

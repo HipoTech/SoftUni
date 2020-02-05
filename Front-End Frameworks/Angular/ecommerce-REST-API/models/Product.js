@@ -43,6 +43,13 @@ const productSchema = new Schema({
 
     },
 
+    onSlider: {
+        type: Boolean,
+        required: true,
+        default: false,
+
+    },
+
     featuredItem: {
         type: Boolean,
         required: true,
