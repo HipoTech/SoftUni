@@ -12,8 +12,18 @@ export class HomeComponent implements OnInit {
     return this.homeService.products;
   }
 
+  get allBrands() {
+    return this.homeService.brands;
+  }
+
+  get allCategories() {
+    return this.homeService.categories;
+  }
+
   constructor(private homeService: HomeService) {
     this.homeService.getAllProducts();
+    this.homeService.getAllBrands();
+    this.homeService.getAllCategories();
   }
 
   ngOnInit() {

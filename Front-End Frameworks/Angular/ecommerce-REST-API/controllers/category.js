@@ -6,7 +6,9 @@ module.exports = {
     get: {
         all: (req, res, next) => {
             models.Category.find()
+                .populate('brands')
                 .then((response) => {
+                    console.log(response);
                     res.status(200);
                     res.send(response)
                 })
