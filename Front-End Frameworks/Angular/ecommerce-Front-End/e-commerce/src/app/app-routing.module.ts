@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { BrandComponent } from './pages/brand/brand.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
+import { LoginRegisterComponent } from './pages/user/login-register/login-register.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'brands',
     component: BrandComponent
+  },
+  {
+    path: 'login-register',
+    component: LoginRegisterComponent
   },
   {
     path: 'categories',

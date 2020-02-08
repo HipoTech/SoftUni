@@ -8,7 +8,6 @@ module.exports = {
             models.Category.find()
                 .populate('brands')
                 .then((response) => {
-                    console.log(response);
                     res.status(200);
                     res.send(response)
                 })
@@ -54,7 +53,6 @@ module.exports = {
             const newCategory = { name, imageUrl, products };
             models.Category.updateOne({ name: newCategory.name }, { ...newCategory })
                 .then((result) => {
-                    console.log(req.body);
                     res.status(200);
                     res.send({ newCategory })
                 })

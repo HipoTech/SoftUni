@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product, Brand } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-product-derail',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-derail.component.scss']
 })
 export class ProductDerailComponent implements OnInit {
+  @Input() product: Product;
 
   constructor() { }
 

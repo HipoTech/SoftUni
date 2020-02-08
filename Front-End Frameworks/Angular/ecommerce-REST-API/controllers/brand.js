@@ -21,8 +21,6 @@ module.exports = {
         create: (req, res, next) => {
             const { name, imageUrl, products = [] } = req.body;
             const newBrand = { name, imageUrl, products };
-            console.log(newBrand);
-
             models.Brand.create(newBrand)
                 .then(() => {
                     res.status(200);
@@ -54,7 +52,6 @@ module.exports = {
             const newBrand = { name, imageUrl, products };
             models.Brand.updateOne({ name: newBrand.name }, { ...newBrand })
                 .then((result) => {
-                    console.log(req.body);
                     res.status(200);
                     res.send({ newProduct })
                 })
@@ -73,7 +70,6 @@ module.exports = {
             } = req.body;
             models.Brand.findOneAndDelete({ name: name })
                 .then((result) => {
-                    console.log('deleted');
 
                     res.status(200);
                 })

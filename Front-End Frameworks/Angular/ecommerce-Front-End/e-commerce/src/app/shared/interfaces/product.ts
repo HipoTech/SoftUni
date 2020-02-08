@@ -1,3 +1,6 @@
+import { Brand } from './brand';
+import { Category } from './category';
+
 export interface Product {
   _id: string,
   title: string,
@@ -10,6 +13,6 @@ export interface Product {
   onSlider: boolean,
   featuredItem: boolean,
   recommended: boolean,
-  brand: string,
-  category: string,
+  brand: Brand,
+  category: Category,
 };
