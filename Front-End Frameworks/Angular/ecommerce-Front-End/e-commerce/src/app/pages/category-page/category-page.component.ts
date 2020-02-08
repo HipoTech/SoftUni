@@ -12,8 +12,14 @@ export class CategoryPageComponent implements OnInit {
     return this.categoryService.categories;
   }
 
+  get allBrands() {
+    return this.categoryService.brands;
+  }
+
+
   constructor(private categoryService: CategoryPageService) {
     this.categoryService.getAllCategories();
+    this.categoryService.getAllBrands();
   }
 
   ngOnInit() {

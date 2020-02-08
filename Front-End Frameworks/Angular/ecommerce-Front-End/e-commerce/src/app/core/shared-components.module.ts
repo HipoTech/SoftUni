@@ -8,6 +8,7 @@ import { PriceRangeSideBarComponent } from './price-range-side-bar/price-range-s
 import { BrandComponentComponent } from './brand-component/brand-component.component';
 import { RouterModule } from '@angular/router';
 import { CategoryComponentComponent } from './category-component/category-component.component';
+import { ProductDerailComponent } from './product-derail/product-derail.component';
 
 
 
@@ -20,6 +21,7 @@ import { CategoryComponentComponent } from './category-component/category-compon
     PriceRangeSideBarComponent,
     BrandComponentComponent,
     CategoryComponentComponent,
+    ProductDerailComponent,
   ],
   imports: [
     RouterModule,
@@ -33,6 +35,7 @@ import { CategoryComponentComponent } from './category-component/category-compon
     PriceRangeSideBarComponent,
     BrandComponentComponent,
     CategoryComponentComponent,
+    ProductDerailComponent,
   ]
 })
 export class SharedComponentsModule { }

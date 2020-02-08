@@ -12,8 +12,19 @@ export class ShopComponent implements OnInit {
     return this.shopService.products;
   }
 
+  get allBrands() {
+    return this.shopService.brands;
+  }
+
+  get allCategories() {
+    return this.shopService.categories;
+  }
+
+
   constructor(private shopService: ShopService) {
     this.shopService.getAllProducts();
+    this.shopService.getAllBrands();
+    this.shopService.getAllCategories();
   }
 
   ngOnInit() {

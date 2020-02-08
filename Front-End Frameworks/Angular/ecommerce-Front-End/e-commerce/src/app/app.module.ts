@@ -13,6 +13,8 @@ import { FooterComponent } from './core/footer/footer.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BrandModule } from './pages/brand/brand.module';
 import { CategoryPageModule } from './pages/category-page/category-page.module';
+import { DetailPageComponent } from './pages/detail-page/detail-page.component';
+import { DetailPageModule } from './pages/detail-page/detail-page.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +30,8 @@ import { CategoryPageModule } from './pages/category-page/category-page.module';
     HomeModule,
     ShopModule,
     BrandModule,
+    DetailPageModule,
     CategoryPageModule,
-    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

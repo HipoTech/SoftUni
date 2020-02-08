@@ -5,13 +5,15 @@
         <img src={{product.imageUrl}} alt={{product.title}} />
         <h2>{{product.price}}</h2>
         <p>{{product.title}}</p>
-        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+        <a [routerLink]="['/product/', product._id]" class="btn btn-default add-to-cart"><i
+            class="fa fa-shopping-cart"></i>Product details</a>
       </div>
       <div class="product-overlay">
         <div class="overlay-content">
           <h2>{{product.price}}</h2>
           <p>{{product.title}}</p>
-          <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+          <a [routerLink]="['/product/', product._id]" class="btn btn-default add-to-cart"><i
+              class="fa fa-shopping-cart"></i>Product Details</a>
         </div>
       </div>
     </div>

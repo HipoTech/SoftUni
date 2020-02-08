@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Category } from 'src/app/shared/interfaces';
+import { Category, Brand } from 'src/app/shared/interfaces';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class CategoryPageService {
 
   categories: Category[];
+  brands: Brand[];
 
   constructor(private http: HttpClient) { }
 
@@ -16,4 +17,10 @@ export class CategoryPageService {
       this.categories = category;
     })
   }
+  getAllBrands() {
+    this.http.get<Brand[]>('http://localhost:8080/api/brands/getAll').subscribe(brand => {
+      this.brands = brand;
+    })
+  }
+
 }

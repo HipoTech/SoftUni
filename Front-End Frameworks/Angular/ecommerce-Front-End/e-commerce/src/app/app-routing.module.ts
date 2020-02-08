@@ -5,6 +5,7 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BrandComponent } from './pages/brand/brand.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'categories',
     component: CategoryPageComponent
+  },
+  {
+    path: 'product/:id',
+    component: DetailPageComponent
   },
   {
     path: '**',

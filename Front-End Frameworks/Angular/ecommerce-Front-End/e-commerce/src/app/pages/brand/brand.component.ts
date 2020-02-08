@@ -12,8 +12,13 @@ export class BrandComponent implements OnInit {
     return this.brandService.brands;
   }
 
+  get allCategories() {
+    return this.brandService.categories;
+  }
+
   constructor(private brandService: BrandService) {
     this.brandService.getAllBrands();
+    this.brandService.getAllCategories();
   }
 
   ngOnInit() {
