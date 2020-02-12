@@ -1,0 +1,52 @@
+<div class="example-container">
+  <form [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Product Name</mat-label>
+      <input formControlName="title" matInput placeholder="Please enter a name minimum 4 character long">
+    </mat-form-field>
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Art. number:</mat-label>
+      <input formControlName="webId" matInput placeholder="Please enter a name minimum 4 character long">
+    </mat-form-field>
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Price:</mat-label>
+      <input formControlName="price" type="number" matInput placeholder="Please enter a name minimum 4 character long">
+    </mat-form-field>
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Condition:</mat-label>
+      <input formControlName="condition" matInput placeholder="Please enter a name minimum 4 character long">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Brand:</mat-label>
+      <mat-select formControlName="brand" panelClass="example-panel-yellow">
+        <mat-option value="option1">Option1</mat-option>
+        <mat-option value="option2">Option2</mat-option>
+        <mat-option value="option3">Option3</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Category:</mat-label>
+      <mat-select formControlName="category" panelClass="example-panel-yellow">
+        <mat-option value="option1">Option1</mat-option>
+        <mat-option value="option2">Option2</mat-option>
+        <mat-option value="option3">Option3</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Description:</mat-label>
+      <textarea formControlName="description" matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+    <div class="checkbox">
+      <mat-checkbox formControlName="availability">Product is available</mat-checkbox>
+      <mat-checkbox formControlName="featuredItem">Product is featured</mat-checkbox>
+      <mat-checkbox formControlName="recommended">Product is recommended</mat-checkbox>
+      <mat-checkbox formControlName="onSlider">Product is on the slider</mat-checkbox>
+    </div>
+    <br />
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Image URL</mat-label>
+      <input formControlName="imageUrl" matInput placeholder="Please enter a name minimum 4 character long">
+    </mat-form-field>
+    <button class="btn btn-default">Create Brand</button>
+  </form>
+</div>

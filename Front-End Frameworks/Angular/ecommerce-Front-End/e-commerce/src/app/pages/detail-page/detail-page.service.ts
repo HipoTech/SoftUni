@@ -16,7 +16,7 @@ export class DetailPageService {
   getProduct(productId) {
     this.http.post<Product>('http://localhost:8080/api/products/getOne', { id: productId }).subscribe(product => {
       this.product = product;
-      return this.product;
+      return this.product
     })
   }
 

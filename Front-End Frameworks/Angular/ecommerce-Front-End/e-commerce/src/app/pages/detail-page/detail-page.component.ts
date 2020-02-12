@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DetailPageService } from './detail-page.service';
+
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-detail-page',
@@ -33,9 +33,6 @@ export class DetailPageComponent implements OnInit {
       this.productId = params['id'];
     });
     this.detailService.getProduct(this.productId)
-    // of(this.detailService.getProduct(this.productId)).pipe(product => {
-    //   return product;
-    // })
   }
 
 }

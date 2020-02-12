@@ -7,6 +7,9 @@ import { BrandComponent } from './pages/brand/brand.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 import { LoginRegisterComponent } from './pages/user/login-register/login-register.component';
+import { CreateProductPageComponent } from './pages/create-product-page/create-product-page.component';
+import { CreateBrandPageComponent } from './pages/create-brand-page/create-brand-page.component';
+import { CreateCategoryPageComponent } from './pages/create-category-page/create-category-page.component';
 
 
 const routes: Routes = [
@@ -38,6 +41,18 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: DetailPageComponent
+  },
+  {
+    path: 'create-product',
+    component: CreateProductPageComponent
+  },
+  {
+    path: 'create-brand',
+    component: CreateBrandPageComponent
+  },
+  {
+    path: 'create-category',
+    component: CreateCategoryPageComponent
   },
   {
     path: '**',

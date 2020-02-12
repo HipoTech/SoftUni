@@ -67,7 +67,9 @@
               <li><a routerLink=""><i class="fa fa-star"></i> Wishlist</a></li>
               <li><a routerLink="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
               <li><a routerLink="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-              <li><a routerLink="/login-register"><i class="fa fa-lock"></i> Login</a></li>
+              <li><a *ngIf="!isLoggedIn" routerLink="/login-register"><i class="fa fa-lock"></i> Login</a></li>
+              <li><a *ngIf="isLoggedIn" (click)="logOut()" routerLink="/login-register"><i class="fa fa-lock"></i>
+                  Logout</a></li>
             </ul>
           </div>
         </div>

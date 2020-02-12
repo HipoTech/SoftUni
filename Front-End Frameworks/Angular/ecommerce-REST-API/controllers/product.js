@@ -34,6 +34,8 @@ module.exports = {
                 featuredItem,
                 recommended,
             } = req.body;
+            console.log(req.body);
+
             const newProduct = {
                 title,
                 webId,
@@ -93,7 +95,6 @@ module.exports = {
         },
         findOne: (req, res, next) => {
             const productId = req.body.id;
-            console.log(`Product ID is: ${productId}`);
             models.Product.findById(productId)
                 .populate('brand')
                 .populate('category')

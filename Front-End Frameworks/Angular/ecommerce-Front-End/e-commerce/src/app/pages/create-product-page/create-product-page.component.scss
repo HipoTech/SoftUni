@@ -1,0 +1,60 @@
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-container .mat-form-field {
+  width: 50%;
+}
+
+.example-container form {
+  margin-bottom: 20px;
+}
+
+.example-container .mat-radio-button {
+  margin: 0 12px;
+}
+
+.example-container {
+  text-align: center;
+}
+
+.btn {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #FE980F;
+  border: medium none;
+  border-radius: 10;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  padding: 6px 25px;
+  display: block;
+}
+
+.example-panel-yellow.mat-select-panel {
+  background: rgba(254, 152, 15, 0.7);
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.checkbox {
+  text-align: left;
+  margin: auto;
+  display: table;
+}
+
+.mat-checkbox {
+  display: block;
+}
+
+.mat-checkbox-input:checked ~ .mat-checkbox-background {
+  background-color:  rgb(254, 152, 15);
+}

@@ -1,0 +1,16 @@
+<div class="example-container">
+  <form [formGroup]="createBrandForm" (ngSubmit)="onSubmit()" [formGroup]="options">
+
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Brand Name</mat-label>
+      <input formControlName="name" matInput placeholder="Please enter a name minimum 4 character long">
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Image URL</mat-label>
+      <input formControlName="imageUrl" matInput placeholder="Please enter a name minimum 4 character long">
+    </mat-form-field>
+    <button class="btn btn-default">Create Brand</button>
+
+  </form>
+</div>

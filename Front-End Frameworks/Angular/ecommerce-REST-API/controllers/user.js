@@ -5,7 +5,6 @@ const config = require('../config/config');
 module.exports = {
     get: {
         userInfo: (req, res, next) => {
-            console.log(req.params);
         },
         logout: (req, res, next) => {
             res.clearCookie(config.cookie).send('Logout successfully!');
@@ -22,6 +21,8 @@ module.exports = {
 
     post: {
         register: (req, res, next) => {
+            console.log(req.body);
+
             const { userName, password, email, imageUrl, isAdmin } = req.body;
             const newUser = { userName, password, email, imageUrl, isAdmin }
             models.User.create(newUser)
@@ -56,6 +57,8 @@ module.exports = {
                             const userForFrontEnd = {
                                 userName: user.userName,
                             }
+                            console.log("loggedIn");
+
                             res.cookie(config.cookie, token)
                                 // .cookie('ecom-user-info', JSON.stringify({ user }))
                                 .send(user)
