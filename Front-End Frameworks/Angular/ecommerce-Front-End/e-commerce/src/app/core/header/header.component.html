@@ -65,10 +65,14 @@
             <ul class="nav navbar-nav">
               <li><a routerLink=""><i class="fa fa-user"></i> Account</a></li>
               <li><a routerLink=""><i class="fa fa-star"></i> Wishlist</a></li>
-              <li><a routerLink="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-              <li><a routerLink="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+              <li><a routerLink=""><i class="fa fa-shopping-cart"></i> Cart</a></li>
+              <li *ngIf='!!isLoggedIn'>
+                <a routerLink="">
+                  <i class="fa fa-crosshairs"></i> Welcome,
+                  {{user?.userName}}</a>
+              </li>
               <li><a *ngIf="!isLoggedIn" routerLink="/login-register"><i class="fa fa-lock"></i> Login</a></li>
-              <li><a *ngIf="isLoggedIn" (click)="logOut()" routerLink="/login-register"><i class="fa fa-lock"></i>
+              <li><a *ngIf="!!isLoggedIn" (click)="logOut()" routerLink="login-register"><i class="fa fa-lock"></i>
                   Logout</a></li>
             </ul>
           </div>
@@ -101,7 +105,7 @@
       <div class="row">
         <div class="col-sm-9">
           <div class="mainmenu pull-left">
-            <ul class="nav navbar-nav collapse navbar-collapse">
+            <ul *ngIf="!!isLoggedIn" class="nav navbar-nav collapse navbar-collapse">
               <li><a routerLink="/create-product" routerLinkActive="active">Create Product</a></li>
               <li><a routerLink="/create-brand" routerLinkActive="active">Create Brand</a>
               <li><a routerLink="/create-category" routerLinkActive="active">Create Category</a>

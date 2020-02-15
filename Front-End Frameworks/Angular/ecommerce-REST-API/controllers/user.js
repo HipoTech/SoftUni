@@ -7,7 +7,10 @@ module.exports = {
         userInfo: (req, res, next) => {
         },
         logout: (req, res, next) => {
-            res.clearCookie(config.cookie).send('Logout successfully!');
+            console.log('loggetOut');
+            res.clearCookie(config.cookie)
+            res.clearCookie('ecom-user-info')
+                .send('Logout successfully!');
         },
 
         auth: (req, res) => {
@@ -60,7 +63,7 @@ module.exports = {
                             console.log("loggedIn");
 
                             res.cookie(config.cookie, token)
-                                // .cookie('ecom-user-info', JSON.stringify({ user }))
+                                .cookie('ecom-user-info', JSON.stringify(user))
                                 .send(user)
                         })
                 }).catch(err => {

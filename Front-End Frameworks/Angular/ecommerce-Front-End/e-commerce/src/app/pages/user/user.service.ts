@@ -1,25 +1,30 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service'
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnInit {
+  private userCookie: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) { }
 
-  currentUser: object = null;
+  public ngOnInit(): void {
+
+  }
+
 
   get isLoggedIn() {
-    return !!this.currentUser;
+    this.userCookie = this.cookieService.get('ecom-user-info');
+    return this.userCookie || null;
   }
 
   login(user) {
     this.http.post<User>('http://localhost:8080/api/user/login', user).subscribe(response => {
       console.log(response);
-      this.currentUser = response;
       this.router.navigate(['/home']);
     })
   };
@@ -31,10 +36,6 @@ export class UserService {
   };
 
   logout() {
-    this.http.get('http://localhost:8080/api/user/logout').subscribe(response => {
-      console.log(response);
-      this.currentUser = null;
-      this.router.navigate(['/login-register']);
-    })
+    this.http.get('http://localhost:8080/api/user/logout', { responseType: 'text' }).subscribe();
   };
 }

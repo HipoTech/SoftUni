@@ -21,6 +21,8 @@ export class CreateProductPageComponent implements OnInit {
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
     });
+    this.createProductService.getAllBrands();
+    this.createProductService.getAllCategories();
   }
 
   createProductForm = new FormGroup({
@@ -40,6 +42,15 @@ export class CreateProductPageComponent implements OnInit {
 
   onSubmit() {
     this.createProductService.createProduct(this.createProductForm.value)
+    this.createProductForm.reset;
+  }
+
+  get allBrands() {
+    return this.createProductService.brands;
+  }
+
+  get allCategories() {
+    return this.createProductService.categories;
   }
 
   ngOnInit() {

@@ -7,9 +7,9 @@ import { BrandComponent } from './pages/brand/brand.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 import { LoginRegisterComponent } from './pages/user/login-register/login-register.component';
-import { CreateProductPageComponent } from './pages/create-product-page/create-product-page.component';
 import { CreateBrandPageComponent } from './pages/create-brand-page/create-brand-page.component';
 import { CreateCategoryPageComponent } from './pages/create-category-page/create-category-page.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -44,15 +44,21 @@ const routes: Routes = [
   },
   {
     path: 'create-product',
-    component: CreateProductPageComponent
+    loadChildren: () => import('./pages/create-product-page/create-product-page.module')
+      .then(m => m.CreateProductPageModule),
+    canLoad: [AuthGuard],
   },
   {
     path: 'create-brand',
-    component: CreateBrandPageComponent
+    loadChildren: () => import('./pages/create-brand-page/create-brand-page.module')
+      .then(m => m.CreateBrandPageModule),
+    canLoad: [AuthGuard],
   },
   {
     path: 'create-category',
-    component: CreateCategoryPageComponent
+    loadChildren: () => import('./pages/create-category-page/create-category-page.module')
+      .then(m => m.CreateCategoryPageModule),
+    canLoad: [AuthGuard],
   },
   {
     path: '**',

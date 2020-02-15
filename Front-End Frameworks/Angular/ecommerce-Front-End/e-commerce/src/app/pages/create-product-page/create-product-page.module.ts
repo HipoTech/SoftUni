@@ -17,7 +17,7 @@ import { MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule 
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ]
 })
 export class CreateProductPageModule { }

@@ -16,9 +16,9 @@ import { DetailPageModule } from './pages/detail-page/detail-page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateCategoryPageModule } from './pages/create-category-page/create-category-page.module';
 import { CreateBrandPageModule } from './pages/create-brand-page/create-brand-page.module';
-import { CreateProductPageModule } from './pages/create-product-page/create-product-page.module';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppInterceptor } from './app-interceptors';
+import { CookieService } from 'ngx-cookie-service'
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { AppInterceptor } from './app-interceptors';
     CategoryPageModule,
     CreateCategoryPageModule,
     CreateBrandPageModule,
-    CreateProductPageModule,
     BrowserAnimationsModule,
     HttpClientModule
   ],
@@ -47,7 +46,9 @@ import { AppInterceptor } from './app-interceptors';
       provide: HTTP_INTERCEPTORS,
       useClass: AppInterceptor,
       multi: true
-    }
+    },
+    CookieService,
+
   ],
   bootstrap: [AppComponent]
 })
