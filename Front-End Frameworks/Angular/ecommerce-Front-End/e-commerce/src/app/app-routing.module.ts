@@ -1,14 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { ShopComponent } from './pages/shop/shop.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { BrandComponent } from './pages/brand/brand.component';
-import { CategoryPageComponent } from './pages/category-page/category-page.component';
-import { DetailPageComponent } from './pages/detail-page/detail-page.component';
-import { LoginRegisterComponent } from './pages/user/login-register/login-register.component';
-import { CreateBrandPageComponent } from './pages/create-brand-page/create-brand-page.component';
-import { CreateCategoryPageComponent } from './pages/create-category-page/create-category-page.component';
 import { AuthGuard } from './auth.guard';
 
 
@@ -20,27 +12,33 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
+    loadChildren: () => import('./pages/home/home.module')
+      .then(m => m.HomeModule),
   },
   {
     path: 'shop',
-    component: ShopComponent
+    loadChildren: () => import('./pages/shop/shop.module')
+      .then(m => m.ShopModule),
   },
   {
     path: 'brands',
-    component: BrandComponent
+    loadChildren: () => import('./pages/brand/brand.module')
+      .then(m => m.BrandModule),
   },
   {
     path: 'login-register',
-    component: LoginRegisterComponent
+    loadChildren: () => import('./pages/user/user.module')
+      .then(m => m.UserModule),
   },
   {
     path: 'categories',
-    component: CategoryPageComponent
+    loadChildren: () => import('./pages/category-page/category-page.module')
+      .then(m => m.CategoryPageModule),
   },
   {
     path: 'product/:id',
-    component: DetailPageComponent
+    loadChildren: () => import('./pages/detail-page/detail-page.module')
+      .then(m => m.DetailPageModule),
   },
   {
     path: 'create-product',

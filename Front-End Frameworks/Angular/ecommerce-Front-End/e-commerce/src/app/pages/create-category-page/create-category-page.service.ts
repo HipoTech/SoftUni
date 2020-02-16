@@ -9,7 +9,7 @@ export class CreateCategoryPageService {
 
   constructor(private http: HttpClient) { }
   createCategory(category) {
-    this.http.post<Category>('http://localhost:8080/api/categories/cteate', category).subscribe(response => {
+    this.http.post<Category>('http://localhost:8080/api/categories/create', category).subscribe(response => {
       console.log(response);
     })
   }

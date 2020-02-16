@@ -7,6 +7,7 @@ import { RecommendedItemsComponent } from 'src/app/core/recommended-items/recomm
 import { ProductSmallComponent } from 'src/app/core/product-small/product-small.component';
 import { CategoryTabComponent } from 'src/app/core/category-tab/category-tab.component';
 import { SharedComponentsModule } from 'src/app/core/shared-components.module';
+import { HomeRoutingModule } from './home.routing.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedComponentsModule } from 'src/app/core/shared-components.module';
   imports: [
     CommonModule,
     HttpClientModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    HomeRoutingModule
   ]
 })
 export class HomeModule { }
