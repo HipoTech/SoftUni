@@ -29,10 +29,10 @@ module.exports = {
                 description,
                 brand,
                 category,
-                availability,
-                onSlider,
-                featuredItem,
-                recommended,
+                availability = false,
+                onSlider = false,
+                featuredItem = false,
+                recommended = false,
             } = req.body;
             console.log(req.body);
 
@@ -180,11 +180,14 @@ module.exports = {
     delete: {
         deleteProduct: (req, res, next) => {
             const {
-                webId,
+                _id,
                 brand,
                 category,
             } = req.body;
-            models.Product.findOneAndDelete({ webId: webId })
+            console.log(`${_id} has been deleted`);
+            console.log(req.body);
+
+            models.Product.findOneAndDelete({ _id: _id })
                 .then((result) => {
                     const productId = result._id;
                     models.Category

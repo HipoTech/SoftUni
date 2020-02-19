@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CreateCategoryPageService } from './create-category-page.service';
 
 @Component({
@@ -14,8 +14,8 @@ export class CreateCategoryPageComponent implements OnInit {
   floatLabelControl = new FormControl('auto');
 
   createCategoryForm = new FormGroup({
-    name: new FormControl(''),
-    imageUrl: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
+    imageUrl: new FormControl('', [Validators.required]),
   });
 
   onSubmit() {
@@ -32,4 +32,8 @@ export class CreateCategoryPageComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  get checkName() { return !!(this.createCategoryForm.get('name').errors && (this.createCategoryForm.get('name').touched || this.createCategoryForm.get('name').dirty)) }
+  get checkImgUrl() { return !!(this.createCategoryForm.get('imageUrl').errors && (this.createCategoryForm.get('imageUrl').touched || this.createCategoryForm.get('imageUrl').dirty)) }
+
 }

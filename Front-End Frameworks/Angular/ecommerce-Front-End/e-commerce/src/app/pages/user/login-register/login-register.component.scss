@@ -6,10 +6,6 @@
   overflow: hidden;
 }
 
-.login-form {}
-
-.signup-form {}
-
 .login-form h2,
 .signup-form h2 {
   color: #696763;
@@ -61,8 +57,6 @@
   padding: 6px 25px;
 }
 
-.login-form label {}
-
 .login-form label input {
   border: medium none;
   display: inline-block;
@@ -83,4 +77,11 @@
   margin-top: 75px;
   text-align: center;
   width: 50px;
+}
+
+.errorMessage {
+  position: absolute;
+  display: block;
+  max-height: 200px;
+  overflow: auto;
 }

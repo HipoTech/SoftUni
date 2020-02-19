@@ -6,6 +6,29 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Befor starting please download and run the back-end for the app:
+https://github.com/HipoTech/SoftUni/tree/master/Front-End%20Frameworks/Angular/ecommerce-REST-API
+
+Use 
+## `npm install`
+and 
+## `npm start`
+to run it.
+The Back-End uses port: 8080
+
+## Public pages:
+Home, 
+Shop, 
+Categories, 
+Brands
+
+## User pages:
+Create product,
+Create brand,
+Create category,
+Edit product,
+Delete product
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

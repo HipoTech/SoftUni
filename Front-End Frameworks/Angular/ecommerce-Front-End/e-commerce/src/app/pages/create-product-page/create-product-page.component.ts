@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
 import { CreateProductPageService } from './create-product-page.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-product-page',
@@ -16,7 +17,7 @@ export class CreateProductPageComponent implements OnInit {
   floatLabelControl = new FormControl('auto');
   panelColor = new FormControl('yellow');
 
-  constructor(fb: FormBuilder, private createProductService: CreateProductPageService) {
+  constructor(fb: FormBuilder, private createProductService: CreateProductPageService, private router: Router) {
     this.options = fb.group({
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
@@ -26,23 +27,23 @@ export class CreateProductPageComponent implements OnInit {
   }
 
   createProductForm = new FormGroup({
-    title: new FormControl(''),
-    webId: new FormControl(''),
-    price: new FormControl(''),
-    description: new FormControl(''),
-    imageUrl: new FormControl(''),
-    condition: new FormControl(''),
+    title: new FormControl('', [Validators.required]),
+    webId: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    imageUrl: new FormControl('', [Validators.required]),
+    condition: new FormControl('', [Validators.required]),
     availability: new FormControl(''),
     onSlider: new FormControl(''),
     featuredItem: new FormControl(''),
     recommended: new FormControl(''),
-    brand: new FormControl(''),
-    category: new FormControl(''),
+    brand: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required]),
   });
 
   onSubmit() {
     this.createProductService.createProduct(this.createProductForm.value)
-    this.createProductForm.reset;
+    this.router.navigate(['/shop']);
   }
 
   get allBrands() {
@@ -55,5 +56,14 @@ export class CreateProductPageComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  get checkTitle() { return !!(this.createProductForm.get('title').errors && (this.createProductForm.get('title').touched || this.createProductForm.get('title').dirty)) }
+  get checkWebId() { return !!(this.createProductForm.get('webId').errors && (this.createProductForm.get('webId').touched || this.createProductForm.get('webId').dirty)) }
+  get checkPrice() { return !!(this.createProductForm.get('price').errors && (this.createProductForm.get('price').touched || this.createProductForm.get('price').dirty)) }
+  get checkDescription() { return !!(this.createProductForm.get('description').errors && (this.createProductForm.get('description').touched || this.createProductForm.get('description').dirty)) }
+  get checkImageUrl() { return !!(this.createProductForm.get('imageUrl').errors && (this.createProductForm.get('imageUrl').touched || this.createProductForm.get('imageUrl').dirty)) }
+  get checkCondition() { return !!(this.createProductForm.get('condition').errors && (this.createProductForm.get('condition').touched || this.createProductForm.get('condition').dirty)) }
+  get checkBrand() { return !!(this.createProductForm.get('brand').errors && (this.createProductForm.get('brand').touched || this.createProductForm.get('brand').dirty)) }
+  get checkCategory() { return !!(this.createProductForm.get('category').errors && (this.createProductForm.get('category').touched || this.createProductForm.get('category').dirty)) }
 
 }

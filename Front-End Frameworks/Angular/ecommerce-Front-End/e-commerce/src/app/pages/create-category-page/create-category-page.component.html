@@ -4,12 +4,14 @@
     <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
       <mat-label>Category Name</mat-label>
       <input formControlName="name" matInput placeholder="Please enter a name minimum 4 character long">
+      <app-error-message *ngIf="checkName" errorMessage="Name is reqired!"></app-error-message>
     </mat-form-field>
     <br />
     <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
       <mat-label>Image URL</mat-label>
       <input formControlName="imageUrl" matInput placeholder="Please enter a name minimum 4 character long">
+      <app-error-message *ngIf="checkImgUrl" errorMessage="Imgage URL is reqired!"></app-error-message>
     </mat-form-field>
-    <button class="btn btn-default">Create Category</button>
+    <button [disabled]="createCategoryForm.invalid" class="btn btn-default">Create Category</button>
   </form>
 </div>

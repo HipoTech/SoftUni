@@ -9,6 +9,7 @@ import { BrandComponentComponent } from './brand-component/brand-component.compo
 import { RouterModule } from '@angular/router';
 import { CategoryComponentComponent } from './category-component/category-component.component';
 import { ProductDerailComponent } from './product-derail/product-derail.component';
+import { ErrorMessageComponent } from './error-message/error-message.component';
 
 
 
@@ -22,6 +23,8 @@ import { ProductDerailComponent } from './product-derail/product-derail.componen
     BrandComponentComponent,
     CategoryComponentComponent,
     ProductDerailComponent,
+    ErrorMessageComponent,
+
   ],
   imports: [
     RouterModule,
@@ -36,6 +39,8 @@ import { ProductDerailComponent } from './product-derail/product-derail.componen
     BrandComponentComponent,
     CategoryComponentComponent,
     ProductDerailComponent,
+    ErrorMessageComponent,
+
   ]
 })
 export class SharedComponentsModule { }

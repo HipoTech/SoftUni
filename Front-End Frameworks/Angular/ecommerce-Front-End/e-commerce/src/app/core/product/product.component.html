@@ -14,6 +14,8 @@
           <p>{{product.title}}</p>
           <a [routerLink]="['/product/', product._id]" class="btn btn-default add-to-cart"><i
               class="fa fa-shopping-cart"></i>Product Details</a>
+          <a (click)='deleteProduct(product._id)' class="btn btn-default add-to-cart"><i
+              class="fa fa-shopping-cart"></i>Delete {{product.title}}</a>
         </div>
       </div>
     </div>

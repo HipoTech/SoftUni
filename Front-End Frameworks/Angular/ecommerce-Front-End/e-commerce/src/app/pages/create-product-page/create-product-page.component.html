@@ -3,34 +3,41 @@
     <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
       <mat-label>Product Name</mat-label>
       <input formControlName="title" matInput placeholder="Please enter a name minimum 4 character long">
+      <app-error-message *ngIf="checkTitle" errorMessage="Title is reqired!"></app-error-message>
     </mat-form-field>
     <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
       <mat-label>Art. number:</mat-label>
       <input formControlName="webId" type="number" matInput placeholder="Please enter a name minimum 4 character long">
+      <app-error-message *ngIf="checkWebId" errorMessage="Art. number is reqired!"></app-error-message>
     </mat-form-field>
     <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
       <mat-label>Price:</mat-label>
-      <input formControlName="price" type="number" matInput placeholder="Please enter a name minimum 4 character long">
+      <input formControlName="price" type="number" matInput placeholder="Please enter a price">
+      <app-error-message *ngIf="checkPrice" errorMessage="Price is reqired!"></app-error-message>
     </mat-form-field>
     <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
       <mat-label>Condition:</mat-label>
-      <input formControlName="condition" matInput placeholder="Please enter a name minimum 4 character long">
+      <input formControlName="condition" matInput placeholder="Please enter a condition">
+      <app-error-message *ngIf="checkCondition" errorMessage="Condition is reqired!"></app-error-message>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Brand:</mat-label>
       <mat-select formControlName="brand" panelClass="example-panel-yellow">
         <mat-option *ngFor="let brand of allBrands" value={{brand._id}}>{{brand.name}}</mat-option>
       </mat-select>
+      <app-error-message *ngIf="checkBrand" errorMessage="Please pick a Brand!"></app-error-message>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Category:</mat-label>
       <mat-select formControlName="category" panelClass="example-panel-yellow">
         <mat-option *ngFor="let category of allCategories" value={{category._id}}>{{category.name}}</mat-option>
       </mat-select>
+      <app-error-message *ngIf="checkCategory" errorMessage="Please pick a Category!"></app-error-message>
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Description:</mat-label>
       <textarea formControlName="description" matInput placeholder="Ex. It makes me feel..."></textarea>
+      <app-error-message *ngIf="checkDescription" errorMessage="Please enter a description!"></app-error-message>
     </mat-form-field>
     <div class="checkbox">
       <mat-checkbox formControlName="availability">Product is available</mat-checkbox>
@@ -42,7 +49,8 @@
     <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
       <mat-label>Image URL</mat-label>
       <input formControlName="imageUrl" matInput placeholder="Please enter a name minimum 4 character long">
+      <app-error-message *ngIf="checkImageUrl" errorMessage="Url of a image is reqired!"></app-error-message>
     </mat-form-field>
-    <button class="btn btn-default">Create Brand</button>
+    <button [disabled]="createProductForm.invalid" class="btn btn-default">Create Brand</button>
   </form>
 </div>

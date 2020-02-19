@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CreateBrandPageService } from './create-brand-page.service';
 
 @Component({
@@ -14,8 +14,8 @@ export class CreateBrandPageComponent implements OnInit {
   floatLabelControl = new FormControl('auto');
 
   createBrandForm = new FormGroup({
-    name: new FormControl(''),
-    imageUrl: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
+    imageUrl: new FormControl('', [Validators.required]),
   });
 
 
@@ -35,5 +35,9 @@ export class CreateBrandPageComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  get checkName() { return !!(this.createBrandForm.get('name').errors && (this.createBrandForm.get('name').touched || this.createBrandForm.get('name').dirty)) }
+  get checkImgUrl() { return !!(this.createBrandForm.get('imageUrl').errors && (this.createBrandForm.get('imageUrl').touched || this.createBrandForm.get('imageUrl').dirty)) }
+
 
 }

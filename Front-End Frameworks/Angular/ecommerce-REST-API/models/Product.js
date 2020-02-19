@@ -38,28 +38,24 @@ const productSchema = new Schema({
 
     availability: {
         type: Boolean,
-        required: true,
         default: false,
 
     },
 
     onSlider: {
         type: Boolean,
-        required: true,
         default: false,
 
     },
 
     featuredItem: {
         type: Boolean,
-        required: true,
         default: false,
 
     },
 
     recommended: {
         type: Boolean,
-        required: true,
         default: false,
     },
 

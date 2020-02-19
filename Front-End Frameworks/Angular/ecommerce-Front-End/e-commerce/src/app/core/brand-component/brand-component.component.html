@@ -8,7 +8,7 @@
         </div>
       </a>
       <!-- isLoggedIn -->
-      <div class="product-overlay">
+      <div *ngIf='!!isLoggedIn' class="product-overlay">
         <div class="overlay-content">
           <h2>
             <a routerLink='/brand-edit/{{brand._id}}' class="btn btn-default add-to-cart">

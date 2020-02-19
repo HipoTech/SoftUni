@@ -5,6 +5,7 @@ import { CreateCategoryPageRoutingModule } from './create-category-page-routing.
 import { CreateCategoryPageComponent } from './create-category-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatFormFieldModule } from '@angular/material';
+import { SharedComponentsModule } from 'src/app/core/shared-components.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MatInputModule, MatFormFieldModule } from '@angular/material';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    SharedComponentsModule,
   ]
 })
 export class CreateCategoryPageModule { }
