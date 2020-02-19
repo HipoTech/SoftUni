@@ -66,9 +66,11 @@ module.exports = {
     delete: {
         deleteBrand: (req, res, next) => {
             const {
-                name,
+                _id,
             } = req.body;
-            models.Brand.findOneAndDelete({ name: name })
+            console.log(`${_id} has been deleted`);
+
+            models.Brand.findOneAndDelete({ _id: _id })
                 .then((result) => {
 
                     res.status(200);

@@ -67,9 +67,10 @@ module.exports = {
     delete: {
         deleteCategory: (req, res, next) => {
             const {
-                name,
+                _id,
             } = req.body;
-            models.Category.findOneAndDelete({ name: name })
+            console.log(`${_id} has been deleted`);
+            models.Category.findOneAndDelete({ _id: _id })
                 .then((result) => {
                     res.status(200);
                 })

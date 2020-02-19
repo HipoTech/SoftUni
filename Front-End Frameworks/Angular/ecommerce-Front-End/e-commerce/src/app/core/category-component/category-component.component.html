@@ -15,7 +15,7 @@
               <i class="fa fa-edit"></i>Edit {{category.name}}</a>
           </h2>
           <h2>
-            <a routerLink='/' class="btn btn-default add-to-cart">
+            <a (click)='deleteCategory(category._id)' routerLink='/' class="btn btn-default add-to-cart">
               <i class="fa fa-trash"></i>Delete {{category.name}}</a>
           </h2>
         </div>
