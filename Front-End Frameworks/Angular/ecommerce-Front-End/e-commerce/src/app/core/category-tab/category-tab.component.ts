@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Category } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-category-tab',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-tab.component.scss']
 })
 export class CategoryTabComponent implements OnInit {
+  @Input() allCategories: Category[];
 
   constructor() { }
 

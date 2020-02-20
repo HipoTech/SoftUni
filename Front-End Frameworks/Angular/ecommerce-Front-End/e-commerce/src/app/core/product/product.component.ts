@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
+import { UserService } from 'src/app/pages/user/user.service';
 
 @Component({
   selector: 'app-product',
@@ -12,7 +12,13 @@ import { of } from 'rxjs';
 export class ProductComponent implements OnInit {
   @Input() product: Product;
   refresh = false;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
+  user: any
+
+  get isLoggedIn() {
+    this.user = JSON.parse(this.userService.isLoggedIn);
+    return !!this.userService.isLoggedIn;
+  }
 
   ngOnInit() {
   }

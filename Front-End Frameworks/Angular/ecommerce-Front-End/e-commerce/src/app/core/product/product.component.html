@@ -8,7 +8,7 @@
         <a [routerLink]="['/product/', product._id]" class="btn btn-default add-to-cart"><i
             class="fa fa-shopping-cart"></i>Product details</a>
       </div>
-      <div class="product-overlay">
+      <div *ngIf='!!isLoggedIn' class="product-overlay">
         <div class="overlay-content">
           <h2>{{product.price}}</h2>
           <p>{{product.title}}</p>

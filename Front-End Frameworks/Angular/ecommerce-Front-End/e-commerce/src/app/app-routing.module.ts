@@ -41,6 +41,16 @@ const routes: Routes = [
       .then(m => m.DetailPageModule),
   },
   {
+    path: 'brand/:id',
+    loadChildren: () => import('./pages/brand-products-page/brand-products-page.module')
+      .then(m => m.BrandProductPageModule),
+  },
+  {
+    path: 'category/:id',
+    loadChildren: () => import('./pages/category-products-page/category-products-page.module')
+      .then(m => m.CategoryProductPageModule),
+  },
+  {
     path: 'create-product',
     loadChildren: () => import('./pages/create-product-page/create-product-page.module')
       .then(m => m.CreateProductPageModule),

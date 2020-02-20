@@ -71,12 +71,10 @@
               <input formControlName="password" type="password" placeholder="Password" />
               <input formControlName="repeatePassword" type="password" placeholder="Repeate password" />
             </div>
-            <button type="submit" class="btn btn-default">Signup</button>
+            <button [disabled]="registerForm.invalid" type="submit" class="btn btn-default">Signup</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-{{registerForm.value | json}}
