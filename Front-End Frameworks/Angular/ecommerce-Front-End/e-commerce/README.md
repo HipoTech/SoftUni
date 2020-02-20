@@ -15,6 +15,7 @@ and
 ## `npm start`
 to run it.
 The Back-End uses port: 8080
+The Back-End uses mongoDB as Database.
 
 ## Public pages:
 Home, 
