@@ -4,9 +4,10 @@ import { ShopService } from "./shop.service";
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
+  show = true;
 
   get allProducts() {
     return this.shopService.products;
@@ -19,7 +20,6 @@ export class ShopComponent implements OnInit {
   get allCategories() {
     return this.shopService.categories;
   }
-
 
   constructor(private shopService: ShopService) {
     this.shopService.getAllProducts();
