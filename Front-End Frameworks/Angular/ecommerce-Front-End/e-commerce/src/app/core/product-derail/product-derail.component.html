@@ -6,15 +6,15 @@
           <!--product-details-->
           <div class="col-sm-5">
             <div class="view-product">
-              <img src={{product.imageUrl}} alt={{product.title}} />
+              <img [@fadeInState]="stateName" src={{product?.imageUrl}} alt={{product?.title}} />
               <h3>ZOOM</h3>
             </div>
             <div id="similar-product" class="carousel slide" data-ride="carousel">
 
-              <a class="left item-control" href="#similar-product" data-slide="prev">
+              <a class="left item-control" href="" data-slide="prev">
                 <i class="fa fa-angle-left"></i>
               </a>
-              <a class="right item-control" href="#similar-product" data-slide="next">
+              <a class="right item-control" href="" data-slide="next">
                 <i class="fa fa-angle-right"></i>
               </a>
             </div>
@@ -23,22 +23,21 @@
           <div class="col-sm-7">
             <div class="product-information">
               <!--/product-information-->
-              <img src="images/product-details/new.jpg" class="newarrival" alt="" />
-              <h2>{{product.title}}</h2>
-              <p>Web ID: {{product.webId}}</p>
-              <img src="images/product-details/rating.png" alt="" />
+              <img src="../../../assets/images/product-details/new.jpg" class="newarrival" alt="" />
+              <h2>{{product?.title}}</h2>
+              <p>Web ID: {{product?.webId}}</p>
+              <img src="../../../assets/images/product-details/rating.png" alt="" />
               <span>
-                <span>US ${{product.price}}</span>
+                <span>US ${{product?.price}}</span>
                 <input type="text" value="3" />
                 <button type="button" class="btn btn-fefault cart">
                   <i class="fa fa-shopping-cart"></i>
                   Add to cart
                 </button>
               </span>
-              <p><b>Availability:</b> {{product.availability ? 'Yes' : 'No'}}</p>
-              <p><b>Condition:</b> {{product.condition}}</p>
-              <p><b>Brand:</b> {{product.brand.name}}</p>
-              <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt="" /></a>
+              <p><b>Availability:</b> {{product?.availability ? 'Yes' : 'No'}}</p>
+              <p><b>Condition:</b> {{product?.condition}}</p>
+              <p><b>Brand:</b> {{product?.brand.name}}</p>
             </div>
             <!--/product-information-->
           </div>
