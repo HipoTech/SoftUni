@@ -23,6 +23,7 @@ import { UserService } from 'src/app/pages/user/user.service';
   ]
 })
 export class ProductComponent implements OnInit {
+
   @Input() product: Product;
   refresh = false;
   constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
@@ -42,12 +43,15 @@ export class ProductComponent implements OnInit {
     this.show = false;
   }
 
+  endAnimation() {
+    this.show = true;
+  }
+
   ngOnInit() {
     setTimeout(() => {
       this.startAnimation()
     }, 300);
   }
-
 
   deleteProduct(webId) {
     const options = {

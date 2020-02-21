@@ -26,13 +26,15 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           if (error.error instanceof ErrorEvent) {
             // client-side error
             errorMessage = `Error: ${error.error.message}`;
-          } else {
+          } else if (!!error.error.errmsg) {
             // server-side error
             error.error.errmsg.includes('userName')
               ? errorMessage = 'The username is already registered!'
               : error.error.errmsg.includes('email')
                 ? errorMessage = 'The e-mail is already registered!'
-                : errorMessage = `Message: ${error.error.message}`
+                : null
+          } else {
+            errorMessage = `Message: ${error.error.error}`
           }
           window.alert(errorMessage);
           return throwError(errorMessage);
