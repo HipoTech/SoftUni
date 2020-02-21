@@ -8,7 +8,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AppInterceptor } from './app-interceptors';
+import { AppInterceptor, HttpErrorInterceptor } from './app-interceptors';
 import { CookieService } from 'ngx-cookie-service'
 
 @NgModule({
@@ -28,6 +28,11 @@ import { CookieService } from 'ngx-cookie-service'
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true
     },
     CookieService,

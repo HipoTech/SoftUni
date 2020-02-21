@@ -26,7 +26,8 @@ module.exports = {
         register: (req, res, next) => {
             console.log(req.body);
 
-            const { userName, password, email, imageUrl, isAdmin } = req.body;
+            const { userName, email, imageUrl, isAdmin } = req.body;
+            const { password } = req.body.passwords;
             const newUser = { userName, password, email, imageUrl, isAdmin }
             models.User.create(newUser)
                 .then(() => {

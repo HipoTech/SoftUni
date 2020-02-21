@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { matchPasswords } from './passwordValidator';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-login-register',
@@ -12,9 +13,9 @@ import { matchPasswords } from './passwordValidator';
 export class LoginRegisterComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private fb: FormBuilder) { }
 
+
   ngOnInit() {
   }
-  emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g);
 
   registerForm = this.fb.group({
     userName: new FormControl('', [
@@ -45,6 +46,7 @@ export class LoginRegisterComponent implements OnInit {
 
   onSubmitRegister() {
     this.userService.register(this.registerForm.value)
+
   }
 
   get registerUserName() { return this.registerForm.get('userName'); }
@@ -52,7 +54,6 @@ export class LoginRegisterComponent implements OnInit {
 
 
   get loginUserName() { return this.loginForm.get('userName'); }
-
   get loginPassword() { return this.loginForm.get('password'); }
 
 }
