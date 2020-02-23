@@ -24,11 +24,17 @@ import { UserService } from 'src/app/pages/user/user.service';
 })
 export class ProductComponent implements OnInit {
 
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
   @Input() product: Product;
   refresh = false;
-  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
   user: any
   show = true;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.startAnimation()
+    }, 300);
+  }
 
   get isLoggedIn() {
     this.user = JSON.parse(this.userService.isLoggedIn);
@@ -47,11 +53,6 @@ export class ProductComponent implements OnInit {
     this.show = true;
   }
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.startAnimation()
-    }, 300);
-  }
 
   deleteProduct(webId) {
     const options = {
