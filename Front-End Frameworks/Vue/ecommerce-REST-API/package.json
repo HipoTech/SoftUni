@@ -1,0 +1,27 @@
+{
+  "name": "ecommerce-rest-api",
+  "version": "1.0.0",
+  "description": "rest server for ecommerce project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon .",
+    "test": "test"
+  },
+  "keywords": [
+    "ecommerce"
+  ],
+  "author": "Hipo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcrypt": "^5.0.0",
+    "bl": "^4.0.3",
+    "cookie-parser": "^1.4.4",
+    "denque": "^1.4.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.7",
+    "nodemon": "^1.19.4"
+  }
+}
