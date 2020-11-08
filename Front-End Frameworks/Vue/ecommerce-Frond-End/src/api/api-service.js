@@ -1,18 +1,29 @@
 import api from './api-addresses'
 
+const apiControler = {
+  allProducts(element) {
+    const getAll = fetch(element, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/html',
+      }
+    })
 
-async function getAllProducts() {
-  const allProducts = await fetch(api.allItems, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'text/html',
-    }
-  })
+    return getAll
+  }
+}
 
-  return allProducts.json()
+const get = {
+  get AllProducts() {
+    return (
+      async () => {
+        const getAllProducts = await apiControler.allProducts(api.allItems)
+        return getAllProducts.json()
+      })();
+  }
 
 }
 
 export default {
-  getAllProducts
+  get
 }

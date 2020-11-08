@@ -8,7 +8,7 @@ module.exports = {
             models.Product.find()
                 .then((response) => {
                     res.status(200);
-                    res.send(response)
+                    res.send(response);
                 })
                 .catch(err => {
                     console.log(err);
