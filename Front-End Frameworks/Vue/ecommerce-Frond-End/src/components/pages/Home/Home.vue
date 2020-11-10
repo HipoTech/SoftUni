@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-sm-3">
         <div class="left-sidebar">
+          HOME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           <!-- <app-category-side-bar [allCategories]="allCategories"></app-category-side-bar>
           <app-brands-side-bar [allBrands]="allBrands"></app-brands-side-bar>
           <app-price-range-side-bar></app-price-range-side-bar> -->
