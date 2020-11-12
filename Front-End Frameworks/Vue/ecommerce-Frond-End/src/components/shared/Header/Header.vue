@@ -9,14 +9,14 @@
             <div class="contactinfo">
               <ul class="nav nav-pills">
                 <li>
-                  <a routerLink=""
-                    ><i class="fa fa-phone"></i> +2 95 01 88 821</a
-                  >
+                  <a router-Link="">
+                    <i class="fa fa-phone"></i> +2 95 01 88 821
+                  </a>
                 </li>
                 <li>
-                  <a routerLink=""
-                    ><i class="fa fa-envelope"></i> info@domain.com</a
-                  >
+                  <a router-Link=""
+                    ><i class="fa fa-envelope"></i> info@domain.com
+                  </a>
                 </li>
               </ul>
             </div>
@@ -25,19 +25,19 @@
             <div class="social-icons pull-right">
               <ul class="nav navbar-nav">
                 <li>
-                  <a routerLink=""><i class="fa fa-facebook"></i></a>
+                  <a router-Link=""><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                  <a routerLink=""><i class="fa fa-twitter"></i></a>
+                  <a router-Link=""><i class="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                  <a routerLink=""><i class="fa fa-linkedin"></i></a>
+                  <a router-Link=""><i class="fa fa-linkedin"></i></a>
                 </li>
                 <li>
-                  <a routerLink=""><i class="fa fa-dribbble"></i></a>
+                  <a router-Link=""><i class="fa fa-dribbble"></i></a>
                 </li>
                 <li>
-                  <a routerLink=""><i class="fa fa-google-plus"></i></a>
+                  <a router-Link=""><i class="fa fa-google-plus"></i></a>
                 </li>
               </ul>
             </div>
@@ -53,7 +53,7 @@
         <div class="row">
           <div class="col-md-4 clearfix">
             <div class="logo pull-left">
-              <a routerLink="/home"
+              <a router-Link="/home"
                 ><img src="../../../assets/images/home/logo.png" alt=""
               /></a>
             </div>
@@ -68,8 +68,8 @@
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a routerLink="">Canada</a></li>
-                  <li><a routerLink="">UK</a></li>
+                  <li><a router-Link="">Canada</a></li>
+                  <li><a router-Link="">UK</a></li>
                 </ul>
               </div>
 
@@ -83,8 +83,8 @@
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a routerLink="">Canadian Dollar</a></li>
-                  <li><a routerLink="">Pound</a></li>
+                  <li><a router-Link="">Canadian Dollar</a></li>
+                  <li><a router-Link="">Pound</a></li>
                 </ul>
               </div>
             </div>
@@ -93,22 +93,22 @@
             <div class="shop-menu clearfix pull-right">
               <ul class="nav navbar-nav">
                 <li>
-                  <a routerLink=""><i class="fa fa-user"></i> Account</a>
+                  <a router-Link=""><i class="fa fa-user"></i> Account</a>
                 </li>
                 <li>
-                  <a routerLink=""><i class="fa fa-star"></i> Wishlist</a>
+                  <a router-Link=""><i class="fa fa-star"></i> Wishlist</a>
                 </li>
                 <li>
-                  <a routerLink=""><i class="fa fa-shopping-cart"></i> Cart</a>
+                  <a router-Link=""><i class="fa fa-shopping-cart"></i> Cart</a>
                 </li>
                 <!-- <li *ngIf="!!isLoggedIn">
-                  <a routerLink="">
+                  <a router-Link="">
                     <i class="fa fa-crosshairs"></i> Welcome,
                     {{ user?.userName }}</a
                   >
                 </li> -->
                 <li>
-                  <!-- <a *ngIf="!isLoggedIn" routerLink="/login-register"
+                  <!-- <a *ngIf="!isLoggedIn" router-Link="/login-register"
                     ><i class="fa fa-lock"></i> Login</a
                   > -->
                 </li>
@@ -116,7 +116,7 @@
                   <!-- <a
                     *ngIf="!!isLoggedIn"
                     (click)="logOut()"
-                    routerLink="login-register"
+                    router-Link="login-register"
                     ><i class="fa fa-lock"></i> Logout</a
                   > -->
                 </li>
@@ -136,16 +136,16 @@
             <div class="mainmenu pull-left">
               <ul class="nav navbar-nav collapse navbar-collapse">
                 <li>
-                  <a routerLink="/home" routerLinkActive="active">Home</a>
+                  <a router-Link="/home" routerLinkActive="active">Home</a>
                 </li>
                 <li>
-                  <a routerLink="/shop" routerLinkActive="active">Shop</a>
+                  <a router-Link="/shop" routerLinkActive="active">Shop</a>
                 </li>
                 <li>
-                  <a routerLink="/brands" routerLinkActive="active">Brands</a>
+                  <a router-Link="/brands" routerLinkActive="active">Brands</a>
                 </li>
                 <li>
-                  <a routerLink="/categories" routerLinkActive="active"
+                  <a router-Link="/categories" routerLinkActive="active"
                     >Categories</a
                   >
                 </li>
@@ -166,17 +166,17 @@
                 class="nav navbar-nav collapse navbar-collapse"
               >
                 <li>
-                  <a routerLink="/create-product" routerLinkActive="active"
+                  <a router-Link="/create-product" routerLinkActive="active"
                     >Create Product</a
                   >
                 </li>
                 <li>
-                  <a routerLink="/create-brand" routerLinkActive="active"
+                  <a router-Link="/create-brand" routerLinkActive="active"
                     >Create Brand</a
                   >
                 </li>
                 <li>
-                  <a routerLink="/create-category" routerLinkActive="active"
+                  <a router-Link="/create-category" routerLinkActive="active"
                     >Create Category</a
                   >
                 </li>

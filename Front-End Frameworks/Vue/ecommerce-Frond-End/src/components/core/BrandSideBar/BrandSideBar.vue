@@ -1,0 +1,19 @@
+<template>
+  <div class="brands_products">
+    <h2>Brands</h2>
+    <div class="brands-name">
+      <ul class="nav nav-pills nav-stacked">
+        <!-- <li *ngFor="let brand of allBrands">
+          <a href="#">
+            <span class="pull-right"> ( {{ brand.products.length }} ) </span
+            >{{ brand.name }}
+          </a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script src="./BrandSideBar"></script>
+
+<style scoped src="./BrandSideBar.scss" lang="scss"></style>
