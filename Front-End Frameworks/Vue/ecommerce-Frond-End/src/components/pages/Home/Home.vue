@@ -3,10 +3,11 @@
     <div class="row">
       <div class="col-sm-3">
         <div class="left-sidebar">
-          <category-side-bar />
+          <category-side-bar :allCategories="apiAllCategories" />
           <!-- <CategorySideBar [allCategories]="allCategories" /> -->
           <brand-side-bar />
           <!-- <brand-side-bar [allBrands]="allBrands"></brand-side-bar> -->
+          <price-range-sideBar />
           <!-- <app-price-range-side-bar></app-price-range-side-bar> -->
         </div>
       </div>
@@ -15,6 +16,7 @@
         <!-- <app-features-items [allProducts]="allProducts"></app-features-items> -->
         <category-tab />
         <!-- <app-category-tab [allCategories]="allCategories"></app-category-tab> -->
+        <recomended-items />
         <!-- <app-recommended-items [allProducts]="allProducts"></app-recommended-items> -->
       </div>
     </div>

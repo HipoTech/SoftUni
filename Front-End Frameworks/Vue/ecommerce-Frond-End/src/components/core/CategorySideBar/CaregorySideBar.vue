@@ -1,19 +1,43 @@
 <template>
-  <div class="features_items" *ngIf="allProducts">
-    <h2 class="title text-center">Features Items</h2>
-    <ng-container *ngIf="allProducts">
-      <ng-container *ngFor="let product of allProducts">
-        <app-product
-          *ngIf="product.featuredItem"
-          [product]="product"
-        ></app-product>
-      </ng-container>
-    </ng-container>
-    <ng-container *ngIf="!allProducts">
-      <h3 class="title text-center">
-        No featured items are available at the moment!
-      </h3>
-    </ng-container>
+  <div>
+    <h2>Category</h2>
+    <div class="panel-group category-products" id="accordian">
+      <div
+        class="panel panel-default"
+        v-for="(category, index) in allCategories"
+        :key="category._id"
+      >
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            {{ index }}
+            <router-link
+              data-toggle="collapse"
+              data-parent="#accordian"
+              :to="'#' + index"
+            >
+              <span class="badge pull-right">
+                <i class="fa fa-plus"></i>
+              </span>
+              {{ category.name }}
+            </router-link>
+          </h4>
+        </div>
+        <div :id="index" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul>
+              <li v-for="brand in category.brands" :key="brand._id">
+                <router-link :to="'/brand' + '/' + brand._id">
+                  {{ brand.name }}
+                  <span class="pull-right">
+                    ( {{ brand.products.length }} )
+                  </span>
+                </router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
