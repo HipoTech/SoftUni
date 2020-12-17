@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-// import VueRouter from "vue-router";
 import router from './router';
+import { VuelidatePlugin } from '@vuelidate/core'
 
 
-createApp(App).use(router).mount('#app');
+createApp(App).use(router).use(VuelidatePlugin).mount('#app');

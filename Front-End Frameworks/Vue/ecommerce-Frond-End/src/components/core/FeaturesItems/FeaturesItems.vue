@@ -1,21 +1,17 @@
 <template>
-  <!-- <div class="features_items" *ngIf="allProducts">
+  <div class="features_items" v-if="allProducts">
     <h2 class="title text-center">Features Items</h2>
-    <ng-container *ngIf="allProducts">
-      <ng-container *ngFor="let product of allProducts">
-        <app-product
-          *ngIf="product.featuredItem"
-          [product]="product"
-        ></app-product>
-      </ng-container>
-    </ng-container>
-    <ng-container *ngIf="!allProducts">
+    <template v-if="allProducts">
+      <template v-for="product in allProducts" :key="product._id">
+        <product v-if="product.featuredItem" :product="product"></product>
+      </template>
+    </template>
+    <template v-if="!allProducts">
       <h3 class="title text-center">
         No featured items are available at the moment!
       </h3>
-    </ng-container>
-  </div> -->
-  <div></div>
+    </template>
+  </div>
 </template>
 
 <script src="./FeaturesItems.js"></script>

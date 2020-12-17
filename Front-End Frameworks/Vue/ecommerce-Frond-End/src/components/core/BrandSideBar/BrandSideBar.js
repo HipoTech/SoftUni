@@ -1,5 +1,8 @@
 
 
 export default {
-  name: 'BrandSideBar'
+  name: 'BrandSideBar',
+  props: {
+    allBrands: Array,
+  }
 };

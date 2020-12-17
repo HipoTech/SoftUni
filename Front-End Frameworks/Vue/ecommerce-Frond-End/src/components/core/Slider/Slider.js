@@ -1,7 +1,7 @@
 import ProductSmall from '../ProductSmall/ProductSmall.vue';
 
 export default {
-  name: "RecomendedItems",
+  name: "Slider",
   props: {
     allProducts: Array,
   },

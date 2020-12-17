@@ -1,18 +1,18 @@
 <template>
-  <Header />
+  <app-header />
   <router-view />
-  <Footer />
+  <app-footer />
 </template>
 
 <script>
-import Header from "./components/shared/Header/Header.vue";
-import Footer from "./components/shared/Footer/Footer.vue";
+import AppHeader from "./components/core/Header/Header.vue";
+import AppFooter from "./components/core/Footer/Footer.vue";
 
 export default {
   name: "App",
   components: {
-    Header,
-    Footer,
+    AppHeader,
+    AppFooter,
   },
 };
 </script>

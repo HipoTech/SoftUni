@@ -53,9 +53,9 @@
         <div class="row">
           <div class="col-md-4 clearfix">
             <div class="logo pull-left">
-              <a router-Link="/home"
+              <router-link to="/home"
                 ><img src="../../../assets/images/home/logo.png" alt=""
-              /></a>
+              /></router-link>
             </div>
             <div class="btn-group pull-right clearfix">
               <div class="btn-group">
@@ -108,6 +108,9 @@
                   >
                 </li> -->
                 <li>
+                  <router-link to="/login-register"
+                    ><i class="fa fa-lock"></i> Login
+                  </router-link>
                   <!-- <a *ngIf="!isLoggedIn" router-Link="/login-register"
                     ><i class="fa fa-lock"></i> Login</a
                   > -->

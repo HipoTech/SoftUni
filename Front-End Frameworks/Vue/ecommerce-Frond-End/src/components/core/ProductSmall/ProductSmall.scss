@@ -1,0 +1,143 @@
+.btn:hover,
+.btn:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.productinfo h2 {
+  color: #fe980f;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.product-overlay h2 {
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.productinfo p {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #696763;
+}
+
+.productinfo img {
+  width: 100%;
+}
+
+.productinfo {
+  position: relative;
+}
+
+.product-overlay {
+  background: rgba(254, 152, 15, 0.8);
+  top: 0;
+  display: none;
+  height: 0;
+  position: absolute;
+  -webkit-transition: height 500ms ease 0s;
+  transition: height 500ms ease 0s;
+  width: 100%;
+  display: block;
+}
+
+.single-products:hover .product-overlay {
+  display: block;
+  height: 100%;
+}
+
+.product-overlay .overlay-content {
+  bottom: 0;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.product-overlay .add-to-cart {
+  background: #fff;
+  border: 0 none;
+  border-radius: 0;
+  color: #fe980f;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.product-overlay .add-to-cart:hover {
+  background: #fff;
+  color: #fe980f;
+}
+
+.product-overlay p {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.add-to-cart {
+  background: #f5f5ed;
+  border: 0 none;
+  border-radius: 0;
+  color: #696763;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.add-to-cart:hover {
+  background: #fe980f;
+  border: 0 none;
+  border-radius: 0;
+  color: #ffffff;
+}
+
+.add-to {
+  margin-bottom: 10px;
+}
+
+.add-to-cart i {
+  margin-right: 5px;
+}
+
+.add-to-cart:hover {
+  background: #fe980f;
+  color: #ffffff;
+}
+
+.choose {
+  border-top: 1px solid #f7f7f0;
+}
+
+.choose ul li a {
+  color: #b3afa8;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.choose ul li a i {
+  margin-right: 5px;
+}
+
+.choose ul li a:hover {
+  background: none;
+  color: #fe980f;
+}
+
+.single-products:hover .product-overlay {
+  display: block;
+  height: 100%;
+}
+
+.single-products {
+  position: relative;
+  overflow: hidden;
+}

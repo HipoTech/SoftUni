@@ -12,8 +12,9 @@ export default {
   name: "Home",
   data: () => {
     return {
-      apiAllProducts: [],
-      apiAllCategories: [],
+      allBrands: [],
+      allCategories: [],
+      allProducts: [],
     };
   },
   props: {
@@ -27,10 +28,11 @@ export default {
     FeaturesItems,
     PriceRangeSideBar,
     RecomendedItems,
-
   },
   beforeCreate() {
-    ApiService.getAllCategories().then((data) => this.apiAllCategories = data)
+    ApiService.getAllCategories().then((data) => this.allCategories = data);
+    ApiService.getAllBrands().then((data) => this.allBrands = data);
+    ApiService.getAllProducts().then((data) => this.allProducts = data);
     // ApiService.get.AllProducts.then((data) => this.allProducts = data);
     // ApiService.get.AllCategories.then((data) => this.allCategories = data);
   },

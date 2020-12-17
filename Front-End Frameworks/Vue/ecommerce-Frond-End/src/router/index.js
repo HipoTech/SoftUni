@@ -1,20 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../components/pages/Home/Home.vue';
-import PageNotFound from '../components/pages/PageNotFound/PageNotFound.vue';
 
 const routes = [
   {
     path: "/",
-    component: Home,
+    component: () => import('../components/pages/Home/Home.vue'),
   },
   {
     path: "/home",
     name: "Home",
-    component: Home,
+    component: () => import('../components/pages/Home/Home.vue'),
+  },
+  {
+    path: "/login-register",
+    name: "LoginOrRegister",
+    component: () => import('../components/pages/LoginOrRegister/LoginOrRegister.vue'),
   },
   {
     path: "/:pathMatch(.*)*",
-    component: PageNotFound
+    name: "PageNotFound",
+    component: () => import('../components/pages/PageNotFound/PageNotFound.vue'),
   },
   // {
   //   path: '/about',

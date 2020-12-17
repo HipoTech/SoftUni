@@ -3,12 +3,12 @@
     <h2>Brands</h2>
     <div class="brands-name">
       <ul class="nav nav-pills nav-stacked">
-        <!-- <li *ngFor="let brand of allBrands">
-          <a href="#">
-            <span class="pull-right"> ( {{ brand.products.length }} ) </span
-            >{{ brand.name }}
-          </a>
-        </li> -->
+        <li v-for="brand in allBrands" :key="brand._id">
+          <router-link :to="'/brand/' + brand._id">
+            <span class="pull-right"> ( {{ brand.products.length }} ) </span>
+            {{ brand.name }}
+          </router-link>
+        </li>
       </ul>
     </div>
   </div>
