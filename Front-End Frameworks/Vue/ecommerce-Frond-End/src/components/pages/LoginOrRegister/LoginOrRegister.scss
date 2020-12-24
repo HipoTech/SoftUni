@@ -41,7 +41,22 @@
   margin-right: 5px;
 }
 
+.signup-form form span {
+  line-height: 25px;
+}
+
+.signup-form form span input {
+  width: 15px;
+  float: left;
+  height: 15px;
+  margin-right: 5px;
+}
+
 .login-form form button {
+  margin-top: 23px;
+}
+
+.signup-form form button {
   margin-top: 23px;
 }
 

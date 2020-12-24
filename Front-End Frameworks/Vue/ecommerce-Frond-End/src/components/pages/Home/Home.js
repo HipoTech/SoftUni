@@ -1,4 +1,4 @@
-import ApiService from "../../../api/ApiService";
+import apiService from "../../shared/api/ApiService";
 
 import CategorySideBar from '../../core/CategorySideBar/CaregorySideBar.vue'
 import BrandSideBar from '../../core/BrandSideBar/BrandSideBar.vue'
@@ -30,9 +30,9 @@ export default {
     RecomendedItems,
   },
   beforeCreate() {
-    ApiService.getAllCategories().then((data) => this.allCategories = data);
-    ApiService.getAllBrands().then((data) => this.allBrands = data);
-    ApiService.getAllProducts().then((data) => this.allProducts = data);
+    apiService.getAllCategories().then((data) => this.allCategories = data);
+    apiService.getAllBrands().then((data) => this.allBrands = data);
+    apiService.getAllProducts().then((data) => this.allProducts = data);
     // ApiService.get.AllProducts.then((data) => this.allProducts = data);
     // ApiService.get.AllCategories.then((data) => this.allCategories = data);
   },

@@ -27,10 +27,11 @@
         @keyup="validateUsername()"
       />
       <input
-        v-model="email"
+        v-model="emailAdress"
         type="email"
         placeholder="Email Address"
         autocomplete="on"
+        @keyup="validateEmail()"
       />
       <div formGroupName="passwords">
         <input
@@ -38,12 +39,14 @@
           type="password"
           placeholder="Password"
           autocomplete="off"
+          @keyup="validatePassword()"
         />
         <input
           v-model="repeatePassword"
           type="password"
           placeholder="Repeate password"
           autocomplete="off"
+          @keyup="validateRepeatePassword()"
         />
       </div>
       <button

@@ -2,18 +2,18 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
 
 import AppErrorMessage from "../../core/ErrorMessage/ErrorMessage.vue";
-import { validateElement } from "../../shared/formValidations";
+import { validateElement } from "../../shared/formValidations/formValidations";
 
 export default {
   name: "Login",
   mixins: [useVuelidate],
   validations() {
     return {
-      userName: {
+      userNameLogin: {
         required,
         minLength: minLength(6),
       },
-      password: {
+      passwordLogin: {
         required,
       },
     }
@@ -21,13 +21,13 @@ export default {
 
   data: function () {
     return {
-      userName: '',
-      password: '',
-      usernameError: {
+      userNameLogin: '',
+      passwordLogin: '',
+      usernameErrorLogin: {
         state: true,
         errorMessage: ''
       },
-      passwordError: {
+      passwordErrorLogin: {
         state: true,
         errorMessage: ''
       },
@@ -37,32 +37,32 @@ export default {
     AppErrorMessage
   },
   methods: {
-    validateUsername() {
+    validateUsernameLogin() {
       this.$v.$touch();
       const requirements = {
         requiredField: {
-          state: this.$v.userName.required.$invalid,
+          state: this.$v.userNameLogin.required.$invalid,
           errorMessage: "Username is required!"
         },
         minimumLength: {
-          state: this.$v.userName.minLength.$invalid,
-          errorMessage: `Username must be atleast ${this.$v.userName.minLength.$params.min} simbols`
+          state: this.$v.userNameLogin.minLength.$invalid,
+          errorMessage: `Username must be atleast ${this.$v.userNameLogin.minLength.$params.min} simbols`
         },
       }
 
-      validateElement(this.usernameError, requirements);
+      validateElement(this.usernameErrorLogin, requirements);
     },
 
-    validatePassword() {
+    validatePasswordLogin() {
       this.$v.$touch();
       const requirements = {
         requiredField: {
-          state: this.$v.password.required.$invalid,
+          state: this.$v.passwordLogin.required.$invalid,
           errorMessage: "Password is required!"
         },
       }
 
-      validateElement(this.passwordError, requirements);
+      validateElement(this.passwordErrorLogin, requirements);
     },
     submitLogin() {
 

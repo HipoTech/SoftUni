@@ -1,25 +1,25 @@
 <template>
   <div class="login-form">
     <app-error-message
-      :hasError="usernameError.state"
-      :errorMessage="usernameError.errorMessage"
+      :hasError="usernameErrorLogin.state"
+      :errorMessage="usernameErrorLogin.errorMessage"
     />
     <app-error-message
-      :hasError="passwordError.state"
-      :errorMessage="passwordError.errorMessage"
+      :hasError="passwordErrorLogin.state"
+      :errorMessage="passwordErrorLogin.errorMessage"
     />
     <h2>Login to your account</h2>
     <form @submit.prevent="submitLogin">
       <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()"> -->
       <input
-        v-model="userName"
+        v-model="userNameLogin"
         type="text"
         placeholder="Name"
         autocomplete="on"
         @keyup="validateUsername()"
       />
       <input
-        v-model="password"
+        v-model="passwordLogin"
         type="password"
         placeholder="Password"
         autocomplete="off"
@@ -31,7 +31,7 @@
       </span>
       <!-- <button type="submit" class="btn btn-default"> -->
       <button
-        :disabled="usernameError.state || passwordError.state"
+        :disabled="usernameErrorLogin.state || passwordErrorLogin.state"
         type="submit"
         class="btn btn-default"
       >
