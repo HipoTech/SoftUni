@@ -1,13 +1,15 @@
-import { useVuelidate } from "@vuelidate/core";
-import { required, minLength } from "@vuelidate/validators";
+import { validationMixin } from 'vuelidate'
+import { required, minLength } from 'vuelidate/lib/validators';
+import router from '../../../router'
 
 import { validateElement } from "../../shared/formValidations/formValidations";
 import AppErrorMessage from "../../core/ErrorMessage/ErrorMessage.vue";
 import apiService from "../../shared/api/ApiService";
+import cookieParser from '../../shared/helpers/cookieParser'
 
 export default {
   name: "LoginOrRegister",
-  mixins: [useVuelidate],
+  mixins: [validationMixin],
 
 
   validations() {
@@ -100,12 +102,12 @@ export default {
       this.$v.$touch();
       const requirements = {
         requiredField: {
-          state: this.$v.userName.required.$invalid,
+          state: !this.$v.userName.required,
           errorMessage: "Username is required!"
         },
         minimumLength: {
-          state: this.$v.userName.minLength.$invalid,
-          errorMessage: `Username must be atleast ${this.$v.userName.minLength.$params.min} simbols`
+          state: !this.$v.userName.minLength,
+          errorMessage: `Username must be atleast ${this.$v.userName.$params.minLength.min} simbols`
         },
       }
 
@@ -116,11 +118,11 @@ export default {
       this.$v.$touch();
       const requirements = {
         requiredField: {
-          state: this.$v.emailAdress.required.$invalid,
+          state: !this.$v.emailAdress.required,
           errorMessage: "Email is required!"
         },
         emailRegexCheck: {
-          state: this.$v.emailAdress.emailRegexCheck.$invalid,
+          state: !this.$v.emailAdress.emailRegexCheck,
           errorMessage: `Email is not valid! Please check if it is correct.`
         },
       }
@@ -132,15 +134,15 @@ export default {
       this.$v.$touch();
       const requirements = {
         requiredField: {
-          state: this.$v.password.required.$invalid,
+          state: !this.$v.password.required,
           errorMessage: "Password is required!"
         },
         minimumLength: {
-          state: this.$v.password.minLength.$invalid,
-          errorMessage: `Password must be atleast ${this.$v.password.minLength.$params.min} simbols`
+          state: !this.$v.password.minLength,
+          errorMessage: `Password must be atleast ${this.$v.password.$params.minLength.min} simbols`
         },
         passwordHasCapitalLetter: {
-          state: this.$v.password.passwordHasCapitalLetter.$invalid,
+          state: !this.$v.password.passwordHasCapitalLetter,
           errorMessage: `Password must contain at least one capital letter!`
         },
       }
@@ -154,11 +156,11 @@ export default {
       this.$v.$touch();
       const requirements = {
         requiredField: {
-          state: this.$v.repeatePassword.required.$invalid,
+          state: !this.$v.repeatePassword.required,
           errorMessage: "Please repeate the password!"
         },
         passwordMatchCheck: {
-          state: this.$v.repeatePassword.matchPasswords.$invalid,
+          state: !this.$v.repeatePassword.matchPasswords,
           errorMessage: "Passwords do not match!"
         }
       }
@@ -170,12 +172,12 @@ export default {
       this.$v.$touch();
       const requirements = {
         requiredField: {
-          state: this.$v.userNameLogin.required.$invalid,
+          state: !this.$v.userNameLogin.required,
           errorMessage: "Username is required!"
         },
         minimumLength: {
-          state: this.$v.userNameLogin.minLength.$invalid,
-          errorMessage: `Username must be atleast ${this.$v.userNameLogin.minLength.$params.min} simbols`
+          state: !this.$v.userNameLogin.minLength,
+          errorMessage: `Username must be atleast ${this.$v.userNameLogin.$params.minLength.min} simbols`
         },
       }
 
@@ -186,7 +188,7 @@ export default {
       this.$v.$touch();
       const requirements = {
         requiredField: {
-          state: this.$v.passwordLogin.required.$invalid,
+          state: !this.$v.passwordLogin.required,
           errorMessage: "Password is required!"
         },
       }
@@ -225,15 +227,27 @@ export default {
       apiService.logInUser(loginUserData)
         .then(serverResponse => {
           if (!serverResponse.ok) {
-            const serverError = {
-              errorState: {
-                state: true,
-                errorMessage: "Username or password are incorrect",
-              },
-            }
-            validateElement(this.serverLoginError, serverError);
+            serverResponse
+              .json()
+              .then(response => {
+                const serverError = {
+                  errorState: {
+                    state: true,
+                    errorMessage: response['error'],
+                  },
+                }
+                validateElement(this.serverLoginError, serverError);
+                console.log('validation error');
+              })
           } else {
-            serverResponse.json().then(e => console.log(e.userName)) // here i have to pass the user to the app
+            serverResponse
+              .json()
+              .then(() => {
+                const user = cookieParser('ecom-user-info');
+                console.log(user);
+                router.push('/home')
+              })
+              .catch(e => console.log(`Error while making call to the login server: ${e}`))
           }
         })
         .catch(e => console.log(e))

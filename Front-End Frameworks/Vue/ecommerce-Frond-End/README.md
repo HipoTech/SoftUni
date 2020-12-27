@@ -1,8 +1,13 @@
-# ecommerce-rond-nd
+# ecommerce-frond-end
 
 ## Project setup
 ```
 yarn install
+```
+
+### Compiles and tuns back-end all with hot-reloads for development
+```
+yarn start
 ```
 
 ### Compiles and hot-reloads for development

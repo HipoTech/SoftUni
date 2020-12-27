@@ -1,5 +1,6 @@
 <template>
   <header id="header">
+    <!-- {{ getUserLoginSatate }} -->
     <!--header-->
     <div class="header_top">
       <!--header_top-->
@@ -9,14 +10,14 @@
             <div class="contactinfo">
               <ul class="nav nav-pills">
                 <li>
-                  <a router-Link="">
+                  <router-link to="">
                     <i class="fa fa-phone"></i> +2 95 01 88 821
-                  </a>
+                  </router-link>
                 </li>
                 <li>
-                  <a router-Link=""
+                  <router-link to=""
                     ><i class="fa fa-envelope"></i> info@domain.com
-                  </a>
+                  </router-link>
                 </li>
               </ul>
             </div>
@@ -25,19 +26,27 @@
             <div class="social-icons pull-right">
               <ul class="nav navbar-nav">
                 <li>
-                  <a router-Link=""><i class="fa fa-facebook"></i></a>
+                  <router-link to=""
+                    ><i class="fa fa-facebook"></i
+                  ></router-link>
                 </li>
                 <li>
-                  <a router-Link=""><i class="fa fa-twitter"></i></a>
+                  <router-link to=""><i class="fa fa-twitter"></i></router-link>
                 </li>
                 <li>
-                  <a router-Link=""><i class="fa fa-linkedin"></i></a>
+                  <router-link to=""
+                    ><i class="fa fa-linkedin"></i
+                  ></router-link>
                 </li>
                 <li>
-                  <a router-Link=""><i class="fa fa-dribbble"></i></a>
+                  <router-link to=""
+                    ><i class="fa fa-dribbble"></i
+                  ></router-link>
                 </li>
                 <li>
-                  <a router-Link=""><i class="fa fa-google-plus"></i></a>
+                  <router-link to=""
+                    ><i class="fa fa-google-plus"></i
+                  ></router-link>
                 </li>
               </ul>
             </div>
@@ -68,8 +77,8 @@
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a router-Link="">Canada</a></li>
-                  <li><a router-Link="">UK</a></li>
+                  <li><router-link to="">Canada</router-link></li>
+                  <li><router-link to="">UK</router-link></li>
                 </ul>
               </div>
 
@@ -83,8 +92,10 @@
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a router-Link="">Canadian Dollar</a></li>
-                  <li><a router-Link="">Pound</a></li>
+                  <li>
+                    <router-link to="">Canadian Dollar</router-link>
+                  </li>
+                  <li><router-link to="">Pound</router-link></li>
                 </ul>
               </div>
             </div>
@@ -93,35 +104,45 @@
             <div class="shop-menu clearfix pull-right">
               <ul class="nav navbar-nav">
                 <li>
-                  <a router-Link=""><i class="fa fa-user"></i> Account</a>
-                </li>
-                <li>
-                  <a router-Link=""><i class="fa fa-star"></i> Wishlist</a>
-                </li>
-                <li>
-                  <a router-Link=""><i class="fa fa-shopping-cart"></i> Cart</a>
-                </li>
-                <!-- <li *ngIf="!!isLoggedIn">
-                  <a router-Link="">
-                    <i class="fa fa-crosshairs"></i> Welcome,
-                    {{ user?.userName }}</a
+                  <router-link to=""
+                    ><i class="fa fa-user"></i> Account</router-link
                   >
-                </li> -->
-                <li>
-                  <router-link to="/login-register"
-                    ><i class="fa fa-lock"></i> Login
-                  </router-link>
-                  <!-- <a *ngIf="!isLoggedIn" router-Link="/login-register"
-                    ><i class="fa fa-lock"></i> Login</a
-                  > -->
                 </li>
                 <li>
-                  <!-- <a
-                    *ngIf="!!isLoggedIn"
-                    (click)="logOut()"
-                    router-Link="login-register"
-                    ><i class="fa fa-lock"></i> Logout</a
-                  > -->
+                  <router-link to=""
+                    ><i class="fa fa-star"></i> Wishlist</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to=""
+                    ><i class="fa fa-shopping-cart"></i> Cart</router-link
+                  >
+                </li>
+                <li v-if="isLoggedIn">
+                  <router-link to="">
+                    <i class="fa fa-crosshairs"></i> Welcome,
+                    {{ user.userName }}
+                  </router-link>
+                </li>
+                <li>
+                  <!-- <router-link to="/login-register"
+                    ><i class="fa fa-lock"></i> Login
+                  </router-link> -->
+                  <router-link
+                    v-if="!isLoggedIn"
+                    to="/login-register"
+                    @click="logic()"
+                    ><i class="fa fa-lock"></i> Login</router-link
+                  >
+                </li>
+                <li>
+                  <!-- (click)="logOut()" -->
+                  <router-link
+                    v-if="!!isLoggedIn"
+                    to="login-register"
+                    @click="logOut()"
+                    ><i class="fa fa-lock"></i> Logout</router-link
+                  >
                 </li>
               </ul>
             </div>
@@ -139,17 +160,23 @@
             <div class="mainmenu pull-left">
               <ul class="nav navbar-nav collapse navbar-collapse">
                 <li>
-                  <a router-Link="/home" routerLinkActive="active">Home</a>
+                  <router-link to="/home" routerLinkActive="active"
+                    >Home</router-link
+                  >
                 </li>
                 <li>
-                  <a router-Link="/shop" routerLinkActive="active">Shop</a>
+                  <router-link to="/shop" routerLinkActive="active"
+                    >Shop</router-link
+                  >
                 </li>
                 <li>
-                  <a router-Link="/brands" routerLinkActive="active">Brands</a>
+                  <router-link to="/brands" routerLinkActive="active"
+                    >Brands</router-link
+                  >
                 </li>
                 <li>
-                  <a router-Link="/categories" routerLinkActive="active"
-                    >Categories</a
+                  <router-link to="/categories" routerLinkActive="active"
+                    >Categories</router-link
                   >
                 </li>
               </ul>
@@ -169,19 +196,14 @@
                 class="nav navbar-nav collapse navbar-collapse"
               >
                 <li>
-                  <a router-Link="/create-product" routerLinkActive="active"
-                    >Create Product</a
-                  >
+                  <router-link to="/create-product" routerLinkActive="active"
+                    >Create Product</router-link>
                 </li>
                 <li>
-                  <a router-Link="/create-brand" routerLinkActive="active"
-                    >Create Brand</a
-                  >
+                  <router-link to="/create-brand" routerLinkActive="active">Create Brand</router-link>
                 </li>
                 <li>
-                  <a router-Link="/create-category" routerLinkActive="active"
-                    >Create Category</a
-                  >
+                  <router-link to="/create-category" routerLinkActive="active">Create Category</router-link>
                 </li>
               </ul> -->
             </div>

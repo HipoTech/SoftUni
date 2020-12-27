@@ -26,8 +26,7 @@ module.exports = {
         register: (req, res, next) => {
             console.log(req.body);
 
-            const { userName, email, imageUrl, isAdmin } = req.body;
-            const { password } = req.body.passwords;
+            const { userName, email, imageUrl, isAdmin, password } = req.body;
             const newUser = { userName, password, email, imageUrl, isAdmin }
             models.User.create(newUser)
                 .then(() => {
@@ -35,7 +34,6 @@ module.exports = {
                     res.send({ userName, email })
                 })
                 .catch(err => {
-                    console.log(err);
                     res.status(409)
                     res.send(err)
                 })
@@ -60,12 +58,11 @@ module.exports = {
                             const token = jwt.createToken({ id: user._id });
                             const userForFrontEnd = {
                                 userName: user.userName,
+                                isAdmin: user.isAdmin,
                             }
-                            console.log("loggedIn");
-
                             res.cookie(config.cookie, token)
-                                .cookie('ecom-user-info', JSON.stringify(user))
-                                .send(user)
+                                .cookie('ecom-user-info', JSON.stringify(userForFrontEnd))
+                                .send(userForFrontEnd)
                         })
                 }).catch(err => {
                     console.log(err);

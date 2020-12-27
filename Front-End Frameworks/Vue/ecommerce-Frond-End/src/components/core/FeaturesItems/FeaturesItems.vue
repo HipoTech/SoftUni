@@ -2,9 +2,9 @@
   <div class="features_items" v-if="allProducts">
     <h2 class="title text-center">Features Items</h2>
     <template v-if="allProducts">
-      <template v-for="product in allProducts" :key="product._id">
+      <div v-for="product in allProducts" :key="product._id">
         <product v-if="product.featuredItem" :product="product"></product>
-      </template>
+      </div>
     </template>
     <template v-if="!allProducts">
       <h3 class="title text-center">

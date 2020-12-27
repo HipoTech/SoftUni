@@ -1,5 +1,4 @@
 <template>
-  <div class="errorMessage"></div>
   <section id="form">
     <div class="container">
       <div class="row">

@@ -12,6 +12,7 @@
     >
       <div class="carousel-inner">
         <div v-for="product in allProducts" :key="product._id" class="item">
+          {{ product }}
           <h1>Yes</h1>
           <product-small :product="product"></product-small>
         </div>
