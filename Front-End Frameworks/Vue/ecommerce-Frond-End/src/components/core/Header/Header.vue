@@ -1,6 +1,5 @@
 <template>
   <header id="header">
-    <!-- {{ getUserLoginSatate }} -->
     <!--header-->
     <div class="header_top">
       <!--header_top-->
@@ -121,28 +120,22 @@
                 <li v-if="isLoggedIn">
                   <router-link to="">
                     <i class="fa fa-crosshairs"></i> Welcome,
-                    {{ user.userName }}
+                    {{ userName }}
                   </router-link>
                 </li>
                 <li>
-                  <!-- <router-link to="/login-register"
-                    ><i class="fa fa-lock"></i> Login
-                  </router-link> -->
                   <router-link
                     v-if="!isLoggedIn"
                     to="/login-register"
-                    @click="logic()"
+                    @click="login()"
                     ><i class="fa fa-lock"></i> Login</router-link
                   >
                 </li>
                 <li>
-                  <!-- (click)="logOut()" -->
-                  <router-link
-                    v-if="!!isLoggedIn"
-                    to="login-register"
-                    @click="logOut()"
-                    ><i class="fa fa-lock"></i> Logout</router-link
-                  >
+                  <router-link v-if="isLoggedIn" to="/login-register"
+                    ><i class="fa fa-lock"></i>
+                    <span @click="logOut()"> Logout </span>
+                  </router-link>
                 </li>
               </ul>
             </div>

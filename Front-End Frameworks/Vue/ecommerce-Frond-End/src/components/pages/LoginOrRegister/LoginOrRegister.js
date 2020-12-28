@@ -1,11 +1,12 @@
-import { validationMixin } from 'vuelidate'
+import { validationMixin } from 'vuelidate';
 import { required, minLength } from 'vuelidate/lib/validators';
-import router from '../../../router'
 
 import { validateElement } from "../../shared/formValidations/formValidations";
-import AppErrorMessage from "../../core/ErrorMessage/ErrorMessage.vue";
+import cookieParser from '../../shared/helpers/cookieParser';
 import apiService from "../../shared/api/ApiService";
-import cookieParser from '../../shared/helpers/cookieParser'
+import router from '../../../router';
+
+import AppErrorMessage from "../../core/ErrorMessage/ErrorMessage.vue";
 
 export default {
   name: "LoginOrRegister",
@@ -229,29 +230,31 @@ export default {
           if (!serverResponse.ok) {
             serverResponse
               .json()
-              .then(response => {
-                const serverError = {
-                  errorState: {
-                    state: true,
-                    errorMessage: response['error'],
-                  },
-                }
-                validateElement(this.serverLoginError, serverError);
-                console.log('validation error');
-              })
+              .then(response => this.processErrorFromBackEnd(response))
+              .catch(e => console.log(`Error from backend response: ${e}`));
           } else {
             serverResponse
               .json()
               .then(() => {
                 const user = cookieParser('ecom-user-info');
-                console.log(user);
-                router.push('/home')
+                this.$store.commit('logInUser', user);
+                router.push({ name: 'Home' });
               })
-              .catch(e => console.log(`Error while making call to the login server: ${e}`))
+              .catch(e => console.log(`Error while making call to the login server: ${e}`));
           }
         })
         .catch(e => console.log(e))
     },
+
+    processErrorFromBackEnd(response) {
+      const serverError = {
+        errorState: {
+          state: true,
+          errorMessage: response['error'],
+        },
+      }
+      validateElement(this.serverLoginError, serverError);
+    }
   },
   components: {
     AppErrorMessage

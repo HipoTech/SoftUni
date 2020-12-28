@@ -1,15 +1,15 @@
-import Vuex, { createNamespacedHelpers } from "vuex";
+import Vue from 'vue';
+import Vuex from "vuex";
 
 
 import users from "./users";
-// import app from "../.././../main";
+// import products from "./products";
 
-// app.use(Vuex);
+Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   modules: {
-    users,
+    users
   }
-});
-
-export const usersHepers = createNamespacedHelpers(users);
+})
+export default store;

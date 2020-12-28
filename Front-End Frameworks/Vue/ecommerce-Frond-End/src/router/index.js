@@ -1,5 +1,4 @@
 import VueRouter from 'vue-router'
-// import VueRouter, { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
@@ -12,9 +11,39 @@ const routes = [
     component: () => import('../components/pages/Home/Home.vue'),
   },
   {
+    path: "/shop",
+    name: "Shop",
+    component: () => import('../components/pages/Shop/Shop.vue'),
+  },
+  {
+    path: "/brands",
+    name: "Brands",
+    component: () => import('../components/pages/Brands/Brands.vue'),
+  },
+  {
+    path: "/categories",
+    name: "Categories",
+    component: () => import('../components/pages/Categories/Categories.vue'),
+  },
+  {
+    path: "/category/:id",
+    name: "ProductsByCategory",
+    component: () => import('../components/pages/ProductsByCategory/ProductsByCategory.vue'),
+  },
+  {
+    path: "/brand/:id",
+    name: "ProductsByBrand",
+    component: () => import('../components/pages/ProductsByBrand/ProductsByBrand.vue'),
+  },
+  {
     path: "/login-register",
     name: "LoginOrRegister",
     component: () => import('../components/pages/LoginOrRegister/LoginOrRegister.vue'),
+  },
+  {
+    path: "/product/:id",
+    name: "ProductDetails",
+    component: () => import('../components/core/ProductDetails/ProductDetails.vue'),
   },
   {
     path: "/:pathMatch(.*)*",

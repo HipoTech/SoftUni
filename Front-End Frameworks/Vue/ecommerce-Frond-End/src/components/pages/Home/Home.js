@@ -33,8 +33,6 @@ export default {
     apiService.getAllCategories().then((data) => this.allCategories = data);
     apiService.getAllBrands().then((data) => this.allBrands = data);
     apiService.getAllProducts().then((data) => this.allProducts = data);
-    // ApiService.get.AllProducts.then((data) => this.allProducts = data);
-    // ApiService.get.AllCategories.then((data) => this.allCategories = data);
   },
 
 };

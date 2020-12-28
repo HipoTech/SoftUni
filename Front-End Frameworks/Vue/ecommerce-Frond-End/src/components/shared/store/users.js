@@ -1,22 +1,24 @@
-const users = {
+export default {
   state: {
     isLoggedIn: false,
+    userName: null,
+    isAdmin: false,
   },
   mutations: {
-    logOutUser() {
-      this.isLoggedIn = false;
+    logInUser(state, user) {
+      state.isLoggedIn = true;
+      state.userName = user.userName;
+      state.isAdmin = user.isAdmin;
     },
-    logInUser() {
-      this.isLoggedIn = true;
+    logOutUser(state) {
+      state.isLoggedIn = false;
+      state.userName = null;
+      state.isAdmin = false;
     },
   },
   getters: {
-    getUserLoginSatate() {
-      return this.isLoggedIn;
+    getUserState: state => {
+      return state.isLoggedIn;
     }
   },
-}
-
-export default {
-  users,
 }

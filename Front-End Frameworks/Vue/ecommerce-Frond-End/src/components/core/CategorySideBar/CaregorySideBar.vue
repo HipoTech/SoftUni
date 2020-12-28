@@ -26,7 +26,9 @@
           <div class="panel-body">
             <ul>
               <li v-for="brand in category.brands" :key="brand._id">
-                <router-link :to="'/brand' + '/' + brand._id">
+                <router-link
+                  :to="{ name: 'ProductsByBrand', params: { id: brand._id } }"
+                >
                   {{ brand.name }}
                   <span class="pull-right">
                     ( {{ brand.products.length }} )

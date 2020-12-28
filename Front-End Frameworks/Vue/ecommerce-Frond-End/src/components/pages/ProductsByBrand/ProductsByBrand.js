@@ -15,17 +15,22 @@ export default {
       productsOfBrand: [],
     };
   },
-  methods: {},
   components: {
     CategorySideBar,
     BrandSideBar,
     PriceRangeSideBar,
     Product,
   },
+  watch: {
+    '$route.params.id': function () {
+      apiService.getAllCategories().then((data) => this.allCategories = data);
+      apiService.getAllBrands().then((data) => this.allBrands = data);
+      apiService.getOneBrand(this.$route.params).then((data) => this.productsOfBrand = data[0].products);
+    }
+  },
   beforeCreate() {
     apiService.getAllCategories().then((data) => this.allCategories = data);
     apiService.getAllBrands().then((data) => this.allBrands = data);
-    apiService.getOneBrand(this.$route.params).then((data) => this.productsOfBrand = data[0].products)
+    apiService.getOneBrand(this.$route.params).then((data) => this.productsOfBrand = data[0].products);
   },
-
 };
