@@ -1,0 +1,32 @@
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-container .mat-form-field {
+  width: 50%;
+}
+
+.example-container form {
+  margin-bottom: 20px;
+}
+
+.example-container .mat-radio-button {
+  margin: 0 12px;
+}
+
+.example-container {
+  text-align: center;
+}
+
+.btn {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #fe980f;
+  border: medium none;
+  border-radius: 10;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  padding: 6px 25px;
+  display: block;
+}
