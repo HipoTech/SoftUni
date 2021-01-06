@@ -13,7 +13,7 @@
   "author": "Hipo",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "bl": "^4.0.3",
     "cookie-parser": "^1.4.4",
