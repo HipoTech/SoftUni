@@ -28,7 +28,10 @@ module.exports = {
                 })
                 .catch(err => {
                     res.status(409)
-                    res.send(err)
+                    res.send({
+                        error: 'Brand already exist!',
+                        serverError: err
+                    })
                 })
         },
         findOne: (req, res, next) => {

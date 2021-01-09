@@ -17,9 +17,6 @@ export default {
       allProducts: [],
     };
   },
-  props: {
-    msg: String,
-  },
   methods: {},
   components: {
     CategorySideBar,

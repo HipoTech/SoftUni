@@ -7,29 +7,39 @@
           <h2>{{ product.price }}</h2>
           <p>{{ product.title }}</p>
           <router-link
-            :to="'/product/' + product._id"
+            :to="{ name: 'ProductDetails', params: { id: product._id } }"
             class="btn btn-default add-to-cart"
           >
             <i class="fa fa-shopping-cart"></i>
             Product details
           </router-link>
         </div>
-        <!-- <div v-fi="!!isLoggedIn" class="product-overlay">
+        <div v-if="!!isLoggedIn" class="product-overlay">
           <div class="overlay-content">
             <h2>{{ product.price }}</h2>
             <p>{{ product.title }}</p>
             <router-link
-              :to="['/product/', product._id]"
+              :to="{ name: 'EditProductPage', params: { id: product._id } }"
+              class="btn btn-default add-to-cart"
+              ><i class="fa fa-shopping-cart"></i>Edit Product</router-link
+            >
+            <router-link
+              :to="{ name: 'ProductDetails', params: { id: product._id } }"
               class="btn btn-default add-to-cart"
               ><i class="fa fa-shopping-cart"></i>Product Details</router-link
             >
-            <a
-              (click)="deleteProduct(product._id)"
+            <router-link
+              @click.native="
+                deleteProduct(product._id, product.brand, product.category)
+              "
               class="btn btn-default add-to-cart"
-              ><i class="fa fa-shopping-cart"></i>Delete {{ product.title }}</a
+              :to="{ name: 'Shop' }"
             >
+              <i class="fa fa-shopping-cart"></i>
+              Delete {{ product.title }}
+            </router-link>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="choose">
         <ul class="nav nav-pills nav-justified">

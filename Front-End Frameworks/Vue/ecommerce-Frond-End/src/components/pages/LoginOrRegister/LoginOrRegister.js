@@ -5,6 +5,7 @@ import { validateElement } from "../../shared/formValidations/formValidations";
 import cookieParser from '../../shared/helpers/cookieParser';
 import apiService from "../../shared/api/ApiService";
 import router from '../../../router';
+import processErrorFromBackEnd from '../../shared/helpers/processErrorFromBackEnd';
 
 import AppErrorMessage from "../../core/ErrorMessage/ErrorMessage.vue";
 
@@ -230,7 +231,7 @@ export default {
           if (!serverResponse.ok) {
             serverResponse
               .json()
-              .then(response => this.processErrorFromBackEnd(response))
+              .then(response => processErrorFromBackEnd(response, this.serverLoginError))
               .catch(e => console.log(`Error from backend response: ${e}`));
           } else {
             serverResponse
@@ -246,16 +247,9 @@ export default {
         .catch(e => console.log(e))
     },
 
-    processErrorFromBackEnd(response) {
-      const serverError = {
-        errorState: {
-          state: true,
-          errorMessage: response['error'],
-        },
-      }
-      validateElement(this.serverLoginError, serverError);
-    }
+
   },
+
   components: {
     AppErrorMessage
   },

@@ -26,6 +26,21 @@ const routes = [
     component: () => import('../components/pages/Categories/Categories.vue'),
   },
   {
+    path: "/create-brand",
+    name: "CreateBrandPage",
+    component: () => import('../components/pages/CreateBrandPage/CreateBrandPage.vue'),
+  },
+  {
+    path: "/create-category",
+    name: "CreateCategoryPage",
+    component: () => import('../components/pages/CreateCategoryPage/CreateCategoryPage.vue'),
+  },
+  {
+    path: "/create-product",
+    name: "CreateProductPage",
+    component: () => import('../components/pages/CreateProductPage/CreateProductPage.vue'),
+  },
+  {
     path: "/category/:id",
     name: "ProductsByCategory",
     component: () => import('../components/pages/ProductsByCategory/ProductsByCategory.vue'),
@@ -36,14 +51,19 @@ const routes = [
     component: () => import('../components/pages/ProductsByBrand/ProductsByBrand.vue'),
   },
   {
-    path: "/login-register",
-    name: "LoginOrRegister",
-    component: () => import('../components/pages/LoginOrRegister/LoginOrRegister.vue'),
-  },
-  {
     path: "/product/:id",
     name: "ProductDetails",
     component: () => import('../components/core/ProductDetails/ProductDetails.vue'),
+  },
+  {
+    path: "/edit-product/:id",
+    name: "EditProductPage",
+    component: () => import('../components/pages/EditProductPage/EditProductPage.vue'),
+  },
+  {
+    path: "/login-register",
+    name: "LoginOrRegister",
+    component: () => import('../components/pages/LoginOrRegister/LoginOrRegister.vue'),
   },
   {
     path: "/:pathMatch(.*)*",

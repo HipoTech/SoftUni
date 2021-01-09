@@ -7,6 +7,7 @@ export default {
   computed: {
     isLoggedIn() { return this.$store.state.users.isLoggedIn },
     userName() { return this.$store.state.users.userName },
+    isAdmin() { return this.$store.state.users.isAdmin },
   },
 
   created() {
@@ -16,6 +17,10 @@ export default {
     } else {
       this.$store.commit('logOutUser');
     }
+  },
+
+  watch: {
+
   },
 
   methods: {

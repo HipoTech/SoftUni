@@ -3,6 +3,7 @@ node_modules
 /dist
 yarn.lock
 debug.log
+jsconfig.json
 
 
 # local env files

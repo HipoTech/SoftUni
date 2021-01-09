@@ -15,9 +15,6 @@ export default {
       allProducts: [],
     };
   },
-  props: {
-    msg: String,
-  },
   methods: {},
   components: {
     CategorySideBar,
@@ -25,6 +22,7 @@ export default {
     PriceRangeSideBar,
     Brand,
   },
+
   beforeCreate() {
     apiService.getAllCategories().then((data) => this.allCategories = data);
     apiService.getAllBrands().then((data) => this.allBrands = data);

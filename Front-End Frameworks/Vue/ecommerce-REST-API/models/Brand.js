@@ -18,14 +18,14 @@ const brandSchema = new Schema({
 
     products: [{
         type: ObjectId,
-        ref: 'Product'
-        // unique: true,
+        ref: 'Product',
+        unique: true,
     }],
 
     categories: [{
         type: ObjectId,
-        ref: 'Category'
-        // unique: true,
+        ref: 'Category',
+        unique: true,
     }],
 
 });

@@ -29,7 +29,10 @@ module.exports = {
                 })
                 .catch(err => {
                     res.status(409)
-                    res.send(err)
+                    res.send({
+                        error: 'Category already exist!',
+                        serverError: err
+                    })
                 })
         },
         findOne: (req, res, next) => {

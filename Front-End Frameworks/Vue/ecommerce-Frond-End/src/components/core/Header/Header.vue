@@ -119,8 +119,8 @@
                 </li>
                 <li v-if="isLoggedIn">
                   <router-link to="">
-                    <i class="fa fa-crosshairs"></i> Welcome,
-                    {{ userName }}
+                    <i class="fa fa-crosshairs"></i> Welcome, {{ userName }}!
+                    You are {{ isAdmin ? "Admin" : "not Admin" }}
                   </router-link>
                 </li>
                 <li>
@@ -184,21 +184,26 @@
         <div class="row">
           <div class="col-sm-9">
             <div class="mainmenu pull-left">
-              <!-- <ul
-                *ngIf="!!isLoggedIn"
+              <ul
+                v-if="!!isLoggedIn"
                 class="nav navbar-nav collapse navbar-collapse"
               >
                 <li>
                   <router-link to="/create-product" routerLinkActive="active"
-                    >Create Product</router-link>
+                    >Create Product</router-link
+                  >
                 </li>
                 <li>
-                  <router-link to="/create-brand" routerLinkActive="active">Create Brand</router-link>
+                  <router-link to="/create-brand" routerLinkActive="active"
+                    >Create Brand</router-link
+                  >
                 </li>
                 <li>
-                  <router-link to="/create-category" routerLinkActive="active">Create Category</router-link>
+                  <router-link to="/create-category" routerLinkActive="active"
+                    >Create Category</router-link
+                  >
                 </li>
-              </ul> -->
+              </ul>
             </div>
           </div>
         </div>

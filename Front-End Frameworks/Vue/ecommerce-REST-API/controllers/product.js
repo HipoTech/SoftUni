@@ -34,8 +34,6 @@ module.exports = {
                 featuredItem = false,
                 recommended = false,
             } = req.body;
-            console.log(req.body);
-
             const newProduct = {
                 title,
                 webId,
@@ -52,38 +50,39 @@ module.exports = {
             }
             models.Product.create(newProduct)
                 .then((result) => {
-                    const productId = result._id;
-                    const productBrandId = newProduct.brand;
-                    const productCategoryId = newProduct.category;
-                    models.Category
-                        .updateOne(
-                            { _id: newProduct.category },
-                            {
-                                $push: { products: productId },
-                            }
-                        )
-                        .updateOne(
-                            { _id: newProduct.category },
-                            {
-                                $push: { brands: productBrandId }
-                            }
-                        )
+                    console.log('prosuct has been created');
+                    // const productId = result._id;
+                    // const productBrandId = newProduct.brand;
+                    // const productCategoryId = newProduct.category;
+                    // models.Category
+                    //     .updateOne(
+                    //         { _id: newProduct.category },
+                    //         {
+                    //             $push: { products: productId },
+                    //         }
+                    //     )
+                    //     .updateOne(
+                    //         { _id: newProduct.category },
+                    //         {
+                    //             $push: { brands: productBrandId }
+                    //         }
+                    //     )
 
-                        .catch(err => console.log(err))
-                    models.Brand
-                        .updateOne(
-                            { _id: newProduct.brand },
-                            {
-                                $push: { products: productId },
-                            }
-                        )
-                        .updateOne(
-                            { _id: newProduct.brand },
-                            {
-                                $push: { categories: productCategoryId }
-                            }
-                        )
-                        .catch(err => console.log(err))
+                    //     .catch(err => console.log(err))
+                    // models.Brand
+                    //     .updateOne(
+                    //         { _id: newProduct.brand },
+                    //         {
+                    //             $push: { products: productId },
+                    //         }
+                    //     )
+                    //     .updateOne(
+                    //         { _id: newProduct.brand },
+                    //         {
+                    //             $push: { categories: productCategoryId }
+                    //         }
+                    //     )
+                    //     .catch(err => console.log(err))
                     res.status(200);
                     res.send({ newProduct })
                 })
@@ -140,8 +139,11 @@ module.exports = {
                 featuredItem,
                 recommended,
             }
+
             models.Product.updateOne({ webId: newProduct.webId }, { ...newProduct })
+
                 .then((result) => {
+                    console.log('Eddited');
                     console.log(req.body);
 
                     const productId = result._id;
@@ -184,11 +186,10 @@ module.exports = {
                 brand,
                 category,
             } = req.body;
-            console.log(`${_id} has been deleted`);
             console.log(req.body);
-
             models.Product.findOneAndDelete({ _id: _id })
                 .then((result) => {
+                    console.log(`${_id} has been deleted`);
                     const productId = result._id;
                     models.Category
                         .updateOne(

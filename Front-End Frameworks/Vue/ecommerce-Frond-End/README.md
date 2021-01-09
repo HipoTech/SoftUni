@@ -5,7 +5,7 @@
 yarn install
 ```
 
-### Compiles and tuns back-end all with hot-reloads for development
+### Compiles and runs back-end all with hot-reloads for development
 ```
 yarn start
 ```

@@ -24,8 +24,8 @@ const categorySchema = new Schema({
 
     brands: [{
         type: ObjectId,
-        ref: 'Brand'
-        // unique: true,
+        ref: 'Brand',
+        unique: true,
     }],
 
 });

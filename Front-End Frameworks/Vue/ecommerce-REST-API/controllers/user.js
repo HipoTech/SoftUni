@@ -24,8 +24,6 @@ module.exports = {
 
     post: {
         register: (req, res, next) => {
-            console.log(req.body);
-
             const { userName, email, imageUrl, isAdmin, password } = req.body;
             const newUser = { userName, password, email, imageUrl, isAdmin }
             models.User.create(newUser)
@@ -41,8 +39,6 @@ module.exports = {
 
         login: (req, res, next) => {
             const { userName, password } = req.body;
-            // console.log(`stay sined in: ${staySignedIn}`);
-
             models.User.findOne({ userName: { $eq: userName } })
                 .then((user) => {
                     if (user === null) {

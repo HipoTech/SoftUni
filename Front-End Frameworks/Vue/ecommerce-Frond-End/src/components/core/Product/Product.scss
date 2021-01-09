@@ -31,7 +31,7 @@
 }
 
 .productinfo {
-  position: relative;
+  position: absolute;
 }
 
 .product-overlay {
@@ -140,4 +140,5 @@
 .single-products {
   position: relative;
   overflow: hidden;
+  min-height: 290px;
 }
