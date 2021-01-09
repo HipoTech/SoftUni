@@ -52,10 +52,10 @@ module.exports = {
 
     put: {
         edit: (req, res, next) => {
-            const { name, imageUrl, products = [] } = req.body;
-            const newCategory = { name, imageUrl, products };
-            models.Category.updateOne({ name: newCategory.name }, { ...newCategory })
-                .then((result) => {
+            const { originalName, name, imageUrl } = req.body;
+            const newCategory = { name, imageUrl };
+            models.Category.updateOne({ name: originalName }, { name: newCategory.name, imageUrl: newCategory.imageUrl })
+                .then(() => {
                     res.status(200);
                     res.send({ newCategory })
                 })

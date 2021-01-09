@@ -85,7 +85,6 @@ export default {
     },
 
     fillEditForm(product) {
-      console.log(product.description);
       this.id = product._id;
       this.title = product.title;
       this.webId = product.webId;
@@ -118,8 +117,4 @@ export default {
     apiService.getAllProducts().then((data) => this.allProducts = data);
     apiService.getOneProduct(this.$route.params).then(data => this.fillEditForm(data));
   },
-  created() {
-
-  }
-
 };

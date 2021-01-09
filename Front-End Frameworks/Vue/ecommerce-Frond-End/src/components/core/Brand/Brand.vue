@@ -18,7 +18,7 @@
           <div class="overlay-content">
             <h2>
               <router-link
-                :to="'/brand-edit/' + brand._id"
+                :to="{ name: 'EditBrandPage', params: { id: brand._id } }"
                 class="btn btn-default add-to-cart"
               >
                 <i class="fa fa-edit"></i>

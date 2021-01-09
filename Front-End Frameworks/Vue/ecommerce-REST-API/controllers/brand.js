@@ -51,12 +51,13 @@ module.exports = {
 
     put: {
         edit: (req, res, next) => {
-            const { name, imageUrl, products = [] } = req.body;
-            const newBrand = { name, imageUrl, products };
-            models.Brand.updateOne({ name: newBrand.name }, { ...newBrand })
-                .then((result) => {
+            const { originalName, name, imageUrl } = req.body;
+            const newBrand = { originalName, name, imageUrl };
+            models.Brand.updateOne({ name: newBrand.originalName }, { name: newBrand.name, imageUrl: newBrand.imageUrl })
+                .then((resp) => {
+                    console.log(resp);
                     res.status(200);
-                    res.send({ newProduct })
+                    res.send({ newBrand })
                 })
                 .catch(err => {
                     console.log(err);

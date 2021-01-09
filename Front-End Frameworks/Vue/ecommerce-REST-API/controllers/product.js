@@ -143,9 +143,6 @@ module.exports = {
             models.Product.updateOne({ webId: newProduct.webId }, { ...newProduct })
 
                 .then((result) => {
-                    console.log('Eddited');
-                    console.log(req.body);
-
                     const productId = result._id;
                     const productBrandId = newProduct.brand;
                     const productCategoryId = newProduct.brand;

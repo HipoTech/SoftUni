@@ -61,6 +61,16 @@ const routes = [
     component: () => import('../components/pages/EditProductPage/EditProductPage.vue'),
   },
   {
+    path: "/edit-brand/:id",
+    name: "EditBrandPage",
+    component: () => import('../components/pages/EditBrandPage/EditBrandPage.vue'),
+  },
+  {
+    path: "/edit-category/:id",
+    name: "EditCategoryPage",
+    component: () => import('../components/pages/EditCategoryPage/EditCategoryPage.vue'),
+  },
+  {
     path: "/login-register",
     name: "LoginOrRegister",
     component: () => import('../components/pages/LoginOrRegister/LoginOrRegister.vue'),
