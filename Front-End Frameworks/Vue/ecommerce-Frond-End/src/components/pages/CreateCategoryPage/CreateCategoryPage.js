@@ -17,6 +17,8 @@ export default {
     return {
       categoryName: '',
       categoryImageUrl: '',
+      allCategories: [],
+      allBrands: [],
       serverError: {
         state: true,
         errorMessage: ''

@@ -36,6 +36,9 @@ const logInUser = (user) => {
 const logOutUser = () => {
     return get(route.userLogOut)
 }
+const authenticateUser = () => {
+    return get(route.userAuthenticate)
+}
 
 // Product
 const createProduct = (product) => {
@@ -94,18 +97,24 @@ export default {
     registerUser,
     logInUser,
     logOutUser,
+    authenticateUser,
+
     createProduct,
     createCategory,
     createBrand,
+
     getAllProducts,
     getAllCategories,
     getAllBrands,
+
     getOneProduct,
     getOneCategory,
     getOneBrand,
+
     editProduct,
     editCategory,
     editBrand,
+
     deleteProduct,
     deleteCategory,
     deleteBrand,

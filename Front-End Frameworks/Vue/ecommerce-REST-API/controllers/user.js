@@ -7,7 +7,6 @@ module.exports = {
         userInfo: (req, res, next) => {
         },
         logout: (req, res, next) => {
-            console.log('loggetOut');
             res.clearCookie(config.cookie)
             res.clearCookie('ecom-user-info')
                 .send('Logout successfully!');

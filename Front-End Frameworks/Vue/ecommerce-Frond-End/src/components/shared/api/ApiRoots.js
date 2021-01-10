@@ -6,6 +6,7 @@ export default {
   userRegister: `http://localhost:8080/api/user/register`,
   userLogIn: 'http://localhost:8080/api/user/login',
   userLogOut: 'http://localhost:8080/api/user/logout',
+  userAuthenticate: 'http://localhost:8080/api/user/auth',
 
   //Product
   productCreate: 'http://localhost:8080/api/products/create',
