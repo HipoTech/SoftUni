@@ -1,4 +1,5 @@
 import VueRouter from 'vue-router'
+import store from '../components/shared/store';
 
 const routes = [
   {
@@ -29,16 +30,19 @@ const routes = [
     path: "/create-brand",
     name: "CreateBrandPage",
     component: () => import('../components/pages/CreateBrandPage/CreateBrandPage.vue'),
+    beforeEnter(to, from, next) { protect(next) },
   },
   {
     path: "/create-category",
     name: "CreateCategoryPage",
     component: () => import('../components/pages/CreateCategoryPage/CreateCategoryPage.vue'),
+    beforeEnter(to, from, next) { protect(next) },
   },
   {
     path: "/create-product",
     name: "CreateProductPage",
     component: () => import('../components/pages/CreateProductPage/CreateProductPage.vue'),
+    beforeEnter(to, from, next) { protect(next) },
   },
   {
     path: "/category/:id",
@@ -59,16 +63,19 @@ const routes = [
     path: "/edit-product/:id",
     name: "EditProductPage",
     component: () => import('../components/pages/EditProductPage/EditProductPage.vue'),
+    beforeEnter(to, from, next) { protect(next) },
   },
   {
     path: "/edit-brand/:id",
     name: "EditBrandPage",
     component: () => import('../components/pages/EditBrandPage/EditBrandPage.vue'),
+    beforeEnter(to, from, next) { protect(next) },
   },
   {
     path: "/edit-category/:id",
     name: "EditCategoryPage",
     component: () => import('../components/pages/EditCategoryPage/EditCategoryPage.vue'),
+    beforeEnter(to, from, next) { protect(next) },
   },
   {
     path: "/login-register",
@@ -80,15 +87,15 @@ const routes = [
     name: "PageNotFound",
     component: () => import('../components/pages/PageNotFound/PageNotFound.vue'),
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
+
+const protect = (next) => {
+  if (store.state.users.isLoggedIn) {
+    next();
+  } else {
+    router.push({ name: 'LoginOrRegister' });
+  }
+};
 
 const router = new VueRouter({
   mode: 'history',
