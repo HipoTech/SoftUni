@@ -51,6 +51,7 @@ module.exports = {
             models.Product.create(newProduct)
                 .then((result) => {
                     console.log('prosuct has been created');
+                    console.log(result);
                     // const productId = result._id;
                     // const productBrandId = newProduct.brand;
                     // const productCategoryId = newProduct.category;
@@ -84,7 +85,7 @@ module.exports = {
                     //     )
                     //     .catch(err => console.log(err))
                     res.status(200);
-                    res.send({ newProduct })
+                    res.send({ result })
                 })
                 .catch(err => {
                     console.log(err);

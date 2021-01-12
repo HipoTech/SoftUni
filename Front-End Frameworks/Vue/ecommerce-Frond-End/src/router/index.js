@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router'
-import store from '../components/shared/store';
+import apiService from '../components/shared/api/ApiService';
 
 const routes = [
   {
@@ -90,11 +90,13 @@ const routes = [
 ]
 
 const protect = (next) => {
-  if (store.state.users.isLoggedIn) {
-    next();
-  } else {
-    router.push({ name: 'LoginOrRegister' });
-  }
+  apiService.authenticateUser().then(apiResponse => {
+    if (apiResponse.ok) {
+      next();
+    } else {
+      next({ name: 'LoginOrRegister' });
+    }
+  })
 };
 
 const router = new VueRouter({

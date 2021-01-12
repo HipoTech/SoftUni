@@ -14,6 +14,17 @@ export default {
   name: "CreateProductPage",
   data: () => {
     return {
+      valid: false,
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => v.length <= 10 || 'Name must be less than 10 characters',
+      ],
+      brandDropDownRules: [
+        v => !!v || 'Please select a Brand',
+      ],
+      categoryDropDownRules: [
+        v => !!v || 'Please select a Brand',
+      ],
       title: '',
       webId: '',
       price: '',
@@ -61,10 +72,15 @@ export default {
               .then(response => processErrorFromBackEnd(response, this.serverError))
               .catch(e => console.log(`Error from backend response: ${e}`));
           } else {
-            this.$router.push({ name: 'Shop' });
+            serverResponse.json().then(newProductData => {
+              this.$router.push({ name: 'ProductDetails', params: { id: newProductData.result._id } });
+            })
           }
         })
         .catch(e => `Brand creation error: ${e}`);
+    },
+    validate() {
+      this.$refs.form.validate()
     },
   },
 
@@ -81,5 +97,7 @@ export default {
     apiService.getAllBrands().then((data) => this.allBrands = data);
     apiService.getAllProducts().then((data) => this.allProducts = data);
   },
-
+  mounted() {
+    this.$refs.form.validate();
+  }
 };
