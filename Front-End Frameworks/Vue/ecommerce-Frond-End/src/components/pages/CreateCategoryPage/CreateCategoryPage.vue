@@ -13,13 +13,35 @@
           :hasError="serverError.state"
           :errorMessage="serverError.errorMessage"
         />
-        <form @submit.prevent="createCategory()">
-          <label for="">Category name</label>
-          <input v-model="categoryName" />
-          <label for="">Category image URL</label>
-          <input v-model="categoryImageUrl" />
-          <button>Create Category</button>
-        </form>
+        <v-form
+          @submit.prevent="createCategory()"
+          ref="form"
+          v-model="valid"
+          lazy-validation
+        >
+          <v-text-field
+            v-model="categoryName"
+            :rules="nameRules"
+            :counter="10"
+            label="Category name"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="categoryImageUrl"
+            :rules="nameRules"
+            :counter="10"
+            label="Category image URL"
+            required
+          ></v-text-field>
+          <v-btn
+            type="submit"
+            :disabled="!valid"
+            color="orange lighten-2"
+            class="mr-4"
+          >
+            Create Category
+          </v-btn>
+        </v-form>
       </div>
     </div>
   </div>

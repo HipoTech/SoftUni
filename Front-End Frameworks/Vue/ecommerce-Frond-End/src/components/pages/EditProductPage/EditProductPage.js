@@ -14,6 +14,36 @@ export default {
   name: "EditProductPage",
   data: () => {
     return {
+      valid: false,
+      validation: {
+        name: [
+          v => !!v || 'Name is required',
+          v => v.length <= 10 || 'Name must be less than 10 characters',
+        ],
+        artNumber: [
+          v => !!v || 'Articule number is required',
+          v => (!v.length || v.length > 5) || 'The articule number must be more then 5 characters',
+        ],
+        price: [
+          v => !!v || 'Please enter a price',
+        ],
+        condition: [
+          v => !!v || 'Please enter a condition',
+        ],
+        brandDropDownRules: [
+          v => !!v || 'Please select a Brand',
+        ],
+        categoryDropDownRules: [
+          v => !!v || 'Please select a Category',
+        ],
+        imageUrl: [
+          v => !!v || 'Please enter a URL for the image of the product',
+        ],
+        description: [
+          v => !!v || 'Please enter a description of the product',
+          v => v.length > 10 || 'The description must be more then 10 characters',
+        ],
+      },
       id: '',
       title: '',
       webId: '',
@@ -39,10 +69,6 @@ export default {
     };
   },
 
-  computed: {
-
-  },
-
   methods: {
     getSelectdBran(event) {
       this.brand = event.target.value;
@@ -54,6 +80,7 @@ export default {
 
     editProduct() {
       const productData = {
+        id: this.id,
         title: this.title,
         webId: this.webId,
         price: this.price,
@@ -77,7 +104,6 @@ export default {
               .then(response => processErrorFromBackEnd(response, this.serverError))
               .catch(e => console.log(`Error from backend response: ${e}`));
           } else {
-            console.log(this.id);
             this.$router.push({ name: 'ProductDetails', params: { id: this.id } });
           }
         })
@@ -115,6 +141,6 @@ export default {
     apiService.getAllCategories().then((data) => this.allCategories = data);
     apiService.getAllBrands().then((data) => this.allBrands = data);
     apiService.getAllProducts().then((data) => this.allProducts = data);
-    apiService.getOneProduct(this.$route.params).then(data => this.fillEditForm(data));
+    apiService.getOneProduct(this.$route.params).then(data => this.fillEditForm(data)).then(() => this.$refs.form.validate());
   },
 };

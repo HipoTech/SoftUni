@@ -15,16 +15,35 @@ export default {
   data: () => {
     return {
       valid: false,
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => v.length <= 10 || 'Name must be less than 10 characters',
-      ],
-      brandDropDownRules: [
-        v => !!v || 'Please select a Brand',
-      ],
-      categoryDropDownRules: [
-        v => !!v || 'Please select a Brand',
-      ],
+      validation: {
+        name: [
+          v => !!v || 'Name is required',
+          v => v.length <= 10 || 'Name must be less than 10 characters',
+        ],
+        artNumber: [
+          v => !!v || 'Articule number is required',
+          v => v.length > 5 || 'The articule number must be more then 5 characters',
+        ],
+        price: [
+          v => !!v || 'Please enter a price',
+        ],
+        condition: [
+          v => !!v || 'Please enter a condition',
+        ],
+        brandDropDownRules: [
+          v => !!v || 'Please select a Brand',
+        ],
+        categoryDropDownRules: [
+          v => !!v || 'Please select a Category',
+        ],
+        imageUrl: [
+          v => !!v || 'Please enter a URL for the image of the product',
+        ],
+        description: [
+          v => !!v || 'Please enter a description of the product',
+          v => v.length > 10 || 'The description must be more then 10 characters',
+        ],
+      },
       title: '',
       webId: '',
       price: '',

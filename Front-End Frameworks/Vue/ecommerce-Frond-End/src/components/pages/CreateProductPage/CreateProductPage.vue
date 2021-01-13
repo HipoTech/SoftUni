@@ -14,7 +14,7 @@
             <v-col cols="12" md="4">
               <v-text-field
                 v-model="title"
-                :rules="nameRules"
+                :rules="validation.name"
                 :counter="10"
                 label="Product Name"
                 required
@@ -23,8 +23,8 @@
             <v-col cols="12" md="4">
               <v-text-field
                 v-model="webId"
-                :rules="nameRules"
-                :counter="10"
+                :rules="validation.artNumber"
+                :counter="5"
                 label="Art. number:"
                 required
                 type="number"
@@ -33,8 +33,7 @@
             <v-col cols="12" md="4">
               <v-text-field
                 v-model="price"
-                :rules="nameRules"
-                :counter="10"
+                :rules="validation.price"
                 label="Price:"
                 required
                 type="number"
@@ -43,7 +42,7 @@
             <v-col cols="12" md="4">
               <v-text-field
                 v-model="condition"
-                :rules="nameRules"
+                :rules="validation.condition"
                 :counter="10"
                 label="Condition:"
                 required
@@ -59,7 +58,7 @@
                 persistent-hint
                 return-object
                 single-line
-                :rules="brandDropDownRules"
+                :rules="validation.brandDropDownRules"
                 required
               ></v-select>
             </v-col>
@@ -73,14 +72,14 @@
                 persistent-hint
                 return-object
                 single-line
-                :rules="categoryDropDownRules"
+                :rules="validation.categoryDropDownRules"
                 required
               ></v-select>
             </v-col>
             <v-col cols="12" md="4">
               <v-text-field
                 v-model="imageUrl"
-                :rules="nameRules"
+                :rules="validation.imageUrl"
                 :counter="10"
                 label="Image URL"
                 required
@@ -89,7 +88,7 @@
             <v-col cols="12" md="4">
               <v-textarea
                 v-model="description"
-                :rules="nameRules"
+                :rules="validation.description"
                 :counter="10"
                 label="Description:"
                 required
@@ -123,88 +122,6 @@
             </v-btn>
           </v-form>
         </div>
-        <!-- <div class="example-container">
-          <label>Product Name</label>
-          <input
-            v-model="title"
-            matInput
-            placeholder="Please enter a name minimum 4 character long"
-          />
-          <error-message
-          v-if="checkTitle"
-          errorMessage="Title is reqired!"
-        ></error-message>
-          <label>Art. number:</label>
-          <input
-            v-model="webId"
-            type="number"
-            matInput
-            placeholder="Please enter a name minimum 4 character long"
-          />
-          <label>Price:</label>
-          <input
-            v-model="price"
-            type="number"
-            matInput
-            placeholder="Please enter a price"
-          />
-          <label>Condition:</label>
-          <input
-            v-model="condition"
-            matInput
-            placeholder="Please enter a condition"
-          />
-          <label>Brand:</label>
-          <select v-model="brand" panelClass="example-panel-yellow">
-            <option
-              v-for="brand in allBrands"
-              :key="brand._id"
-              :value="brand._id"
-            >
-              {{ brand.name }}
-            </option>
-          </select>
-          <label>Category:</label>
-          <select v-model="category" panelClass="example-panel-yellow">
-            <option
-              v-for="category in allCategories"
-              :key="category._id"
-              :value="category._id"
-            >
-              {{ category.name }}
-            </option>
-          </select>
-          <label>Description:</label>
-          <textarea
-            v-model="description"
-            matInput
-            placeholder="Ex. It makes me feel..."
-          ></textarea>
-          <div class="checkbox">
-            <label>Product is available</label>
-            <input type="checkbox" v-model="availability" />
-            <br />
-            <label>Product is featured</label>
-            <input type="checkbox" v-model="featuredItem" />
-            <br />
-            <label>Product is recommended</label>
-            <input type="checkbox" v-model="recommended" />
-            <br />
-            <label>Product is on the slider</label>
-            <input type="checkbox" v-model="onSlider" />
-            <br />
-          </div>
-          <br />
-          <label>Image URL</label>
-          <input
-            v-model="imageUrl"
-            matInput
-            placeholder="Please enter a name minimum 4 character long"
-          />
-          <button @click="createProduct()" class="btn btn-default">
-            Create Product
-          </button>
-        </div> -->
       </div>
     </div>
   </div>

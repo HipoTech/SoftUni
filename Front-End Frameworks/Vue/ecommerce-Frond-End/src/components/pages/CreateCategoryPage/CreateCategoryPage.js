@@ -15,6 +15,11 @@ export default {
   name: "CreateCategoryPage",
   data: () => {
     return {
+      valid: false,
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => v.length <= 10 || 'Name must be less than 10 characters',
+      ],
       categoryName: '',
       categoryImageUrl: '',
       allCategories: [],
@@ -60,6 +65,10 @@ export default {
     apiService.getAllCategories().then((data) => this.allCategories = data);
     apiService.getAllBrands().then((data) => this.allBrands = data);
     apiService.getAllProducts().then((data) => this.allProducts = data);
+  },
+
+  mounted() {
+    this.$refs.form.validate();
   },
 
 };

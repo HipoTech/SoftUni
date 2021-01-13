@@ -13,13 +13,35 @@
           :hasError="serverError.state"
           :errorMessage="serverError.errorMessage"
         />
-        <form @submit.prevent="createBrand()">
-          <label for="">Brand name</label>
-          <input v-model="brandName" />
-          <label for="">Brand image URL</label>
-          <input v-model="brandImageUrl" />
-          <button>Create Brand</button>
-        </form>
+        <v-form
+          @submit.prevent="createBrand()"
+          ref="form"
+          v-model="valid"
+          lazy-validation
+        >
+          <v-text-field
+            v-model="brandName"
+            :rules="nameRules"
+            :counter="10"
+            label="Brand name"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="brandImageUrl"
+            :rules="nameRules"
+            :counter="10"
+            label="Brand image URL"
+            required
+          ></v-text-field>
+          <v-btn
+            type="submit"
+            :disabled="!valid"
+            color="orange lighten-2"
+            class="mr-4"
+          >
+            Create Brand
+          </v-btn>
+        </v-form>
       </div>
     </div>
   </div>

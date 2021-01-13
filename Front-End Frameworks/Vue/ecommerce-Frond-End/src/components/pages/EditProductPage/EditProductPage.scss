@@ -6,6 +6,15 @@
   width: 50%;
 }
 
+.example-container {
+  max-width: 675px;
+  text-align: center;
+}
+
+.col-md-4 {
+  max-width: 100%;
+}
+
 .example-container form {
   margin-bottom: 20px;
 }
