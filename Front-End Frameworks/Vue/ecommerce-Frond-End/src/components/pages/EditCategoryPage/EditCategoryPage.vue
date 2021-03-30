@@ -9,17 +9,30 @@
         </div>
       </div>
       <div class="example-container">
-        <app-error-message
-          :hasError="serverError.state"
-          :errorMessage="serverError.errorMessage"
-        />
-        <form @submit.prevent="editCategory()">
-          <label for="">Category name</label>
-          <input v-model="categoryName" />
-          <label for="">Category image URL</label>
-          <input v-model="categoryImageUrl" />
-          <button>Edit Category</button>
-        </form>
+        <v-form v-model="valid" @submit.prevent="editCategory()">
+          <v-text-field
+            v-model="categoryName"
+            :rules="validation.name"
+            :counter="10"
+            label="Category image URL"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="categoryImageUrl"
+            :rules="validation.imageUrl"
+            :counter="10"
+            label="Category image URL"
+            required
+          ></v-text-field>
+          <v-btn
+            :disabled="!valid"
+            type="submit"
+            color="orange lighten-2"
+            class="mr-4"
+          >
+            Edit Category
+          </v-btn>
+        </v-form>
       </div>
     </div>
   </div>

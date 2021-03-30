@@ -26,18 +26,14 @@
               </router-link>
             </h2>
             <h2>
-              <router-link to="/" class="btn btn-default add-to-cart">
-                <i class="fa fa-trash"></i>
-                Delete {{ category.name }}
-              </router-link>
-              <!-- <router-link
-                (click)="deleteCategory(category._id)"
-                to="/"
+              <router-link
+                :to="{ name: 'Categories' }"
                 class="btn btn-default add-to-cart"
+                @click.native="deleteCategory(category._id)"
               >
                 <i class="fa fa-trash"></i>
                 Delete {{ category.name }}
-              </router-link> -->
+              </router-link>
             </h2>
           </div>
         </div>

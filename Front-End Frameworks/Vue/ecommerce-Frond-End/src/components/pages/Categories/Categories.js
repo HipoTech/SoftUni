@@ -31,4 +31,8 @@ export default {
     apiService.getAllProducts().then((data) => this.allProducts = data);
   },
 
+  // updated: function () {
+  //   apiService.getAllCategories().then((data) => this.allCategories = data);
+  // },
+
 };

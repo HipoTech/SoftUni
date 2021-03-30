@@ -14,6 +14,17 @@ export default {
   name: "EditProductPage",
   data: () => {
     return {
+      valid: false,
+      validation: {
+        name: [
+          v => !!v || 'Name is required',
+          v => v.length <= 10 || 'Name must be less than 10 characters',
+        ],
+        artNumber: [
+          v => !!v || 'Articule number is required',
+          v => (!v.length || v.length > 5) || 'The articule number must be more then 5 characters',
+        ],
+      },
       originalName: '',
       brandName: '',
       brandImageUrl: '',
